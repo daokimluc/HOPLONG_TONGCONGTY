@@ -14,7 +14,7 @@ namespace ERP.Web.Areas.HopLong.Api.HeThong
 {
     public class Api_CongtyController : ApiController
     {
-        private HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 
         // GET: api/Api_Congty
         public IQueryable<CCTC_CONG_TY> GetCCTC_CONG_TY()

@@ -18,7 +18,7 @@ namespace ERP.Web.Areas.HopLong.Controllers
         XuLyNgayThang xulydate = new XuLyNgayThang();
         int so_dong_thanh_cong;
         int dong;
-        HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        ERP_DATABASEEntities db = new ERP_DATABASEEntities();
         // GET: HopLong/ImportExcel
 
         #region "Import Hàng Hóa"
@@ -50,34 +50,35 @@ namespace ERP.Web.Areas.HopLong.Controllers
                             for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
                             {
 
-                                DM_HANG_HOA HH = new DM_HANG_HOA();
-                                HH.MA_HANG = workSheet.Cells[rowIterator, 1].Value.ToString();
+                                HH hh = new HH();
+                                hh.MA_HANG = workSheet.Cells[rowIterator, 1].Value.ToString();
                                 if(workSheet.Cells[rowIterator, 2].Value != null)
-                                    HH.TEN_HANG = workSheet.Cells[rowIterator, 2].Value.ToString();
-                                HH.MA_NHOM_HANG = workSheet.Cells[rowIterator, 3].Value.ToString();
+                                    hh.TEN_HANG = workSheet.Cells[rowIterator, 2].Value.ToString();
+                                hh.MA_NHOM_HANG = workSheet.Cells[rowIterator, 3].Value.ToString();
                                 if (workSheet.Cells[rowIterator, 4].Value != null)
-                                    HH.SERI = workSheet.Cells[rowIterator, 4].Value.ToString();
+                                    hh.DON_VI_TINH = workSheet.Cells[rowIterator, 4].Value.ToString();
                                 if (workSheet.Cells[rowIterator, 5].Value != null)
-                                    HH.DON_VI_TINH = workSheet.Cells[rowIterator, 5].Value.ToString();
-                               
+                                    hh.KHOI_LUONG =Convert.ToInt32( workSheet.Cells[rowIterator, 5].Value);
                                 if(workSheet.Cells[rowIterator, 6].Value != null)
-                                    HH.MODEL_DAC_BIET = Convert.ToBoolean(workSheet.Cells[rowIterator, 6].Value);
-                                if(workSheet.Cells[rowIterator, 7].Value != null)
-                                    HH.HINH_ANH = workSheet.Cells[rowIterator, 7].Value.ToString();
-                                if (workSheet.Cells[rowIterator, 8].Value != null)
-                                    HH.DAC_TINH = workSheet.Cells[rowIterator, 8].Value.ToString();
+                                    hh.XUAT_XU = workSheet.Cells[rowIterator, 4].Value.ToString();
+                                if (workSheet.Cells[rowIterator, 6].Value != null)
+                                    hh.BAO_HANH = Convert.ToInt32(workSheet.Cells[rowIterator, 4].Value);
+                                if (workSheet.Cells[rowIterator, 6].Value != null)
+                                    hh.THONG_SO_KY_THUAT = workSheet.Cells[rowIterator, 4].Value.ToString();
+                                if (workSheet.Cells[rowIterator, 6].Value != null)
+                                    hh.QUY_CACH_DONG_GOI = workSheet.Cells[rowIterator, 4].Value.ToString();
+                                if (workSheet.Cells[rowIterator, 7].Value != null)
+                                    hh.HINH_ANH = workSheet.Cells[rowIterator, 7].Value.ToString();
                                 if (workSheet.Cells[rowIterator, 9].Value != null)
-                                    HH.GHI_CHU = workSheet.Cells[rowIterator, 9].Value.ToString();
+                                    hh.GHI_CHU = workSheet.Cells[rowIterator, 9].Value.ToString();
                                 if (workSheet.Cells[rowIterator, 10].Value != null)
-                                    HH.TK_HACH_TOAN_KHO = workSheet.Cells[rowIterator, 10].Value.ToString();
+                                    hh.TK_HACH_TOAN_KHO = workSheet.Cells[rowIterator, 10].Value.ToString();
                                 if (workSheet.Cells[rowIterator, 11].Value != null)
-                                    HH.TK_DOANH_THU = workSheet.Cells[rowIterator, 11].Value.ToString();
+                                    hh.TK_DOANH_THU = workSheet.Cells[rowIterator, 11].Value.ToString();
                                 if (workSheet.Cells[rowIterator, 12].Value != null)
-                                    HH.TK_CHI_PHI = workSheet.Cells[rowIterator, 12].Value.ToString();
-                                if (workSheet.Cells[rowIterator, 13].Value != null)
-                                    HH.XUAT_XU = workSheet.Cells[rowIterator, 13].Value.ToString();
+                                    hh.TK_CHI_PHI = workSheet.Cells[rowIterator, 12].Value.ToString();
 
-                                db.DM_HANG_HOA.Add(HH);
+                                db.HHs.Add(hh);
 
                                 db.SaveChanges();
                                 so_dong_thanh_cong++;
@@ -132,12 +133,12 @@ namespace ERP.Web.Areas.HopLong.Controllers
                             var noOfRow = workSheet.Dimension.End.Row;
                             for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
                             {
-                                DM_TONKHO_HANG HH = new DM_TONKHO_HANG();
+                                HH_TONKHO_HANG HH = new HH_TONKHO_HANG();
                                 HH.MA_HANG = workSheet.Cells[rowIterator, 1].Value.ToString();
                                 HH.MA_NHOM_HANG = workSheet.Cells[rowIterator, 2].Value.ToString();
                                 HH.SL_TON = Convert.ToInt32(workSheet.Cells[rowIterator, 3].Value.ToString());
 
-                                db.DM_TONKHO_HANG.Add(HH);
+                                db.HH_TONKHO_HANG.Add(HH);
 
                                 db.SaveChanges();
                                 so_dong_thanh_cong++;
@@ -338,12 +339,12 @@ namespace ERP.Web.Areas.HopLong.Controllers
                             var noOfRow = workSheet.Dimension.End.Row;
                             for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
                             {
-                                DM_HANG_TON_KHO tonkho = new DM_HANG_TON_KHO();
+                                HH_TON_KHO tonkho = new HH_TON_KHO();
                                 tonkho.MA_HANG = workSheet.Cells[rowIterator, 1].Value.ToString();
                                 tonkho.MA_KHO = workSheet.Cells[rowIterator, 2].Value.ToString();
                                 tonkho.SL_TON = Convert.ToInt32(workSheet.Cells[rowIterator, 3].Value.ToString());
                                 
-                                db.DM_HANG_TON_KHO.Add(tonkho);
+                                db.HH_TON_KHO.Add(tonkho);
 
                                 db.SaveChanges();
                                 so_dong_thanh_cong++;
@@ -541,13 +542,13 @@ namespace ERP.Web.Areas.HopLong.Controllers
                             var noOfRow = workSheet.Dimension.End.Row;
                             for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
                             {
-                                DM_NHOM_VTHH hangsp = new DM_NHOM_VTHH();
+                                HH_NHOM_VTHH hangsp = new HH_NHOM_VTHH();
                                 hangsp.MA_NHOM_HANG_CHI_TIET = workSheet.Cells[rowIterator, 1].Value.ToString();
                                 hangsp.CHUNG_LOAI_HANG = workSheet.Cells[rowIterator, 2].Value.ToString();
                                 hangsp.MA_NHOM_HANG_CHA = workSheet.Cells[rowIterator, 3].Value.ToString();
                                 hangsp.GHI_CHU = workSheet.Cells[rowIterator, 4].Value.ToString();
 
-                                db.DM_NHOM_VTHH.Add(hangsp);
+                                db.HH_NHOM_VTHH.Add(hangsp);
 
                                 db.SaveChanges();
                                 so_dong_thanh_cong++;
@@ -667,7 +668,7 @@ namespace ERP.Web.Areas.HopLong.Controllers
                             {
                                 var mahang = workSheet.Cells[rowIterator, 1].Value.ToString();
                                 var makho = workSheet.Cells[rowIterator, 2].Value.ToString();
-                                var tonkho = db.DM_HANG_TON_KHO.Where(x => x.MA_HANG == mahang && x.MA_KHO == makho).FirstOrDefault();
+                                var tonkho = db.HH_TON_KHO.Where(x => x.MA_HANG == mahang && x.MA_KHO == makho).FirstOrDefault();
                                 tonkho.SL_TON = Convert.ToInt32(workSheet.Cells[rowIterator, 3].Value.ToString());
                                 //db.DM_HANG_TON_KHO.Add(tonkho);
                                 

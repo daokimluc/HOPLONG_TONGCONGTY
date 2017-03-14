@@ -10,12 +10,12 @@ namespace ERP.Web.Controllers
 {
     public class HomeController : Controller
     {
-        HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        ERP_DATABASEEntities db = new ERP_DATABASEEntities();
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
 
-            return RedirectToAction("Index", "HangHoaHL");
+            return View();
         }
         public ActionResult Login()
         {
@@ -31,7 +31,10 @@ namespace ERP.Web.Controllers
 
                 
                 Session["USERNAME"] = user.USERNAME;
+                Session["PASSWORD"] = user.PASSWORD;
+                Session["MA_PHONG_BAN"] = user.CCTC_NHAN_VIEN.MA_PHONG_BAN;
                 Session["HO_VA_TEN"] = user.HO_VA_TEN;
+                Session["ALLOWED"] = user.ALLOWED;
                 Session["IS_AMIN"] = user.IS_ADMIN;
                 Session["AVATAR"] = user.AVATAR;
                 Session["MA_CONG_TY"] = user.MA_CONG_TY;

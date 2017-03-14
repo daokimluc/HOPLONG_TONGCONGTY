@@ -14,20 +14,20 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
 {
     public class Api_TonKhoHLController : ApiController
     {
-        private HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 
         // GET: api/Api_TonKhoHL
-        public List<DM_HANG_TON_KHO> GetDM_HANG_TON_KHO(string id)
+        public List<HH_TON_KHO> GetHH_TON_KHO(string id)
         {
-            List<DM_HANG_TON_KHO> listtonkho = new List<DM_HANG_TON_KHO>();
+            List<HH_TON_KHO> listtonkho = new List<HH_TON_KHO>();
            var dskho = db.DM_KHO.Where(x => x.TRUC_THUOC == "HOPLONG").ToList();
             foreach (var item in dskho)
             {
-                var vData = db.DM_HANG_TON_KHO.Where(x => x.MA_HANG == id && x.MA_KHO == item.MA_KHO);
+                var vData = db.HH_TON_KHO.Where(x => x.MA_HANG == id && x.MA_KHO == item.MA_KHO);
                 if(vData.Count() >0)
                 {
                     var data = vData.FirstOrDefault();
-                    DM_HANG_TON_KHO tonkho = new DM_HANG_TON_KHO();
+                    HH_TON_KHO tonkho = new HH_TON_KHO();
                     tonkho.MA_HANG = data.MA_HANG;
                     tonkho.MA_KHO = data.MA_KHO;
                     tonkho.SL_TON = data.SL_TON;
@@ -37,11 +37,11 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
                 }
                 
             }
-            var tonhang = db.DM_TONKHO_HANG.Where(x => x.MA_HANG == id);
+            var tonhang = db.HH_TONKHO_HANG.Where(x => x.MA_HANG == id);
             if (tonhang.Count() > 0)
             {
                 var data1 = tonhang.FirstOrDefault();
-                DM_HANG_TON_KHO tonkhohang = new DM_HANG_TON_KHO();
+                HH_TON_KHO tonkhohang = new HH_TON_KHO();
                 tonkhohang.MA_HANG = data1.MA_HANG;
                 tonkhohang.MA_KHO = "TỒN TẠI HÃNG";
                 tonkhohang.SL_TON = data1.SL_TON;
@@ -50,7 +50,7 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
                 
 
 
-            var result = listtonkho.ToList().Select(x => new DM_HANG_TON_KHO()
+            var result = listtonkho.ToList().Select(x => new HH_TON_KHO()
             {
                 MA_HANG = x.MA_HANG,
                 MA_KHO = x.MA_KHO,
@@ -62,19 +62,19 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
 
         // PUT: api/Api_TonKhoHL/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutDM_HANG_TON_KHO(string id, DM_HANG_TON_KHO dM_HANG_TON_KHO)
+        public IHttpActionResult PutDM_HANG_TON_KHO(string id, HH_TON_KHO Hh_TON_KHO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != dM_HANG_TON_KHO.MA_HANG)
+            if (id != Hh_TON_KHO.MA_HANG)
             {
                 return BadRequest();
             }
 
-            db.Entry(dM_HANG_TON_KHO).State = EntityState.Modified;
+            db.Entry(Hh_TON_KHO).State = EntityState.Modified;
 
             try
             {
@@ -96,15 +96,15 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
         }
 
         // POST: api/Api_TonKhoHL
-        [ResponseType(typeof(DM_HANG_TON_KHO))]
-        public IHttpActionResult PostDM_HANG_TON_KHO(DM_HANG_TON_KHO dM_HANG_TON_KHO)
+        [ResponseType(typeof(HH_TON_KHO))]
+        public IHttpActionResult PostDM_HANG_TON_KHO(HH_TON_KHO dM_HANG_TON_KHO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.DM_HANG_TON_KHO.Add(dM_HANG_TON_KHO);
+            db.HH_TON_KHO.Add(dM_HANG_TON_KHO);
 
             try
             {
@@ -126,19 +126,19 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
         }
 
         // DELETE: api/Api_TonKhoHL/5
-        [ResponseType(typeof(DM_HANG_TON_KHO))]
+        [ResponseType(typeof(HH_TON_KHO))]
         public IHttpActionResult DeleteDM_HANG_TON_KHO(string id)
         {
-            DM_HANG_TON_KHO dM_HANG_TON_KHO = db.DM_HANG_TON_KHO.Find(id);
-            if (dM_HANG_TON_KHO == null)
+            HH_TON_KHO Hh_TON_KHO = db.HH_TON_KHO.Find(id);
+            if (Hh_TON_KHO == null)
             {
                 return NotFound();
             }
 
-            db.DM_HANG_TON_KHO.Remove(dM_HANG_TON_KHO);
+            db.HH_TON_KHO.Remove(Hh_TON_KHO);
             db.SaveChanges();
 
-            return Ok(dM_HANG_TON_KHO);
+            return Ok(Hh_TON_KHO);
         }
 
         protected override void Dispose(bool disposing)
@@ -152,7 +152,7 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
 
         private bool DM_HANG_TON_KHOExists(string id)
         {
-            return db.DM_HANG_TON_KHO.Count(e => e.MA_HANG == id) > 0;
+            return db.HH_TON_KHO.Count(e => e.MA_HANG == id) > 0;
         }
     }
 }

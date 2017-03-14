@@ -11,7 +11,7 @@ namespace ERP.Web.Areas.HopLong.Controllers
     [AuthorizeBussiness]
     public class NghiepVuNguoiDungController : Controller
     {
-        private HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 
         public ActionResult phanquyen(string id)
         {

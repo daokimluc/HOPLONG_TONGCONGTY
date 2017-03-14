@@ -6,7 +6,10 @@ input#searchtextbox:-ms-input-placeholder      {color:white;}
 .navbar-nav>li>a {
     color: white;
 }
-
+.user a{
+    display: inline-block;
+    float: left;
+}
 #search-btn{    
     position: absolute;
     right: 0;

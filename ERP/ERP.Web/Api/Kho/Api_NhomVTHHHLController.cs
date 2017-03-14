@@ -14,13 +14,13 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
 {
     public class Api_NhomVTHHHLController : ApiController
     {
-        private HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 
         // GET: api/Api_NhomVTHHHL
-        public List<DM_NHOM_VTHH> GetDM_NHOM_VTHH()
+        public List<HH_NHOM_VTHH> GetDM_NHOM_VTHH()
         {
-            var vData = db.DM_NHOM_VTHH;
-            var result = vData.ToList().Select(x => new DM_NHOM_VTHH()
+            var vData = db.HH_NHOM_VTHH;
+            var result = vData.ToList().Select(x => new HH_NHOM_VTHH()
             {
                 MA_NHOM_HANG_CHI_TIET = x.MA_NHOM_HANG_CHI_TIET,
                 CHUNG_LOAI_HANG = x.CHUNG_LOAI_HANG,
@@ -31,10 +31,10 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
         }
 
         // GET: api/Api_NhomVTHHHL/5
-        [ResponseType(typeof(DM_NHOM_VTHH))]
+        [ResponseType(typeof(HH_NHOM_VTHH))]
         public IHttpActionResult GetDM_HANG_SP(string id)
         {
-            DM_NHOM_VTHH dM_HANG_SP = db.DM_NHOM_VTHH.Find(id);
+            HH_NHOM_VTHH dM_HANG_SP = db.HH_NHOM_VTHH.Find(id);
             if (dM_HANG_SP == null)
             {
                 return NotFound();
@@ -45,19 +45,19 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
 
         // PUT: api/Api_NhomVTHHHL/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutDM_HANG_SP(string id, DM_NHOM_VTHH dM_NHOM_VTHH)
+        public IHttpActionResult PutDM_HANG_SP(string id, HH_NHOM_VTHH Hh_NHOM_VTHH)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != dM_NHOM_VTHH.MA_NHOM_HANG_CHI_TIET)
+            if (id != Hh_NHOM_VTHH.MA_NHOM_HANG_CHI_TIET)
             {
                 return BadRequest();
             }
 
-            db.Entry(dM_NHOM_VTHH).State = EntityState.Modified;
+            db.Entry(Hh_NHOM_VTHH).State = EntityState.Modified;
 
             try
             {
@@ -79,15 +79,15 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
         }
 
         // POST: api/Api_NhomVTHHHL
-        [ResponseType(typeof(DM_NHOM_VTHH))]
-        public IHttpActionResult PostDM_HANG_SP(DM_NHOM_VTHH dM_NHOM_VTHH)
+        [ResponseType(typeof(HH_NHOM_VTHH))]
+        public IHttpActionResult PostDM_HANG_SP(HH_NHOM_VTHH Hh_NHOM_VTHH)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.DM_NHOM_VTHH.Add(dM_NHOM_VTHH);
+            db.HH_NHOM_VTHH.Add(Hh_NHOM_VTHH);
 
             try
             {
@@ -95,7 +95,7 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
             }
             catch (DbUpdateException)
             {
-                if (DM_HANG_SPExists(dM_NHOM_VTHH.MA_NHOM_HANG_CHI_TIET))
+                if (DM_HANG_SPExists(Hh_NHOM_VTHH.MA_NHOM_HANG_CHI_TIET))
                 {
                     return Conflict();
                 }
@@ -105,20 +105,20 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = dM_NHOM_VTHH.MA_NHOM_HANG_CHI_TIET }, dM_NHOM_VTHH);
+            return CreatedAtRoute("DefaultApi", new { id = Hh_NHOM_VTHH.MA_NHOM_HANG_CHI_TIET }, Hh_NHOM_VTHH);
         }
 
         // DELETE: api/Api_NhomVTHHHL/5
-        [ResponseType(typeof(DM_NHOM_VTHH))]
+        [ResponseType(typeof(HH_NHOM_VTHH))]
         public IHttpActionResult DeleteDM_HANG_SP(string id)
         {
-            DM_NHOM_VTHH dM_HANG_SP = db.DM_NHOM_VTHH.Find(id);
+            HH_NHOM_VTHH dM_HANG_SP = db.HH_NHOM_VTHH.Find(id);
             if (dM_HANG_SP == null)
             {
                 return NotFound();
             }
 
-            db.DM_NHOM_VTHH.Remove(dM_HANG_SP);
+            db.HH_NHOM_VTHH.Remove(dM_HANG_SP);
             db.SaveChanges();
 
             return Ok(dM_HANG_SP);
@@ -135,7 +135,7 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
 
         private bool DM_HANG_SPExists(string id)
         {
-            return db.DM_NHOM_VTHH.Count(e => e.MA_NHOM_HANG_CHI_TIET == id) > 0;
+            return db.HH_NHOM_VTHH.Count(e => e.MA_NHOM_HANG_CHI_TIET == id) > 0;
         }
     }
 }

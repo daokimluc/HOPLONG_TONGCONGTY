@@ -3,6 +3,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-
+<div ng-app="myApp" ng-controller="danhmucCtrl">
+    <div class="panel panel-default col-md-9" style="height: 550px;overflow: auto;">
+        <div class="panel-heading title">Thông báo</div>
+        <div class="panel-body">
+            <div ng-repeat="item in listpost" class="col-md-12" style="margin-bottom: 20px;">
+                <div class=col-md-3>
+                    <img ng-src="~/Content/Upload/{{item.ANH_BAI_VIET}}" style="width: 100%;height: 150px;" />
+                </div>
+                <div class=col-md-9>
+                    <p>Tiêu đề bài viết:{{item.TIEU_DE_BAI_VIET}}</p>
+                    <p>Ngày viết:{{item.NGAY_DANG_BAI | date:'dd/MM/yyyy'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default col-md-3">
+        <div class="panel-heading title">Danh mục</div>
+        <div class="panel-body">
+            <ul>
+                <li ng-repeat="list in danhsachdanhmuc" ng-click="transfer(list.MA_DANH_MUC)" style="cursor: pointer">{{list.TEN_DANH_MUC}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

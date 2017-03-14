@@ -14,7 +14,7 @@ namespace ERP.Web.Areas.HopLong.Controllers
     [AuthorizeBussiness]
     public class KhoController : Controller
     {
-        private HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 
         // GET: HopLong/Kho
         public ActionResult Index()

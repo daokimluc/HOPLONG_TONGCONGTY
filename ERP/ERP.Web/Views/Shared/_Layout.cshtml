@@ -31,7 +31,8 @@
     <link href="~/Content/download/bootstrap/css/layout_all.css" rel="stylesheet" />
     <link href="~/Content/self-writing/Layout-CSS.css" rel="stylesheet" />
     <link href="~/Content/self-writing/css/LayoutHL.css" rel="stylesheet" />
-
+    <script src="~/Content/download/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/download/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="~/Content/download/angularjs/angular.min.js"></script>
     <script src="~/Content/self-writing/js/app.js"></script>
     <script src="~/Content/self-writing/js/Service.js"></script>
@@ -39,15 +40,15 @@
     <script src="~/Content/download/angularjs/dirPagination.js"></script>
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" ng-app="myApp"  ng-controller="menuCtrl">
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
             <a href="/HopLong/HopLongHome/Index" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini" style="color: white"><img src="~/HopLong/Content/img/hl-logo.png" width="30" height="40" /></span>
+                <span class="logo-mini" style="color: white"><img src="~/Content/self-writing/Images/hoplong.PNG" height="30" width="40"/></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg" style="color: white;"><img src="" width="30" height="40" style="margin-right: 10px" />hoplongtech</span>
+                <span class="logo-lg" style="color: white;"><img src="~/Content/self-writing/Images/hoplong.PNG" height="30" width="40"/></span>
                 
             </a>
             <!-- Header Navbar: style can be found in header.less -->
@@ -58,61 +59,12 @@
                 </a>
                 <!-- Menu bar-->
                 <div class="navbar-custom-menu pull-left">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">System<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/Danhsachnghiepvu/Index">Danh sách nghiệp vụ</a></li>
-
-                                <li><a href="/NghiepVuNguoiDung/Index">Chi tiết nghiệp vụ</a></li>
-                                <li><a href="/GiamDocChiNhanhTAHL/Index">Leaders</a></li>
-
-                            </ul>
+                        <input type="hidden" value="@Session["MA_PHONG_BAN"]" id="maphongban" />
+                        <input type="hidden" value="@Session["USERNAME"]" id="username" />
+                    <ul class="nav navbar-nav" ng-class="get(menu.USERNAME)">                       
+                        <li ng-repeat="menu in danhsachmenu">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-class="check(menu.TRANG_THAI)" ng-click="edit(menu.MA_MENU)">{{menu.TEN_MENU}}</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Folder <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/ImportExcel/Import_Hanghoa">Import from excel</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catalogue <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-submenu">
-                                    <a href="#">Account</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="/TaiKhoanHachToanHL/Index">System Account</a></li>
-                                        <li><a href="#">Tài khoản ngầm định</a></li>
-                                        <li><a href="#">Tài khoản kết chuyển</a></li>
-                                        <li><a href="#">Định khoản tự động</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#">Organizational Structure</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="/PhongBanHL/Index">Department</a></li>
-                                        <li><a href="/NguoiDungHL/Index">User</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#">Object</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Client</a></li>
-                                        <li><a href="#">Supplier</a></li>
-                                        <li><a href="#">Employee</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="#">Inventory Item</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="/HangHoaHL/Index">Product</a></li>
-                                        <li><a href="/Kho/Index">Inventory</a></li>
-                                        <li><a href="/HangSpHL/Index">Brand</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-
                     </ul>
                 </div><!-- /end menu bar -->
 
@@ -146,11 +98,8 @@
                         </li>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="~/HopLong/Content/img/@Session["AVATAR"]" class="user-image" alt="User Image">
-                                <span class="hidden-xs">@Session["HO_VA_TEN"]</span>
-                            </a>
-
+                                <a href="/UserDetails/Index"><img src="~/HopLong/Content/img/@Session["AVATAR"]" class="user-image" alt="User Image"></a>
+                                <a href="/UserDetails/Index"><span class="hidden-xs">@Session["HO_VA_TEN"]</span></a>
                         </li>
                         <!-- Control Sidebar Toggle Button -->
                         <li><a href="/Home/Logout"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
@@ -176,23 +125,19 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
                     <li class="header">NGHIỆP VỤ</li>
-                    <li class="active treeview">
+                    <li ng-class="treeview()" ng-repeat="item in danhsachmenucha">
                         <a href="#">
-                            <i class="fa mini-icon fa-dashboard"></i> <span>Quỹ</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
+                            <i ng-class="fa()"></i>
+                            <span ng-click="push(item.MA_MENU)">{{item.TEN_MENU}}</span>
+                            <span ng-class="pullright()">
+                                <i ng-class="fapullright()" ng-click="push(item.MA_MENU)"></i>
                             </span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Thu tiền</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Thu tiền khách hàng</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Thu tiền khách hàng hàng loạt</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Chi tiền</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Trả tiền nhà cung cấp</a></li>
+                        <ul class="treeview-menu" ng-repeat="abc in listmenu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i>{{abc.TEN_MENU}}</a></li> 
                         </ul>
                     </li>
-                    <li class="treeview">
+                    <li class="treeview" >
                         <a href="#">
                             <i class="fa mini-icon fa-pie-chart"></i>
                             <span>Ngân hàng</span>
@@ -258,7 +203,7 @@
                             <li><a href="#"><i class="fa fa-circle-o"></i> Tính giá xuất kho</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><i class="fa mini-icon fa-circle-o"></i> Chấm công</a></li>
+                    <li><a href="/ChamCong/Index"><i class="fa mini-icon fa-circle-o"></i> <span>Chấm công</span></a></li>
 
                     <li class="header">Báo cáo</li>
                     <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
@@ -273,7 +218,9 @@
             @RenderBody()
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
+        <footer class="main-footer" style="position: absolute;
+    bottom: 0px;
+    left: 0px;">
             <div class="pull-right hidden-xs">
                 <b>Version</b> 1.0
             </div>

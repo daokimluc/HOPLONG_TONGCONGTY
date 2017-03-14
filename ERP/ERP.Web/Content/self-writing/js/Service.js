@@ -33,6 +33,11 @@ app.service('hanghoaService', function ($http) {
             return response.data;
         });
     };
+    this.get_quantam = function (username) {
+        return $http.get("/api/Api_HangDuocQuanTam/" + username).then(function (response) {
+            return response.data;
+        });
+    }
 });
 
 
@@ -147,4 +152,83 @@ app.service('taikhoanService', function ($http) {
     this.delete = function (sotk, data_delete) {
         return $http.delete("/api/Api_TaiKhoanHachToan/" + sotk, data_delete);
     }
+});
+
+app.service('danhmucService', function ($http) {
+    this.get_danhmuc = function () {
+        return $http.get("/api/Api_Categories").then(function (response) {
+            return response.data;
+        });
+    };
+    this.add_danhmuc = function (data_add) {
+        return $http.post("/api/Api_Post", data_add);
+    };
+
+    this.add_postcategories = function (postcate) {
+        return $http.post("/api/Api_POST_CATEGORIES", postcate);
+    };
+
+    this.get_post = function (madanhmuc) {
+        return $http.get("/api/Api_POST_CATEGORIES/" + madanhmuc).then(function (response) {
+            return response.data;
+        });
+    };
+});
+
+app.service('menuService', function ($http) {
+    this.get_menu = function (username) {
+        return $http.get('/api/Api_ListMenu/' + username).then(function (response) {
+            return response.data;
+        });
+    };
+
+    this.save_menu = function (maphongban,username,mamenu,data_save) {
+        return $http.put('/api/Api_MENU_USER/' + maphongban + '/' + username + '/' + mamenu, data_save);
+    }
+
+    this.get_menucha = function (username,menucha) {
+        return $http.get('/api/Api_ListMenu/' + username + '/' + menucha).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.get_listmenucha = function (username, menucha) {
+        return $http.get('/api/Api_ListMenuCha/' + username + '/' + menucha).then(function (response) {
+            return response.data;
+        });
+    }
+});
+
+app.service('userdetailService', function ($http) {
+    this.get_details = function (username) {
+        return $http.get('/api/Api_UserDetails/' + username).then(function (response) {
+            return response.data;
+        });
+    };
+
+    this.save_pw = function (username,oldpw, data_save) {
+        return $http.put('/api/DoiMatKhau/' + username + '/' + oldpw, data_save);
+    };
+
+    this.get_user = function () {
+        return $http.get("/api/Api_NguoidungHL").then(function (response) {
+            return response.data;
+        });
+    };
+});
+
+app.service('bangchamcongService', function ($http) {
+    this.get_chamcong = function (username) {
+        return $http.get('/api/Api_BangChamCong/' + username).then(function (response) {
+            return response.data;
+        });
+    };
+});
+
+app.service('bangluongService', function ($http) {
+    this.get_bangluong = function (username) {
+        return $http.get('/api/Api_BangLuong/' + username).then(function (response) {
+            return response.data;
+        });
+    };
 });

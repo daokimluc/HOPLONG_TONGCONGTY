@@ -14,7 +14,7 @@ namespace ERP.Web.Areas.HopLong.Api.HeThong
 {
     public class Api_NhomnghiepvuHLController : ApiController
     {
-        private HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 
         // GET: api/Api_NhomnghiepvuHL
         public IQueryable<CN_NHOM_NGHIEP_VU> GetCN_NHOM_NGHIEP_VU()

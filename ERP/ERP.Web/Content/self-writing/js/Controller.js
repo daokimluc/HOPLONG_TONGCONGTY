@@ -15,21 +15,33 @@ app.controller('hanghoaCtrl', function (hanghoaService, $scope) {
             $scope.danhsachnhomhang = a;
         });
     };
-
+    $scope.loadQuanTam = function () {
+        var quantam = $('#userquantam').val();
+        hanghoaService.get_quantam(quantam).then(function (z) {
+            $scope.danhsachquantam = z;
+        });
+    }
+    $scope.loadQuanTam();
     $scope.loadHangHoa();
     
-    $scope.comments;
+
     $scope.add = function () {
+        $("textarea[name=thongso]").val(CKEDITOR.instances.thongso.getData());
+        $("textarea[name=donggoi]").val(CKEDITOR.instances.donggoi.getData());
+        var thongso = $("[name=thongso]").val();
+        var donggoi = $("[name=donggoi]").val();
         var data_add = {
             MA_HANG: $scope.mahang,
             TEN_HANG: $scope.tenhang,
             MA_NHOM_HANG: $scope.manhomhang,
-            SERI: $scope.seri,
+            KHOI_LUONG: $sopce.khoiluong,
+            XUAT_XU: $scope.xuatxu,
+            THONG_SO_KY_THUAT: thongso,
+            QUY_CACH_DONG_GOI: donggoi,
+            BAO_HANH : $scope.baohanh,
             DON_VI_TINH: $scope.donvitinh,
-            MODEL_DAC_BIET: $scope.modeldacbiet,
             HINH_ANH: $scope.hinhanh,
-            DAC_TINH: $scope.dactinh,
-            GHI_CHU: $scope.ghichu,
+            GHI_CHU: NoiDungTextArea,
             TK_HACH_TOAN_KHO: $scope.tkhachtoankho,
             TK_DOANH_THU: $scope.tkdoanhthu,
             TK_CHI_PHI: $scope.tkchiphi
@@ -41,26 +53,32 @@ app.controller('hanghoaCtrl', function (hanghoaService, $scope) {
 
     $scope.edit = function (item) {
         $scope.item = item;
-
-    }
-    $scope.passing = function (item) {
-        $scope.item = item;
+        var donggoivalue = $('.' + item.MA_HANG + '-1').html();
+        CKEDITOR.instances.editdonggoi.setData(donggoivalue);
+        var thongsovalue = $('.' + item.MA_HANG + '-2').html();
+        CKEDITOR.instances.editthongso.setData(thongsovalue);
     }
 
     $scope.save = function (mahang) {
+        $("textarea[name=editthongso]").val(CKEDITOR.instances.editthongso.getData());
+        $("textarea[name=editdonggoi]").val(CKEDITOR.instances.editdonggoi.getData());
+        var thongso = $("[name=editthongso]").val();
+        var donggoi = $("[name=editdonggoi]").val();
         var data_update = {
             MA_HANG: $scope.item.MA_HANG,
             TEN_HANG: $scope.item.TEN_HANG,
             MA_NHOM_HANG: $scope.item.MA_NHOM_HANG,
-            SERI: $scope.item.SERI,
+            KHOI_LUONG: $scope.item.KHOI_LUONG,
+            XUAT_XU: $scope.item.XUAT_XU,
+            THONG_SO_KY_THUAT: thongso,
+            QUY_CACH_DONG_GOI: donggoi,
+            BAO_HANH: $scope.item.BAO_HANH,
             DON_VI_TINH: $scope.item.DON_VI_TINH,
-            MODEL_DAC_BIET: $scope.item.MODEL_DAC_BIET,
             HINH_ANH: $scope.item.HINH_ANH,
-            DAC_TINH: $scope.item.DAC_TINH,
             GHI_CHU: $scope.item.GHI_CHU,
             TK_HACH_TOAN_KHO: $scope.item.TK_HACH_TOAN_KHO,
             TK_DOANH_THU: $scope.item.TK_DOANH_THU,
-            TK_CHI_PHI: $scope.item.TK_CHI_PHI,
+            TK_CHI_PHI: $scope.item.TK_CHI_PHI
         }
         hanghoaService.save(mahang, data_update).then(function (response) {
             $scope.loadHangHoa();
@@ -88,6 +106,7 @@ app.controller('hanghoaCtrl', function (hanghoaService, $scope) {
         });
         return total;
     };
+    
 });
 
 
@@ -390,3 +409,280 @@ app.controller('taikhoanCtrl', function (taikhoanService, $scope) {
         });
     };
 });
+
+app.controller('danhmucCtrl', function (danhmucService, $scope) {
+    $scope.loadDanhMuc = function () {
+        danhmucService.get_danhmuc().then(function (a) {
+            $scope.danhsachdanhmuc = a;
+        });
+    };
+
+    $scope.transfer = function (madanhmuc) {
+        danhmucService.get_post(madanhmuc).then(function (z) {
+            $scope.listpost = z;
+        });
+    };
+
+    $scope.loadDanhMuc();
+    $scope.checked_fruits = [];
+    function uploadfile() {
+        if (window.FormData !== undefined) {
+            var fileUpload = $("#imgInp").get(0);
+            var files = fileUpload.files;
+            //Tạo một đối tượng form data
+            var filedata = new FormData();
+            filedata.append("filename", files[0]);
+            $.ajax(
+                {
+                    url: '/Content/Upload',
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    data: filedata,
+                    success: function (result) {
+
+                    }, error: function (err) {
+                        alert(err.statusText);
+                    }
+                }
+                );
+
+        }
+        else {
+            alert("FormData không hỗ trợ");
+        }
+    }
+    $scope.save = function () {
+        var a = $('#imgInp').val();
+        var name_without_ext = (a.split('\\').pop().split('/').pop().split())[0];
+        $("textarea[name=noidung]").val(CKEDITOR.instances.noidung.getData());
+        var danhmuc = $("[name=noidung]").val();
+        var username = $('#username').val();
+        var data_add = {
+            TIEU_DE_BAI_VIET: $scope.tieude,
+            NOI_DUNG_BAI_VIET: danhmuc,
+            ANH_BAI_VIET: name_without_ext,
+            NGUOI_DANG_BAI: username,
+        }
+        danhmucService.add_danhmuc(data_add).then(function (response) {
+
+
+            var postcate = {
+                tieu_de_bai_viet: $scope.tieude,
+                ma_danh_muc: $scope.checked_fruits[0]
+            }
+            danhmucService.add_postcategories(postcate).then(function (response) {
+                $scope.loadDanhMuc();
+            });
+        });
+    };
+
+});
+
+
+app.controller('imgCtrl', function ($scope) {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function () {
+        readURL(this);
+    });
+});
+
+
+app.controller('menuCtrl', function (menuService,$scope) {
+    $scope.load_menu = function () {
+        var username = $('#username').val();
+        menuService.get_menu(username).then(function (a) {
+            $scope.danhsachmenu = a;
+        });
+    };
+    $scope.load_menu();
+
+    $scope.edit = function (menucha) {
+        var username = $('#username').val();
+        menuService.get_menucha(username,menucha).then(function (a) {
+            $scope.danhsachmenucha = a;
+        });
+    };
+    
+    $scope.push = function (zzz) {
+        var username = $('#username').val();
+        menuService.get_listmenucha(username, zzz).then(function (z) {
+            $scope.listmenu = z;
+        });
+    };
+
+    $scope.treeview = function () {
+        return ('treeview');
+    }
+
+    $scope.fa = function () {
+        return ('fa mini-icon fa-pie-chart')
+    };
+
+    $scope.pullright = function(){
+        return ('pull-right-container');
+    }
+
+    $scope.fapullright = function () {
+        return ('fa fa-angle-left pull-right');
+    };
+
+    var maphongban = $('#maphongban').val();
+    var username = $('#username').val();
+
+    $scope.get = function (tendangnhap) {
+        if (tendangnhap == username) {
+            return ('action');
+        } else {
+            return ('noaction');
+        }
+    };
+
+    $scope.check = function (trangthai) {
+        if (trangthai == true) {
+            return ('action');
+        } else {
+            return ('noaction');
+        }
+    };
+
+    $scope.click = function (abc,item) {
+        var maphongban = $('#maphongban').val();
+        var username = $('#username').val();
+        $scope.item = item;
+        var a = $scope.item.TRANG_THAI;
+        var data_save = {
+            MA_PHONG_BAN: maphongban,
+            USERNAME: username,
+            TRANG_THAI: a,
+            MA_MENU : abc
+        }
+        menuService.save_menu(maphongban,username,abc,data_save).then(function (response) {
+            $scope.load_menu();
+        });
+    }
+});
+
+app.controller('userdetailCtrl', function (userdetailService,$scope) {
+    $scope.load_userdetails = function () {
+        var username = $('#username').val();
+        userdetailService.get_details(username).then(function (a) {
+            $scope.list_details = a;
+        });
+    };
+
+    $scope.loadUser = function () {
+        userdetailService.get_user().then(function (a) {
+            $scope.danhsachuser = a;
+        });
+    };
+
+
+
+    $scope.load_userdetails();
+
+    $scope.changepw = function () {
+        var username = $('#username').val();
+        var oldpw = $scope.oldpw;
+        var newpw = $scope.newpw;
+
+        var data_save = {
+            PASSWORD: newpw
+        }
+        userdetailService.save_pw(username, oldpw, data_save).then(function (response) {
+            $scope.loadUser();
+            $scope.load_userdetails();
+            $scope.oldpw = '';
+            $scope.newpw = '';
+            $('.successful').css('display', 'block');
+            $window.sessionStorage["windowKey"] = null;
+        });
+
+    };
+    
+    
+});
+
+app.controller('bangchamcongCtrl', function (bangchamcongService, $scope) {
+    $scope.load_chamcong = function () {
+        var username = $('#username').val();
+        bangchamcongService.get_chamcong(username).then(function (a) {
+            $scope.list_chamcong = a;
+        });
+    };
+    $scope.load_chamcong();
+});
+
+app.controller('bangluongCtrl', function (bangluongService, $scope) {
+    $scope.load_bangluong = function () {
+        var username = $('#username').val();
+        bangluongService.get_bangluong(username).then(function (a) {
+            $scope.list_bangluong = a;
+        });
+    };
+    $scope.load_bangluong();
+});
+
+function reload() {
+    location.reload();
+}
+
+function change() {
+    $('.listmenu').toggle();
+}
+
+function accept() {
+    $('.listmenu').css('display', 'none');
+}
+app.directive('checkList', function () {
+    return {
+        scope: {
+            list: '=checkList',
+            value: '@'
+        },
+        link: function (scope, elem, attrs) {
+            var handler = function (setup) {
+                var checked = elem.prop('checked');
+                var index = scope.list.indexOf(scope.value);
+
+                if (checked && index == -1) {
+                    if (setup) elem.prop('checked', false);
+                    else scope.list.push(scope.value);
+                } else if (!checked && index != -1) {
+                    if (setup) elem.prop('checked', true);
+                    else scope.list.splice(index, 1);
+                }
+            };
+
+            var setupHandler = handler.bind(null, true);
+            var changeHandler = handler.bind(null, false);
+
+            elem.on('change', function () {
+                scope.$apply(changeHandler);
+            });
+            scope.$watch('list', setupHandler, true);
+        }
+    };
+});
+
+app.filter('unsafe', function ($sce) { return $sce.trustAsHtml; });
+
+function help(){
+    $('.help').show();
+    $('.nohelp').hide();
+}
+function nohelp() {
+    $('.help').hide();
+    $('.nohelp').show();
+}

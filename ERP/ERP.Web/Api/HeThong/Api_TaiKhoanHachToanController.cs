@@ -14,7 +14,7 @@ namespace ERP.Web.Areas.HopLong.Api.HeThong
 {
     public class Api_TaiKhoanHachToanController : ApiController
     {
-        private HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 
         // GET: api/Api_TaiKhoanHachToan
         public List<DM_TAI_KHOAN_HACH_TOAN> GetDM_TAI_KHOAN_HACH_TOAN()

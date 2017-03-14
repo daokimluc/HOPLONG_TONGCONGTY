@@ -14,12 +14,12 @@ namespace ERP.Web.Areas.HopLong.Controllers
 
     public class HangHoaHLController : Controller
     {
-        private HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 
         // GET: HopLong/HangHoaHL
         public ActionResult Index()
         {
-            var dM_HANG_HOA = db.DM_HANG_HOA.Include(d => d.DM_NHOM_VTHH).Include(d => d.DM_TAI_KHOAN_HACH_TOAN).Include(d => d.DM_TAI_KHOAN_HACH_TOAN1).Include(d => d.DM_TAI_KHOAN_HACH_TOAN2);
+            var dM_HANG_HOA = db.HHs.Include(d => d.HH_NHOM_VTHH).Include(d => d.DM_TAI_KHOAN_HACH_TOAN).Include(d => d.DM_TAI_KHOAN_HACH_TOAN1).Include(d => d.DM_TAI_KHOAN_HACH_TOAN2);
             return View(dM_HANG_HOA.ToList());
         }
 

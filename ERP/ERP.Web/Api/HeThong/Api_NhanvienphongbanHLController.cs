@@ -12,7 +12,7 @@ namespace ERP.Web.Areas.HopLong.Api.HeThong
 {
     public class Api_NhanvienphongbanHLController : ApiController
     {
-        private HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 
         // GET: api/Api_Nhanvienphongban/5
         public List<NguoiDungPhongBan> GetListNhanvien(string id)

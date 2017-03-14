@@ -168,6 +168,18 @@
     <Folder Include="obj\Scripts\spa\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\HeThong\Api_BangChamCongController.cs" />
+    <Compile Include="Api\HeThong\Api_BangLuongController.cs" />
+    <Compile Include="Api\HeThong\Api_CategoriesController.cs" />
+    <Compile Include="Api\HeThong\Api_HangDuocQuanTamController.cs" />
+    <Compile Include="Api\HeThong\Api_ListMenuChaController.cs" />
+    <Compile Include="Api\HeThong\Api_ListMenuController.cs" />
+    <Compile Include="Api\HeThong\Api_MenuController.cs" />
+    <Compile Include="Api\HeThong\Api_MENU_USERController.cs" />
+    <Compile Include="Api\HeThong\Api_PostController.cs" />
+    <Compile Include="Api\HeThong\Api_POST_CATEGORIESController.cs" />
+    <Compile Include="Api\HeThong\Api_UserDetailsController.cs" />
+    <Compile Include="Api\HeThong\DoiMatKhauController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -189,6 +201,9 @@
     <Compile Include="Api\Kho\Api_NhomVTHHHLController.cs" />
     <Compile Include="Api\Kho\Api_KhoHLController.cs" />
     <Compile Include="Api\Kho\Api_TonkhoHLController.cs" />
+    <Compile Include="Controllers\BaiVietMoiController.cs" />
+    <Compile Include="Controllers\BangLuongController.cs" />
+    <Compile Include="Controllers\ChamCongController.cs" />
     <Compile Include="Controllers\ChiTietNghiepVuController.cs" />
     <Compile Include="Controllers\DanhsachnghiepvuController.cs" />
     <Compile Include="Controllers\GiamDocChiNhanhTAHLController.cs" />
@@ -196,112 +211,226 @@
     <Compile Include="Controllers\HangSpHLController.cs" />
     <Compile Include="Controllers\ImportExcelController.cs" />
     <Compile Include="Controllers\KhoController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NghiepVuNguoiDungController.cs" />
     <Compile Include="Controllers\NguoiDungHLController.cs" />
     <Compile Include="Controllers\PhongBanHLController.cs" />
     <Compile Include="Controllers\TaiKhoanHachToanHLController.cs" />
+    <Compile Include="Controllers\UploadFileController.cs" />
+    <Compile Include="Controllers\UserDetailsController.cs" />
+    <Compile Include="Models\Bangluong.cs" />
+    <Compile Include="Models\BusinessModel\post_categories.cs" />
+    <Compile Include="Models\Database\CATEGORy.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\CCTC_BANG_CHAM_CONG.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\CCTC_BANG_LUONG.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\CCTC_CONG_TY.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\CCTC_MO_HINH_CONG_TY.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\CCTC_NHAN_VIEN.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\CCTC_PHONG_BAN.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\CN_CHI_TIET_NGHIEP_VU.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\CN_NGHIEP_VU.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\CN_NGHIEP_VU_NHAN_VIEN.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\CN_NHOM_NGHIEP_VU.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\Database.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\Database.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\Database.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Database\DM_CHUNG_TU.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\DM_DINH_KHOAN_TU_DONG.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\DM_DOI_TUONG.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\DM_KHACH_HANG.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_LIEN_HE_KHACH_HANG.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_LIEN_HE_NHA_CUNG_CAP.cs">
-      <DependentUpon>database.tt</DependentUpon>
+    <Compile Include="Models\Database\DM_KHO.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\DM_LOAI_CHUNG_TU.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\DM_LOAI_DOI_TUONG.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_LOAI_HANG_CUNG_CAP.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_LOAI_KHACH.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_LOAI_NHA_CUNG_CAP.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\DM_LOAI_TK_NGAN_HANG.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\DM_NHA_CUNG_CAP.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_NHOM_VTHH.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_PHU_TRACH_KH.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_TK_NGAN_HANG_KH.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_TK_NGAN_HANG_NCC.cs">
-      <DependentUpon>database.tt</DependentUpon>
+    <Compile Include="Models\Database\DM_TAI_KHOAN_HACH_TOAN.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\DM_TK_NGAN_HANG_NOI_BO.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\DV.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\HH.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\HH_HANG_DUOC_QUAN_TAM.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\HH_NHOM_VTHH.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\HH_TONKHO_HANG.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\HH_TON_KHO.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\HT_NGUOI_DUNG.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\KH.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\KHO_CHUYEN_KHO.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\KHO_CT_CHUYEN_KHO.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\KHO_CT_NHAP_KHO.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\KHO_CT_PHIEU_GIU_HANG.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\KHO_CT_XUAT_KHO.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\KHO_NHAP_KHO.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\KHO_PHIEU_GIU_HANG.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\KHO_XUAT_KHO.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\MUA_HANG_CT_HDMH.cs">
-      <DependentUpon>database.tt</DependentUpon>
+    <Compile Include="Models\Database\KH_DC_XUAT_HANG.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\MUA_HANG_HDMH.cs">
-      <DependentUpon>database.tt</DependentUpon>
+    <Compile Include="Models\Database\KH_LIEN_HE.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\NGAN_HANG_CHUYEN_TIEN_NOI_BO.cs">
-      <DependentUpon>database.tt</DependentUpon>
+    <Compile Include="Models\Database\KH_LOAI.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\NGAN_HANG_CT_NTTK.cs">
-      <DependentUpon>database.tt</DependentUpon>
+    <Compile Include="Models\Database\KH_PHAN_LOAI_KHACH.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\NGAN_HANG_CT_UNC.cs">
-      <DependentUpon>database.tt</DependentUpon>
+    <Compile Include="Models\Database\KH_SALES_PHU_TRACH.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\NGAN_HANG_NTTK.cs">
-      <DependentUpon>database.tt</DependentUpon>
+    <Compile Include="Models\Database\KH_TK_NGAN_HANG.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\NGAN_HANG_UNC.cs">
-      <DependentUpon>database.tt</DependentUpon>
+    <Compile Include="Models\Database\MAU_SO_HOA_DON.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\MENU.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\MENU_USER.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\MH_CT_MDV.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\MH_MDV.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\NCC.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\NCC_LIEN_HE.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\NCC_LOAI.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\NCC_LOAI_HANG_CUNG_CAP.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\NCC_PUR_PHU_TRACH.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\NCC_TK_NGAN_HANG.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\NH_CHUYEN_TIEN_NOI_BO.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\NH_CT_NTTK.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\NH_CT_UNC.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\NH_NTTK.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\NH_UNC.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\POST.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\POST_CATEGORIES.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\QUY_CT_PHIEU_CHI.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\QUY_CT_PHIEU_THU.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\QUY_PHIEU_CHI.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\QUY_PHIEU_THU.cs">
-      <DependentUpon>database.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Database\XL_THAM_CHIEU_CHUNG_TU.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MenuHienThi.cs" />
     <Compile Include="Models\NguoiDungPhongBan.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -312,79 +441,32 @@
     <Compile Include="Models\BusinessModel\PermissionAction.cs" />
     <Compile Include="Models\BusinessModel\ReflectionController.cs" />
     <Compile Include="Models\BusinessModel\XuLyNgayThang.cs" />
-    <Compile Include="Models\Database\CCTC_CONG_TY.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\CCTC_MO_HINH_CONG_TY.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\CCTC_NHAN_VIEN.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\CCTC_PHONG_BAN.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\CN_CHI_TIET_NGHIEP_VU.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\CN_NGHIEP_VU.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\CN_NGHIEP_VU_NHAN_VIEN.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\CN_NHOM_NGHIEP_VU.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\CN_NHOM_NGUOI_DUNG_NGHIEP_VU.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\database.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>database.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\database.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\database.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>database.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_HANG_HOA.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_HANG_TON_KHO.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_KHO.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_TAI_KHOAN_HACH_TOAN.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\DM_TONKHO_HANG.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\GetListNhanVienPhongBan_Result.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\HT_NGUOI_DUNG.cs">
-      <DependentUpon>database.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\NewModels\NHAN_VIEN_MODEL.cs" />
+    <Compile Include="Models\UserDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\self-writing\css\BangLuong.css" />
+    <Content Include="Content\self-writing\css\GiamDocChiNhanh.css" />
+    <Content Include="Content\self-writing\css\HangHoaHL.css" />
+    <Content Include="Content\self-writing\css\HangSpHL.css" />
+    <Content Include="Content\self-writing\css\BaiVietMoi.css" />
+    <Content Include="Content\self-writing\css\ChamCong.css" />
+    <Content Include="Content\self-writing\css\ImportFile.css" />
+    <Content Include="Content\self-writing\css\KhoHL.css" />
+    <Content Include="Content\self-writing\css\LayoutHL.css" />
+    <Content Include="Content\self-writing\css\NguoiDungHL.css" />
+    <Content Include="Content\self-writing\css\phanquyenHL.css" />
+    <Content Include="Content\self-writing\css\PhongBanHL.css" />
+    <Content Include="Content\self-writing\css\TaiKhoanHachToanHL.css" />
+    <Content Include="Content\self-writing\css\UserDetails.css" />
     <Content Include="Content\self-writing\Danhsachnghiepvu.css" />
     <Content Include="Content\self-writing\Images\AUTONICS.png" />
     <Content Include="Content\self-writing\Images\CKD.png" />
     <Content Include="Content\self-writing\Images\FUJI.png" />
     <Content Include="Content\self-writing\Images\HANYOUNG.png" />
     <Content Include="Content\self-writing\Images\hoplong.jpg" />
+    <Content Include="Content\self-writing\Images\hoplong.PNG" />
     <Content Include="Content\self-writing\Images\IDEC.png" />
     <Content Include="Content\self-writing\Images\logo hl.png" />
     <Content Include="Content\self-writing\Images\LS.png" />
@@ -1285,23 +1367,23 @@
     <Content Include="Content\download\plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="Content\download\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Content\download\plugins\timepicker\bootstrap-timepicker.min.js" />
-    <Content Include="Content\self-writing\css\HangHoaDaiLy.css" />
     <Content Include="Content\self-writing\css\hoplong\nav_hoplong_multilevel.css" />
     <Content Include="Content\self-writing\css\Login.css" />
     <Content Include="Content\self-writing\js\nav_hoplong_multilevel.js" />
     <Content Include="Content\self-writing\Layout-CSS.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Upload\huy.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Database\database.Context.tt">
+    <Content Include="Models\Database\Database.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>database.edmx</DependentUpon>
-      <LastGenOutput>database.Context.cs</LastGenOutput>
+      <DependentUpon>Database.edmx</DependentUpon>
+      <LastGenOutput>Database.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Database\database.tt">
+    <Content Include="Models\Database\Database.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>database.edmx</DependentUpon>
-      <LastGenOutput>database.cs</LastGenOutput>
+      <DependentUpon>Database.edmx</DependentUpon>
+      <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1321,13 +1403,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <EntityDeploy Include="Models\Database\database.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>database.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Database\database.edmx.diagram">
-      <DependentUpon>database.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Content\download\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="Content\download\bootstrap\css\bootstrap-theme.min.css.map" />
@@ -1382,10 +1457,23 @@
     <Content Include="Views\GiamDocChiNhanhTAHL\Index.cshtml" />
     <Content Include="Content\download\plugins\angular\angular.min.js.gzip" />
     <Content Include="Content\download\plugins\angular\angular.min.js.map" />
+    <EntityDeploy Include="Models\Database\Database.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Database.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Database\Database.edmx.diagram">
+      <DependentUpon>Database.edmx</DependentUpon>
+    </Content>
     <None Include="Project_Readme.html" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\NotificationAuthorize.cshtml" />
+    <Content Include="Views\UploadFile\Index.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\BaiVietMoi\Index.cshtml" />
+    <Content Include="Views\UserDetails\Index.cshtml" />
+    <Content Include="Views\ChamCong\Index.cshtml" />
+    <Content Include="Views\BangLuong\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

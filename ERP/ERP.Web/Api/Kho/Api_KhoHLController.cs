@@ -14,7 +14,7 @@ namespace ERP.Web.Areas.HopLong.Api.Kho
 {
     public class Api_KhoHLController : ApiController
     {
-        private HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 
         // GET: api/Api_KhoHL
 

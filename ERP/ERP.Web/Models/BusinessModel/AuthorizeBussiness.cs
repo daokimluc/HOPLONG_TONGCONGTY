@@ -9,7 +9,7 @@ namespace ERP.Web.Models.BusinessModel
 {
     public class AuthorizeBussiness : ActionFilterAttribute
     {
-        private HOPLONG_DATABASEEntities db = new HOPLONG_DATABASEEntities();
+        private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (HttpContext.Current.Session["USERNAME"] == null)
