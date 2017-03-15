@@ -24,7 +24,7 @@
 
         <!-- Modal Thêm mới -->
         <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-lg" style="width: 80%">
                 <div class="modal-content">
 
                     <div class="modal-body">
@@ -34,37 +34,79 @@
                                 <legend>Add New User</legend>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Username </label>
-                                        <div class="col-md-8">
+                                        <label class="col-md-2 control-label" for="name">Username </label>
+                                        <div class="col-md-10">
                                             <input type="text" placeholder="Username" class="form-control input-md" ng-model="username">
                                         </div>
                                     </div>
                                     <!-- Text input-->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Password: </label>
-                                        <div class="col-md-8">
+                                        <label class="col-md-2 control-label" for="name">Password: </label>
+                                        <div class="col-md-10">
                                             <input type="text" placeholder="Password" class="form-control input-md" ng-model="password">
                                         </div>
                                     </div>
                                     <!-- Text input-->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Fullname: </label>
-                                        <div class="col-md-8">
+                                        <label class="col-md-2 control-label" for="name">Fullname: </label>
+                                        <div class="col-md-10">
                                             <input type="text" placeholder="Fullname" class="form-control input-md" ng-model="hovaten">
                                         </div>
                                     </div>
                                     <!-- Text input-->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Phone Number: </label>
-                                        <div class="col-md-8">
+                                        <label class="col-md-2 control-label" for="name">Phone Number: </label>
+                                        <div class="col-md-10">
                                             <input type="text" placeholder="Phone Number" class="form-control input-md" ng-model="sdt">
                                         </div>
                                     </div>
                                     <!-- Text input-->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Email </label>
-                                        <div class="col-md-8">
+                                        <label class="col-md-2 control-label" for="name">Email </label>
+                                        <div class="col-md-10">
                                             <input type="text" placeholder="Email" class="form-control input-md" ng-model="email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label ckeditor" for="name">Thành tích: </label>
+                                        <div class="col-md-10 ckeditor">
+                                            <textarea id="thanhtich" name="thanhtich" placeholder="Achievements" class="form-control input-md" ng-model="thanhtich"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="name">Gender: </label>
+                                        <div class="col-md-10">
+                                            <input type="text" placeholder="Username" class="form-control input-md" ng-model="gioitinh">
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="name">Birthday </label>
+                                        <div class="col-md-10">
+                                            <input type="text" mask="39/19/9999" placeholder="dd/MM/yyyy" class="form-control input-md" ng-model="ngaysinh">
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="name">Native Place: </label>
+                                        <div class="col-md-10">
+                                            <input type="text" placeholder="Native Place" class="form-control input-md" ng-model="quequan">
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="name">Education: </label>
+                                        <div class="col-md-10">
+                                            <input type="text" placeholder="Education" class="form-control input-md" ng-model="trinhdohocvan">
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="name">Department ID </label>
+                                        <div class="col-md-10">
+                                            <input type="text" placeholder="Department ID" class="form-control input-md" ng-model="maphongban">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -77,43 +119,11 @@
                                             <input type="checkbox" ng-model="allowed">
                                         </div>
                                     </div>
-
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Gender: </label>
-                                        <div class="col-md-8">
-                                            <input type="text" placeholder="Username" class="form-control input-md" ng-model="gioitinh">
-                                        </div>
-                                    </div>
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Birthday </label>
-                                        <div class="col-md-8">
-                                            <input type="text" mask="39/19/9999" placeholder="dd/MM/yyyy" class="form-control input-md" ng-model="ngaysinh">
-                                        </div>
-                                    </div>
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Native Place: </label>
-                                        <div class="col-md-8">
-                                            <input type="text" placeholder="Native Place" class="form-control input-md" ng-model="quequan">
-                                        </div>
-                                    </div>
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Education: </label>
-                                        <div class="col-md-8">
-                                            <input type="text" placeholder="Education" class="form-control input-md" ng-model="trinhdohocvan">
-                                        </div>
-                                    </div>
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Department ID </label>
-                                        <div class="col-md-8">
-                                            <input type="text" placeholder="Department ID" class="form-control input-md" ng-model="maphongban">
-                                        </div>
-                                    </div>
+                                    <script>
+                                        CKEDITOR.replace('thanhtich', {
+                                            height: 100
+                                        });
+                                    </script>
                                 </div>
                                 <!-- Button (Double) -->
                                 <div class="form-group">
@@ -132,7 +142,7 @@
         <!--end modal-->
         <!-- Modal Update -->
         <div class="modal fade" id="myEdit" role="dialog">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-lg" style="width: 80%">
                 <div class="modal-content">
 
                     <div class="modal-body">
@@ -177,6 +187,59 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label class="col-md-2 control-label ckeditor" for="name">Thành tích: </label>
+                                        <div class="col-md-10 ckeditor">
+                                            <textarea id="editthanhtich" name="editthanhtich" placeholder="Achievements" class="form-control input-md" ng-model="nv.THANH_TICH_CONG_TAC"></textarea>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        CKEDITOR.replace('editthanhtich', {
+                                            height: 100
+                                        });
+                                    </script>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="name">Gender: </label>
+                                        <div class="col-md-8">
+                                            <input type="text" placeholder="Gender" class="form-control input-md" ng-model="nv.GIOI_TINH">
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="name">Birthday </label>
+                                        <div class="col-md-8">
+                                            <input type="text" mask="29/19/9999" placeholder="dd/MM/yyyy" class="form-control input-md" ng-model="nv.NGAY_SINH">
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="name">Native Place: </label>
+                                        <div class="col-md-8">
+                                            <input type="text" placeholder="Native Place" class="form-control input-md" ng-model="nv.QUE_QUAN">
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="name">Education: </label>
+                                        <div class="col-md-8">
+                                            <input type="text" placeholder="Education" class="form-control input-md" ng-model="nv.TRINH_DO_HOC_VAN">
+                                        </div>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="name">Department ID </label>
+                                        <div class="col-md-8">
+                                            <input type="text" placeholder="Department ID" class="form-control input-md" ng-model="nv.MA_PHONG_BAN">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="name">Company ID </label>
+                                        <div class="col-md-8">
+                                            <input type="text" placeholder="Company ID" class="form-control input-md" ng-model="item.MA_CONG_TY" ng-disabled="true">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-md-3 control-label" style="padding-top: 0px !important" for="name">Admin </label>
                                         <div class="col-md-3">
                                             <input type="checkbox" ng-model="item.IS_ADMIN">
@@ -184,48 +247,6 @@
                                         <label class="col-md-3 control-label" style="padding-top: 0px !important" for="name">Allowed </label>
                                         <div class="col-md-3">
                                             <input type="checkbox" ng-model="item.ALLOWED">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Gender: </label>
-                                        <div class="col-md-8">
-                                            <input type="text" placeholder="Gender" class="form-control input-md" ng-model="nhanvien.GIOI_TINH">
-                                        </div>
-                                    </div>
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Birthday </label>
-                                        <div class="col-md-8">
-                                            <input type="text" mask="29/19/9999" placeholder="dd/MM/yyyy" class="form-control input-md" ng-model="nhanvien.NGAY_SINH">
-                                        </div>
-                                    </div>
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Native Place: </label>
-                                        <div class="col-md-8">
-                                            <input type="text" placeholder="Native Place" class="form-control input-md" ng-model="nhanvien.QUE_QUAN">
-                                        </div>
-                                    </div>
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Education: </label>
-                                        <div class="col-md-8">
-                                            <input type="text" placeholder="Education" class="form-control input-md" ng-model="nhanvien.TRINH_DO_HOC_VAN">
-                                        </div>
-                                    </div>
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Department ID </label>
-                                        <div class="col-md-8">
-                                            <input type="text" placeholder="Department ID" class="form-control input-md" ng-model="nhanvien.MA_PHONG_BAN">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Company ID </label>
-                                        <div class="col-md-8">
-                                            <input type="text" placeholder="Company ID" class="form-control input-md" ng-model="item.MA_CONG_TY" ng-disabled="true">
                                         </div>
                                     </div>
                                 </div>
@@ -274,7 +295,7 @@
         <br />
         <!--end modal-->
 
-        <table id="example" class="table table-striped table-bordered" cellspacing="0" name="tblhanghoa" >
+        <table id="example" class="table table-striped table-bordered" cellspacing="0" name="tblhanghoa">
             <thead>
                 <tr>
                     <th></th>
@@ -301,7 +322,7 @@
                 <!--Detail row-->
                 <tr ng-if="item.expanded" dir-paginate-end="">
 
-                    <td colspan="9">
+                    <td colspan="12">
                         <div class="content expandrow">
 
                             <ul class="nav nav-tabs">
@@ -314,65 +335,58 @@
                                 <div id="chitiet" class="tab-pane fade in active ">
                                     <div class="content">
                                         <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-
-
-                                                <div class="panel panel-info">
+                                            <div>
+                                               <div class="panel panel-info">
                                                     <div class="panel-heading">
                                                         <h3 class="panel-title">{{item.HO_VA_TEN}}</h3>
                                                     </div>
                                                     <div class="panel-body">
-                                                        <div class="row">
-                                                            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://www.hit4hit.org/img/login/user-icon-6.png" class="img-circle img-responsive"> </div>
-                                                            <div class="col-md-9 col-lg-9 ">
-                                                                <table class="table table-user-information">
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td>Gender:</td>
-                                                                            <td>{{nhanvien.GIOI_TINH}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>Birthday:</td>
-
-                                                                            <td>{{nhanvien.NGAY_SINH | date:'dd/MM/yyyy' }}</td>
-                                                                        </tr>
-
-                                                                        <tr>
-                                                                        <tr>
-                                                                            <td>Native Place</td>
-                                                                            <td>{{nhanvien.QUE_QUAN}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>Education</td>
-                                                                            <td>{{nhanvien.TRINH_DO_HOC_VAN}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>Department ID</td>
-                                                                            <td>{{nhanvien.MA_PHONG_BAN}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td colspan="2">
-                                                                                <button class="btn btn-success btn-circle" ng-click="edit(item);update_nv(nhanvien)" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit" style="margin-right: 5px"></i>Sửa</button>
-                                                                            </td>
-                                                                        </tr>
-
-
-                                                                    </tbody>
-                                                                </table>
-
+                                                        <div class="row" ng-repeat="nv in nhanvien">
+                                                            <div class="col-md-4">
+                                                                <img ng-src="~/Content/Avatar/{{nv.AVATAR}}" name="aboutme" style="width: 100%" height="250" border="0" class="img-circle">
                                                             </div>
-                                                        </div>
+                                                            <div class="col-md-8">
+                                                                <h1 style="color: #097be0;font-weight: bold">{{nv.HO_VA_TEN}}</h1>
+                                                                <div class="col-md-12" style="margin-bottom: 20px;">
+                                                                    <p class="col-md-5" style="color: #097be0"><i class="fa fa-home" aria-hidden="true" style="margin-right: 5px;color: #097be0"></i>{{nv.TEN_PHONG_BAN}}</p>
+                                                                    <p class="col-md-5" style="color: #097be0"><i class="fa fa-hand-o-right" aria-hidden="true" style="margin-right: 5px;color: #097be0"></i>{{nv.CHUC_VU}}</p>
+                                                                </div>
+                                                                <div class="col-md-12 thongtin">
+                                                                    <p class="col-md-6"><b>Họ và tên:</b> {{nv.HO_VA_TEN}}</p>
+                                                                    <p class="col-md-6"><b>Quê quán:</b> {{nv.QUE_QUAN}}</p>
+                                                                </div>
+                                                                <div class="col-md-12 thongtin">
+                                                                    <p class="col-md-6"><b>Giới tính:</b> {{nv.GIOI_TINH}}</p>
+                                                                    <p class="col-md-6"><b>Học vấn:</b> {{nv.TRINH_DO_HOC_VAN}}</p>
+                                                                </div>
+                                                                <div class="col-md-12 thongtin">
+                                                                    <p class="col-md-6"><b>Ngày sinh:</b> {{nv.NGAY_SINH | date:'dd/MM/yyyy' }}</p>
+                                                                </div>
+                                                                <div class="col-md-12 thongtin">
+                                                                    <p class="col-md-6"><b>Số điện thoại:</b> {{nv.SDT}}</p>
+                                                                </div>
+                                                                <div class="col-md-12 thongtin">
+                                                                    <p class="col-md-6"><b>Email:</b> {{nv.EMAIL}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <h1 style="color: #097be0">Thành tích công tác</h1>
+                                                                <p class="col-md-12 {{nv.USERNAME}}-1" ng-bind-html="nv.THANH_TICH_CONG_TAC | unsafe" style="word-break: break-word"></p>
+                                                            </div>
+                                                            <button class="btn btn-success btn-circle" ng-click="edit(item);update_nv(nv)" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit" style="margin-right: 5px"></i>Sửa</button>
+                                                        </div>                                                      
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
                     </td>
                 </tr>
+
             </tbody>
             <tfoot>
                 <tr>

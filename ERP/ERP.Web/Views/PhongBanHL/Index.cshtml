@@ -9,7 +9,7 @@
 
 
 <div ng-app="myApp" ng-controller="phongbanCtrl">
-    <div class="content">
+    <div class="content" ng-controller="nhanvienphongbanCtrl">
 
         <div id="quick-access">
             <form class="form-inline quick-search-form" role="form" action="#">
@@ -58,7 +58,7 @@
                                             <input type="text" placeholder="Note" class="form-control input-md" ng-model="ghichu">
                                         </div>
                                     </div>
-                                </div>
+                                </div>    
                                 <!-- Button (Double) -->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="anmelden"></label>
@@ -173,11 +173,43 @@
                         <h4 class="modal-title" id="myModalLabel">Details</h4>
                     </div>
                     <div class="modal-body">
-                        <center>
-                            <img ng-src="~/Content/self-writing/Images/{{nhanvien.AVATAR}}" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
+                        <div class="col-md-4">
+                            <img ng-src="~/Content/Avatar/{{nhanvien.AVATAR}}" name="aboutme" style="width: 100%" height="250" border="0" class="img-circle">
+                        </div>
+                        <div class="col-md-8">
+                            <h1 style="color: #097be0">{{nhanvien.HO_VA_TEN}}</h1>
+                            <div class="col-md-12" style="margin-bottom: 20px;">
+                                <p class="col-md-5" style="color: #097be0"><i class="fa fa-home" aria-hidden="true" style="margin-right: 5px;color: #097be0"></i>{{item.TEN_PHONG_BAN}}</p>
+                                <p class="col-md-5" style="color: #097be0"><i class="fa fa-hand-o-right" aria-hidden="true" style="margin-right: 5px;color: #097be0"></i>{{nhanvien.CHUC_VU}}</p>
+                            </div>
+                            <div class="col-md-12 thongtin">
+                                <p class="col-md-6"><b>Họ và tên:</b> {{nhanvien.HO_VA_TEN}}</p>
+                                <p class="col-md-6"><b>Quê quán:</b> {{nhanvien.QUE_QUAN}}</p>
+                            </div>
+                            <div class="col-md-12 thongtin">
+                                <p class="col-md-6"><b>Giới tính:</b> {{nhanvien.GIOI_TINH}}</p>
+                                <p class="col-md-6"><b>Học vấn:</b> {{nhanvien.TRINH_DO_HOC_VAN}}</p>
+                            </div>
+                            <div class="col-md-12 thongtin">
+                                <p class="col-md-6"><b>Ngày sinh:</b> {{nhanvien.NGAY_SINH | date:'dd/MM/yyyy' }}</p>
+                            </div>
+                            <div class="col-md-12 thongtin">
+                                <p class="col-md-6"><b>Số điện thoại:</b> {{nhanvien.SDT}}</p>
+                            </div>
+                            <div class="col-md-12 thongtin">
+                                <p class="col-md-6"><b>Email:</b> {{nhanvien.EMAIL}}</p>
+                            </div>                 
+                        </div>
+                        <div class="col-md-12">
+                            <h1 style="color: #097be0">Thành tích công tác</h1>
+                            <p class="col-md-12" ng-bind-html="nhanvien.THANH_TICH_CONG_TAC | unsafe" style="word-break: break-word"></p>
+                        </div>
+                      <!--  <center>
+                            <img ng-src="~/Content/Avatar/{{nhanvien.AVATAR}}" name="aboutme" width="140" height="140" border="0" class="img-circle">
                             <h3 class="media-heading" style="margin-bottom: 30px;">{{nhanvien.HO_VA_TEN}}</h3>
                         </center>
                         <div class="col-md-6 col-md-offset-1" style="text-align: left">
+                            <p>Phong ban: {{item.TEN_PHONG_BAN}}</p>
                             <p>Phone Number : {{nhanvien.SDT}}</p>
                             <p>Email: {{nhanvien.EMAIL}}</p>
                             <p>Education : {{nhanvien.TRINH_DO_HOC_VAN}}</p>
@@ -186,8 +218,10 @@
                             <p>Gender : {{nhanvien.GIOI_TINH}}</p>
                             <p>Birthday: {{nhanvien.NGAY_SINH | date:'dd/MM/yyyy' }}</p>
                             <p>Native Place : {{nhanvien.QUE_QUAN}}</p>
+                            <p ng-bind-html="nhanvien.THANH_TICH_CONG_TAC | unsafe"></p>
                         </div>
                         <hr>
+                        -->
                     </div>
                     <div class="modal-footer" style="margin-top: 80px;">
                         <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left">I've seen enough about {{nhanvien.HO_VA_TEN}}</button>
@@ -249,8 +283,7 @@
                                             <thead>
 
                                                 <tr ng-repeat="nhanvien in listnhanvien" class="col-md-3" style="margin-bottom: 20px;">
-                                                    <td   data-toggle="modal" data-target="#myChiTiet" ng-click="pass(nhanvien)"><img ng-src="~/Content/self-writing/Images/{{nhanvien.AVATAR}}" style="width: 50%;height: 50%" /></td>
-
+                                                    <td data-toggle="modal" data-target="#myChiTiet" ng-click="pass(nhanvien);edit(item)"><img ng-src="~/Content/self-writing/Images/{{nhanvien.AVATAR}}" style="width: 50%;height: 50%" /></td>
                                                 </tr>
                                         </table>
                                     </div>

@@ -63,7 +63,7 @@
                         <input type="hidden" value="@Session["USERNAME"]" id="username" />
                     <ul class="nav navbar-nav" ng-class="get(menu.USERNAME)">                       
                         <li ng-repeat="menu in danhsachmenu">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-class="check(menu.TRANG_THAI)" ng-click="edit(menu.MA_MENU)">{{menu.TEN_MENU}}</a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-class="check(menu.TRANG_THAI)" ng-mouseup="edit(menu.MA_MENU)">{{menu.TEN_MENU}}</a>
                         </li>
                     </ul>
                 </div><!-- /end menu bar -->
@@ -126,11 +126,11 @@
                 <ul class="sidebar-menu">
                     <li class="header">NGHIỆP VỤ</li>
                     <li ng-class="treeview()" ng-repeat="item in danhsachmenucha">
-                        <a href="#">
+                        <a href="#" ng-mouseup="push(item.MA_MENU)">
                             <i ng-class="fa()"></i>
-                            <span ng-click="push(item.MA_MENU)">{{item.TEN_MENU}}</span>
+                            <span>{{item.TEN_MENU}}</span>
                             <span ng-class="pullright()">
-                                <i ng-class="fapullright()" ng-click="push(item.MA_MENU)"></i>
+                                <i ng-class="fapullright()"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu" ng-repeat="abc in listmenu">
@@ -218,20 +218,16 @@
             @RenderBody()
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer" style="position: absolute;
-    bottom: 0px;
-    left: 0px;">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 1.0
-            </div>
-            <strong>Copyright &copy; 2017 <a href="https://hoplongtech.com">hoplongtech.com</a>.</strong> All rights
-            reserved.
-        </footer>
-
         <!-- Add the sidebar's background. This div must be placed
              immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
     </div>
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.0
+        </div>
+        <strong>Bản quyền &copy; thuộc về <a href="https://hoplongtech.com">hoplongtech.com</a>.</strong>
+    </footer>
     <!-- jQuery 2.2.3 -->
     <script src="~/Content/download/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- jQuery UI 1.11.4 -->

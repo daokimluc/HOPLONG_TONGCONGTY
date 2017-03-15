@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .margin-left{
+        margin-left: 20px;
+    }
+    li{
+        list-style-type: none;
+    }
+    p,i{
+        display: inline-block;
+    }
+    .col-md-12 p i{
+        font-weight: bold;
+    }
+    .edit_name{
+        height: 50px;
+    }
+    .tree_menu{
+        background: #D3F8F7;
+        height: 30px;
+        padding-top: 7px;
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
+    .tree_menu p{
+        color: black;
+    }
+</style>
+<div ng-app="myApp" ng-controller="addmenuCtrl" class="content">
+    <div class="col-md-4" style="border: 1px solid #ddd;">
+        <div class="col-md-12" style="margin: 20px 0;">
+            <div class="col-md-12 edit_name"><p class="col-md-3"><i>Mã menu: </i></p><input type="text" placeholder="Mã menu" ng-model="ma_menu" class="col-md-9" /></div>
+            <div class="col-md-12 edit_name"><p class="col-md-3"><i>Tên menu:</i> </p><input type="text" placeholder="Tên menu" ng-model="ten_menu" class="col-md-9" /></div>
+            <div class="col-md-12 edit_name"><p class="col-md-3"><i>Link liên kết:</i> </p><input type="text" placeholder="Link liên kết" ng-model="link_menu" class="col-md-9" /></div>
+            <div class="col-md-12 edit_name"><p class="col-md-3"><i>Menu cha:</i> </p><input type="text" placeholder="Menu cha" ng-model="menu_cha" class="col-md-9" /></div>
+            <button type="button" ng-click="add()" class="btn btn-success" style="float: right;margin-top: 20px;background: #428BCA;color: white;">Thêm</button>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4" style="border: 1px solid #ddd">
+        <aside>
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="sidebar">
+                <ul>
+                    <li class="treeview tree_menu" ng-repeat="menu in dsmenu">
+                        <a href="#" ng-mouseup="edit(menu.MA_MENU);send(menu)">
+                            <i class="fa fa-folder"></i> <p>{{menu.TEN_MENU}}</p>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+
+                        <ul class="treeview-menu" style="display: none">
+                            <li class="treeview" ng-repeat="item in danhsachmenucha">
+                                <a href="#" ng-mouseup="push(item.MA_MENU);send(item)">
+                                    <p>{{item.TEN_MENU}}</p>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+
+                                <ul class="treeview-menu" style="display: none">
+                                    <li class="treeview" ng-repeat="abc in listmenu">
+                                        <a href="#">
+                                            <p ng-click="send(abc)">{{abc.TEN_MENU}}</p>
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </a>
+                                    </li><!-- /.third level-->
+                                </ul>
+                            </li><!-- /.second level-->
+                        </ul>
+                    </li>
+                </ul>
+            </div>   
+            <!-- /.sidebar -->
+        </aside>
+        <div class="modal fade" id="myEdit" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                        <form class="form-horizontal" name="myForm" novalidate>
+                            <fieldset>
+                                <!-- Form Name -->
+                                <legend>Update Inventory</legend>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="name">Tên menu: </label>
+                                    <div class="col-md-4">
+                                        <input id="makho" name="makho" type="text" placeholder="Tên menu" class="form-control input-md" ng-model="newmodel.TEN_MENU">
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="name">Link: </label>
+                                    <div class="col-md-4">
+                                        <input id="tenkho" name="tenkho" type="text" placeholder="Link" class="form-control input-md" ng-model="newmodel.LINK">
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="name">Menu cha: </label>
+                                    <div class="col-md-4">
+                                        <input id="diachikho" name="diachikho" type="text" placeholder="Menu cha" class="form-control input-md" ng-model="newmodel.MENU_CHA">
+                                    </div>
+                                </div>
+                                <!-- Button (Double) -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="anmelden"></label>
+                                    <div class="col-md-8">
+                                        <button id="addnew" name="addnew" class="btn btn-success" ng-click="save(newmodel.MA_MENU)" data-dismiss="modal">Save</button>
+                                        <button id="exit" name="exit" class="btn btn-danger" data-dismiss="modal">Exit</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />      
+</div>
+    <div class="col-md-1"></div>
+    <button type="button" id="editbtn" class="btn btn-success" data-toggle="modal" data-target="#myEdit" style="display: none;float: left;margin-top: 20px;background: #428BCA;color: white;">Sửa</button>
+</div>
+
