@@ -16,6 +16,8 @@ namespace ERP.Web.Areas.HopLong.Models
         public string TRINH_DO_HOC_VAN { set; get; }
 
         public string AVATAR { set; get; }
+        public string THANH_TICH_CONG_TAC { get;  set; }
 
+        public string CHUC_VU { set; get; }
     }
 }

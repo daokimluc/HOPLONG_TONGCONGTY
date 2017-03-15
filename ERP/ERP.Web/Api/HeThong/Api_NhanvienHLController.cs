@@ -20,15 +20,16 @@ namespace ERP.Web.Areas.HopLong.Api.HeThong
         XuLyNgayThang xlnt = new XuLyNgayThang();
 
         // GET: api/Api_NhanvienHL
-        public List<CCTC_NHAN_VIEN> GetCCTC_NHAN_VIEN()
+        public List<CCTC_NHAN_VIEN> GetCCTC_NHAN_VIEN(string id)
         {
-            var vData = db.CCTC_NHAN_VIEN;
+            var vData = db.CCTC_NHAN_VIEN.Where(x => x.USERNAME == id);
             var result = vData.ToList().Select(x => new CCTC_NHAN_VIEN()
             {
                 USERNAME = x.USERNAME,
                 GIOI_TINH = x.GIOI_TINH,
                 NGAY_SINH = x.NGAY_SINH,
                 QUE_QUAN = x.QUE_QUAN,
+                THANH_TICH_CONG_TAC = x.THANH_TICH_CONG_TAC,
                 TRINH_DO_HOC_VAN = x.TRINH_DO_HOC_VAN,
                 MA_PHONG_BAN = x.MA_PHONG_BAN,
             }).ToList();
@@ -37,9 +38,9 @@ namespace ERP.Web.Areas.HopLong.Api.HeThong
 
         // GET: api/Api_NhanvienHL/5
         [ResponseType(typeof(CCTC_NHAN_VIEN))]
-        public IHttpActionResult GetCCTC_NHAN_VIEN(string id)
+        public IHttpActionResult GetCCTC_NHAN_VIEN()
         {
-            CCTC_NHAN_VIEN cCTC_NHAN_VIEN = db.CCTC_NHAN_VIEN.Find(id);
+            CCTC_NHAN_VIEN cCTC_NHAN_VIEN = db.CCTC_NHAN_VIEN.Find();
             if (cCTC_NHAN_VIEN == null)
             {
                 return NotFound();
@@ -67,6 +68,7 @@ namespace ERP.Web.Areas.HopLong.Api.HeThong
             if (nhanvien.NGAY_SINH != null)
             nv.NGAY_SINH = xlnt.Xulydatetime(nhanvien.NGAY_SINH);
             nv.QUE_QUAN = nhanvien.QUE_QUAN;
+            nv.THANH_TICH_CONG_TAC = nhanvien.THANH_TICH_CONG_TAC;
             nv.TRINH_DO_HOC_VAN = nhanvien.TRINH_DO_HOC_VAN;
             nv.MA_PHONG_BAN = nhanvien.MA_PHONG_BAN;
             db.Entry(nv).State = EntityState.Modified;
@@ -106,6 +108,7 @@ namespace ERP.Web.Areas.HopLong.Api.HeThong
             if (nhanvien.NGAY_SINH != null)
                 nv.NGAY_SINH = xlnt.Xulydatetime(nhanvien.NGAY_SINH);
             nv.QUE_QUAN = nhanvien.QUE_QUAN;
+            nv.THANH_TICH_CONG_TAC = nhanvien.THANH_TICH_CONG_TAC;
             nv.TRINH_DO_HOC_VAN = nhanvien.TRINH_DO_HOC_VAN;
             nv.MA_PHONG_BAN = nhanvien.MA_PHONG_BAN;
 

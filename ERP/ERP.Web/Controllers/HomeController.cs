@@ -5,10 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using ERP.Web.Models;
 using ERP.Web.Models.Database;
+using System.Net;
 
 namespace ERP.Web.Controllers
 {
+
+    
     public class HomeController : Controller
+
     {
         ERP_DATABASEEntities db = new ERP_DATABASEEntities();
         public ActionResult Index()
@@ -17,6 +21,22 @@ namespace ERP.Web.Controllers
 
             return View();
         }
+
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            POST pOST = db.POSTS.Find(id);
+            if (pOST == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pOST);
+        }
+
         public ActionResult Login()
         {
             return View();

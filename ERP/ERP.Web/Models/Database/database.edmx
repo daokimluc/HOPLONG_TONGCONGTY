@@ -103,6 +103,7 @@
           <Property Name="QUE_QUAN" Type="nvarchar" MaxLength="64" />
           <Property Name="CHUC_VU" Type="nvarchar" MaxLength="100" />
           <Property Name="TRINH_DO_HOC_VAN" Type="nvarchar" MaxLength="64" />
+          <Property Name="THANH_TICH_CONG_TAC" Type="nvarchar(max)" />
           <Property Name="MA_PHONG_BAN" Type="varchar" MaxLength="64" />
         </EntityType>
         <EntityType Name="CCTC_PHONG_BAN">
@@ -4012,6 +4013,7 @@
           <Property Name="QUE_QUAN" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="CHUC_VU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TRINH_DO_HOC_VAN" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="THANH_TICH_CONG_TAC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MA_PHONG_BAN" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CCTC_BANG_CHAM_CONG" Relationship="ERP_DATABASEModel.FK__CCTC_BANG__USERN__7D2E8C24" FromRole="CCTC_NHAN_VIEN" ToRole="CCTC_BANG_CHAM_CONG" />
           <NavigationProperty Name="CCTC_BANG_LUONG" Relationship="ERP_DATABASEModel.FK__CCTC_BANG__USERN__09946309" FromRole="CCTC_NHAN_VIEN" ToRole="CCTC_BANG_LUONG" />
@@ -6818,6 +6820,7 @@
             <EntityTypeMapping TypeName="ERP_DATABASEModel.CCTC_NHAN_VIEN">
               <MappingFragment StoreEntitySet="CCTC_NHAN_VIEN">
                 <ScalarProperty Name="MA_PHONG_BAN" ColumnName="MA_PHONG_BAN" />
+                <ScalarProperty Name="THANH_TICH_CONG_TAC" ColumnName="THANH_TICH_CONG_TAC" />
                 <ScalarProperty Name="TRINH_DO_HOC_VAN" ColumnName="TRINH_DO_HOC_VAN" />
                 <ScalarProperty Name="CHUC_VU" ColumnName="CHUC_VU" />
                 <ScalarProperty Name="QUE_QUAN" ColumnName="QUE_QUAN" />

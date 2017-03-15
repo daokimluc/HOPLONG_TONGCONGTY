@@ -1,6 +1,6 @@
 ﻿app.service('giamdocService', function ($http) {
     this.get_giamdoc = function (username) {
-        return $http.get("/api/Api_GiamDocChiNhanh/" + username).then(function (response) {
+        return $http.get("/api/Api_ChiTietNhanVien/" + username).then(function (response) {
             return response.data;
         });
     }
@@ -106,7 +106,7 @@ app.service('userService', function ($http) {
 
 app.service('nhanvienService', function ($http) {
     this.get_nhanvien = function (username) {
-        return $http.get("/api/Api_NhanvienHL/" + username).then(function (response) {
+        return $http.get("/api/Api_ChiTietNhanVien/" + username).then(function (response) {
             return response.data;
         });
     };
@@ -201,7 +201,7 @@ app.service('menuService', function ($http) {
 
 app.service('userdetailService', function ($http) {
     this.get_details = function (username) {
-        return $http.get('/api/Api_UserDetails/' + username).then(function (response) {
+        return $http.get('/api/Api_ChiTietNhanVien/' + username).then(function (response) {
             return response.data;
         });
     };
@@ -230,5 +230,25 @@ app.service('bangluongService', function ($http) {
         return $http.get('/api/Api_BangLuong/' + username).then(function (response) {
             return response.data;
         });
+    };
+});
+
+app.service('addmenuService', function ($http) {
+    this.add_menu = function (data_add) {
+        return $http.post('/api/Api_Menu', data_add);
+    }
+
+    this.get_menu = function () {
+        return $http.get('/api/Api_Menu').then(function (response) {
+            return response.data;
+        });
+    };
+
+    this.save_menu = function (mamenu,datasave) {
+        return $http.put('/api/Api_Menu/' + mamenu, datasave);
+    };
+
+    this.delete_menu = function (mamenu, data_delete) {
+        return $http.delete('/api/Api_Menu/' + mamenu, data_delete);
     };
 });

@@ -39,6 +39,7 @@ namespace ERP.Web.Models.Database
         public string QUE_QUAN { get; set; }
         public string CHUC_VU { get; set; }
         public string TRINH_DO_HOC_VAN { get; set; }
+        public string THANH_TICH_CONG_TAC { get; set; }
         public string MA_PHONG_BAN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
