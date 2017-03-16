@@ -38,13 +38,12 @@
     <script src="~/Content/self-writing/js/Service.js"></script>
     <script src="~/Content/self-writing/js/Controller.js"></script>
     <script src="~/Content/download/angularjs/dirPagination.js"></script>
-
 </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="myApp"  ng-controller="menuCtrl">
     <div class="wrapper">
         <header class="main-header">
             <!-- Logo -->
-            <a href="/HopLong/HopLongHome/Index" class="logo">
+            <a href="/Home/Index" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini" style="color: white"><img src="~/Content/self-writing/Images/hoplong.PNG" height="30" width="40"/></span>
                 <!-- logo for regular state and mobile devices -->
@@ -116,7 +115,7 @@
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group" style="width: 100%">
                         <input id="searchtextbox" type="text" name="q" class="form-control" placeholder="Search...">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat" style="display:inline-block;float:left;">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat" style="display:inline-block;background:none !important;float:left;">
                             <i class="fa fa-search" id="searchtext"></i>
                         </button>
                     </div>
@@ -126,10 +125,10 @@
                 <ul class="sidebar-menu">
                     <li class="header">NGHIỆP VỤ</li>
                     <li ng-class="treeview()" ng-repeat="item in danhsachmenucha">
-                        <a href="#" ng-mouseup="push(item.MA_MENU)">
+                        <a href="#">
                             <i ng-class="fa()"></i>
-                            <span>{{item.TEN_MENU}}</span>
-                            <span ng-class="pullright()">
+                            <span ng-mouseover="push(item.MA_MENU)">{{item.TEN_MENU}}</span>
+                            <span ng-class="pullright()" ng-mouseover="push(item.MA_MENU)">
                                 <i ng-class="fapullright()"></i>
                             </span>
                         </a>
@@ -239,5 +238,27 @@
     <script src="~/Content/self-writing/js/nav_hoplong_multilevel.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngMask/3.1.1/ngMask.min.js"></script>
+    <style>
+        body input {
+            border: 1px solid #00BFFF !important;
+            border-radius: 5px !important;
+        }
+        body select{
+            border: 1px solid #00BFFF !important;
+            border-radius: 5px !important;
+        }
+        body textarea{
+            border: 1px solid #00BFFF !important;
+            border-radius: 5px !important;
+        }
+        body button {
+            background: #00BFFF !important;
+            color: white !important;
+            border: none !important;
+        }
+        body{
+           font-family: 'Times New Roman';
+        }
+    </style>
 </body>
 </html>

@@ -9,7 +9,7 @@
     li{
         list-style-type: none;
     }
-    p,i{
+    .treeview p,i{
         display: inline-block;
     }
     .col-md-12 p i{
@@ -18,51 +18,67 @@
     .edit_name{
         height: 50px;
     }
-    .tree_menu{
+  .tree_menu{
         background: #D3F8F7;
-        height: 30px;
-        padding-top: 7px;
+        padding-top: 15px;
+        padding-left: 25px;
         margin-bottom: 15px;
         margin-top: 15px;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px #888888;       
+    }
+    .angle{
+        margin-right: 15px;
     }
     .tree_menu p{
         color: black;
     }
+    .fa-folder{
+        margin-right: 5px;
+    }
+    .fa-circle-o{
+         margin-right: 5px;
+    }
+    .fa-hand-o-right{
+        margin-right: 5px;
+    }
 </style>
 <div ng-app="myApp" ng-controller="addmenuCtrl" class="content">
-    <div class="col-md-4" style="border: 1px solid #ddd;">
-        <div class="col-md-12" style="margin: 20px 0;">
+    <div class="col-md-4 panel panel-default">
+        <div class="panel-heading title">Thêm menu</div>
+        <div class="panel-body" style="margin: 20px 0;">
             <div class="col-md-12 edit_name"><p class="col-md-3"><i>Mã menu: </i></p><input type="text" placeholder="Mã menu" ng-model="ma_menu" class="col-md-9" /></div>
             <div class="col-md-12 edit_name"><p class="col-md-3"><i>Tên menu:</i> </p><input type="text" placeholder="Tên menu" ng-model="ten_menu" class="col-md-9" /></div>
             <div class="col-md-12 edit_name"><p class="col-md-3"><i>Link liên kết:</i> </p><input type="text" placeholder="Link liên kết" ng-model="link_menu" class="col-md-9" /></div>
             <div class="col-md-12 edit_name"><p class="col-md-3"><i>Menu cha:</i> </p><input type="text" placeholder="Menu cha" ng-model="menu_cha" class="col-md-9" /></div>
-            <button type="button" ng-click="add()" class="btn btn-success" style="float: right;margin-top: 20px;background: #428BCA;color: white;">Thêm</button>
+            <button type="button" ng-click="add()" class="btn" style="float: right;margin-top: 20px;">Thêm</button>
         </div>
     </div>
     <div class="col-md-1"></div>
-    <div class="col-md-4" style="border: 1px solid #ddd">
+    <div class="col-md-4 panel panel-default">
+        <div class="panel-heading title">Danh sách menu</div>
         <aside>
             <!-- sidebar: style can be found in sidebar.less -->
             <div class="sidebar">
                 <ul>
                     <li class="treeview tree_menu" ng-repeat="menu in dsmenu">
                         <a href="#" ng-mouseup="edit(menu.MA_MENU);send(menu)">
-                            <i class="fa fa-folder"></i> <p>{{menu.TEN_MENU}}</p>
-                            <i class="fa fa-angle-left pull-right"></i>
+                            <i class="fa fa-folder"></i><p>{{menu.TEN_MENU}}</p>
+                            <i class="fa fa-angle-left pull-right angle"></i>
                         </a>
 
                         <ul class="treeview-menu" style="display: none">
-                            <li class="treeview" ng-repeat="item in danhsachmenucha">
+                            <li class="firstchild" ng-repeat="item in danhsachmenucha">
                                 <a href="#" ng-mouseup="push(item.MA_MENU);send(item)">
-                                    <p>{{item.TEN_MENU}}</p>
-                                    <i class="fa fa-angle-left pull-right"></i>
+                                    <br />
+                                    <i class="fa fa-hand-o-right"></i><p>{{item.TEN_MENU}}</p>
+                                    <i class="fa fa-angle-left pull-right angle"></i>
                                 </a>
 
-                                <ul class="treeview-menu" style="display: none">
-                                    <li class="treeview" ng-repeat="abc in listmenu">
+                                <ul class="treeview-menu" style="display: none;">
+                                    <li class="" ng-repeat="abc in listmenu" style="padding-top: 15px;border-bottom: 1px solid white">
                                         <a href="#">
-                                            <p ng-click="send(abc)">{{abc.TEN_MENU}}</p>
-                                            <i class="fa fa-angle-left pull-right"></i>
+                                            <i class="fa fa-circle-o"></i><p ng-click="send(abc)">{{abc.TEN_MENU}}</p>                                                                        
                                         </a>
                                     </li><!-- /.third level-->
                                 </ul>
@@ -120,6 +136,8 @@
         <br />      
 </div>
     <div class="col-md-1"></div>
-    <button type="button" id="editbtn" class="btn btn-success" data-toggle="modal" data-target="#myEdit" style="display: none;float: left;margin-top: 20px;background: #428BCA;color: white;">Sửa</button>
+    <button type="button" id="editbtn" class="btn" data-toggle="modal" data-target="#myEdit" style="display: none;float: left;margin-top: 20px;">Sửa</button>
 </div>
+
+
 

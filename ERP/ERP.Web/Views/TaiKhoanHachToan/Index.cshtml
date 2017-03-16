@@ -5,19 +5,19 @@
 
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <link href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="~/Content/self-writing/css/HangSpHL.css" rel="stylesheet" />
-<div ng-app="myApp" ng-controller="NhomvthhCtrl">
+<link href="~/Content/self-writing/css/TaiKhoanHachToanHL.css" rel="stylesheet" />
+<div ng-app="myApp" ng-controller="taikhoanCtrl">
     <div class="content">
 
 
         <div id="quick-access">
             <form class="form-inline quick-search-form" role="form" action="#">
                 <div class="form-group" style="width: 100%">
-                    <input type="text" style="width: 60%" class="form-control" placeholder="Type Maker Code You Want To Search Here" ng-model="search_text">
+                    <input type="text" style="width: 60%" class="form-control" placeholder="Type Account You Want To Search Here" ng-model="search_text">
                 </div>
             </form>
         </div>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add New Maker</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add New Account</button>
 
         <!-- Modal Add New -->
         <div class="modal fade" id="myModal" role="dialog">
@@ -28,35 +28,50 @@
                         <form class="form-horizontal" name="myForm" novalidate>
                             <fieldset>
                                 <!-- Form Name -->
-                                <legend>Add New Maker</legend>
+                                <legend>Add New Account</legend>
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="name">Maker Code: </label>
+                                    <label class="col-md-4 control-label" for="name">Account: </label>
                                     <div class="col-md-4">
-                                        <input type="text" placeholder="Maker Code" class="form-control input-md" ng-model="manhomhangchitiet">
-                                    </div>
-                                </div>
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="name">Maker Name: </label>
-                                    <div class="col-md-4">
-                                        <input type="text" placeholder="Maker Name" class="form-control input-md" ng-model="chungloaihang">
+                                        <input type="text" placeholder="Account" class="form-control input-md" ng-model="stk">
                                     </div>
                                 </div>
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="name">Maker's Parent Code : </label>
+                                    <label class="col-md-4 control-label" for="name">Account Name: </label>
                                     <div class="col-md-4">
-                                        <input type="text" placeholder="Maker's Parent Code " class="form-control input-md" ng-model="manhomhangcha">
+                                        <input type="text" placeholder="Account Name" class="form-control input-md" ng-model="tentaikhoan">
                                     </div>
                                 </div>
+                                <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="name">Note: </label>
+                                    <label class="col-md-4 control-label" for="name">Featured: </label>
                                     <div class="col-md-4">
-                                        <input type="text" placeholder="Note" class="form-control input-md" ng-model="ghichu">
+                                        <input type="text" placeholder="Featured" class="form-control input-md" ng-model="tinhchat">
                                     </div>
                                 </div>
-                                <!-- Button (Double) -->
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="name">English Name: </label>
+                                    <div class="col-md-4">
+                                        <input type="text" placeholder="English Name" class="form-control input-md" ng-model="tentienganh">
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="name">Account's Parent ID: </label>
+                                    <div class="col-md-4">
+                                        <input type="text" placeholder="TK cấp cha" class="form-control input-md" ng-model="tk_capcha">
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="name">Description: </label>
+                                    <div class="col-md-4">
+                                        <input type="text" placeholder="Description" class="form-control input-md" ng-model="diengiai">
+                                    </div>
+                                </div>
+                         <!-- Button (Double) -->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="anmelden"></label>
                                     <div class="col-md-8 addnew">
@@ -80,40 +95,55 @@
                         <form class="form-horizontal" name="myForm" novalidate>
                             <fieldset>
                                 <!-- Form Name -->
-                                <legend>Cập nhật nhóm hàng</legend>
+                                <legend>Update Account</legend>
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="name">Maker Code: </label>
+                                    <label class="col-md-4 control-label" for="name">Account: </label>
                                     <div class="col-md-4">
-                                        <input type="text" placeholder="Maker Code" class="form-control input-md" ng-model="item.MA_NHOM_HANG_CHI_TIET" ng-disabled="true">
+                                        <input type="text" placeholder="Account" class="form-control input-md" ng-model="item.SO_TK" ng-disabled="true">
                                     </div>
                                 </div>
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="name">Maker Name: </label>
+                                    <label class="col-md-4 control-label" for="name">Account Name: </label>
                                     <div class="col-md-4">
-                                        <input type="text" placeholder="Maker Name" class="form-control input-md" ng-model="item.CHUNG_LOAI_HANG">
+                                        <input type="text" placeholder="Account Name" class="form-control input-md" ng-model="item.TEN_TK">
                                     </div>
                                 </div>
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="name">Maker's Parent Code : </label>
+                                    <label class="col-md-4 control-label" for="name">Featured: </label>
                                     <div class="col-md-4">
-                                        <input type="text" placeholder="Maker's Parent Code " class="form-control input-md" ng-model="item.MA_NHOM_HANG_CHA">
+                                        <input type="text" placeholder="Featured" class="form-control input-md" ng-model="item.TINH_CHAT">
                                     </div>
                                 </div>
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="name">Note: </label>
+                                    <label class="col-md-4 control-label" for="name">English Name: </label>
                                     <div class="col-md-4">
-                                        <input type="text" placeholder="Note" class="form-control input-md" ng-model="item.GHI_CHU">
+                                        <input type="text" placeholder="English Name" class="form-control input-md" ng-model="item.TEN_TA">
                                     </div>
                                 </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="name">Account's Parent ID: </label>
+                                    <div class="col-md-4">
+                                        <input type="text" placeholder="Account's Parent ID" class="form-control input-md" ng-model="item.TK_CAP_CHA">
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="name">Description: </label>
+                                    <div class="col-md-4">
+                                        <input type="text" placeholder="Description" class="form-control input-md" ng-model="item.DIEN_GIA">
+                                    </div>
+                                </div>
+                                <!-- Text input-->
                                 <!-- Button (Double) -->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="anmelden"></label>
                                     <div class="col-md-11 edit">
-                                        <button class="btn btn-success" ng-click="save(item.MA_NHOM_HANG_CHI_TIET)" data-dismiss="modal">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button class="btn btn-success" ng-click="save(item.SO_TK)" data-dismiss="modal">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <button class="btn btn-danger" data-dismiss="modal">Exit</button>
                                     </div>
                                 </div>
@@ -134,14 +164,14 @@
                         <form class="form-horizontal" name="myForm" novalidate>
                             <fieldset>
                                 <!-- Form Name -->
-                                <legend>Delete Maker</legend>
-                                <center>Are you sure you want to delete <b>{{item.MA_NHOM_HANG_CHI_TIET}}</b></center>
+                                <legend>Delete Account</legend>
+                                <center>Are you sure you want to delete <b>{{item.TEN_TK}}</b></center>
                                 <p></p>
 
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="delete"></label>
                                     <div class="col-md-8">
-                                        <button id="delete" name="delete" class="btn btn-danger" ng-click="delete(item.MA_NHOM_HANG_CHI_TIET)" data-dismiss="modal">Delete</button>
+                                        <button id="delete" name="delete" class="btn btn-danger" ng-click="delete(item.SO_TK)" data-dismiss="modal">Delete</button>
                                         <button id="exit" name="exit" class="btn btn-success" data-dismiss="modal">Exit</button>
                                     </div>
                                 </div>
@@ -154,24 +184,26 @@
         <br />
         <!--end modal-->
 
-        <table id="example" class="table table-striped table-bordered" cellspacing="0" name="tblhanghoa">
+        <table id="example" class="table table-bordered" cellspacing="0" name="tblhanghoa">
             <thead>
                 <tr>
-
-                    <th>Maker Code</th>
-                    <th>Maker Name</th>
-                    <th>Maker's Parent Code </th>
-                    <th>Note</th>
+                    
+                    <th>Account</th>
+                    <th>Account Name</th>
+                    <th>Featured</th>
+                    <th>English Name</th>
+                    <th>Descriptioni</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-                <tr dir-paginate="item in filtered = (danhsachsp | filter: {MA_NHOM_HANG_CHI_TIET:search_text}) | itemsPerPage:3 | orderBy: 'item.SO_TK'" class="hover" ng-class-odd="'odd'" ng-class-even="'even'">
-                    <td class="text-left" ng-class="whatclass(item.MA_NHOM_HANG_CHA)">{{ item.MA_NHOM_HANG_CHI_TIET }}</td>
-                    <td class="text-left">{{item.CHUNG_LOAI_HANG}}</td>
-                    <td class="text-left">{{item.MA_NHOM_HANG_CHA}}</td>
-                    <td>{{item.GHI_CHU}}</td>
+                <tr dir-paginate="item in filtered = (danhsachtk | filter: {SO_TK:search_text}) | itemsPerPage:10  | orderBy: 'item.SO_TK'" class="hover" ng-class-odd="'odd'" ng-class-even="'even'">
+                    <td class="text-left" ng-class="whatclass(item.TK_CAP_CHA)">{{ item.SO_TK }}</td>
+                    <td class="text-left">{{item.TEN_TK}}</td>
+                    <td class="text-left">{{item.TINH_CHAT}}</td>
+                    <td>{{item.TEN_TA}}</td>
+                    <td>{{item.DIENGIAI}}</td>
                     <td>
                         <button class="btn btn-success btn-circle" ng-click="edit(item)" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
                     </td>
@@ -182,7 +214,7 @@
 
                 </tr>
                 <!--Detail row-->
-
+                
             </tbody>
             <tfoot>
                 <tr>

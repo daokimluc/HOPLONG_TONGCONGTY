@@ -36,7 +36,7 @@
                             <p class="col-md-6"><b>Học vấn:</b> {{nv.TRINH_DO_HOC_VAN}}</p>
                         </div>
                         <div class="col-md-12 thongtin">
-                            <p class="col-md-6"><b>Ngày sinh:</b> {{nv.NGAY_SINH | date:'dd/MM/yyyy' }}</p>
+                            <p class="col-md-6"><b>Ngày sinh:</b> {{nv.NGAY_SINH |stringToDate:"shortDate" }}</p>
                         </div>
                         <div class="col-md-12 thongtin">
                             <p class="col-md-6"><b>Số điện thoại:</b> {{nv.SDT}}</p>
@@ -57,7 +57,7 @@
                     <br />
                     <input type="password" placeholder="Mật khẩu mới" ng-model="newpw" class="col-md-4 col-md-offset-3 pw"/>
                     <br />
-                    <button type="button" ng-click="changepw()" class="btn btn-success col-md-4 col-md-offset-3 pw" data-dismiss="modal" data-toggle="modal" data-target="#changepw">Đổi mật khẩu</button>
+                    <button type="button" ng-click="changepw()" class="btn col-md-4 col-md-offset-3 pw" data-dismiss="modal" data-toggle="modal" data-target="#changepw">Đổi mật khẩu</button>
                 </div>
             </div>
             <div class="modal fade" id="changepw" role="dialog" tabindex="-1">
@@ -66,8 +66,8 @@
                         <div class="modal-body">
                             <b class="error" style="display: none">Mật khẩu cũ không đúng</b>
                             <b class="successful" style="display: none">Thay đổi mật khẩu thành công</b>
-                            <button class="btn btn-success successful" onclick="reload()" style="display: none">Xác nhận</button>
-                            <button id="exit" name="exit" class="btn btn-danger addnewmodal error" data-dismiss="modal" style="display: none">Exit</button>
+                            <button class="btn successful" onclick="reload()" style="display: none">Xác nhận</button>
+                            <button id="exit" name="exit" class="btn addnewmodal error" data-dismiss="modal" style="display: none">Exit</button>
                         </div>
                     </div>
                 </div>

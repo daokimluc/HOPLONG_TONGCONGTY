@@ -8,9 +8,9 @@ using System.Web.Mvc;
 namespace ERP.Web.Areas.HopLong.Controllers
 {
     [AuthorizeBussiness]
-    public class TaiKhoanHachToanHLController : Controller
+    public class NguoiDungController : Controller
     {
-        // GET: HopLong/TaiKhoanHachToanHL
+        // GET: HopLong/NguoiDungHL
         public ActionResult Index()
         {
             return View();
