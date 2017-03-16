@@ -16,9 +16,9 @@ namespace ERP.Web.Areas.HopLong.Controllers
     {
         private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
         // GET: HopLong/ChiTietNghiepVu
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            var cN_CHI_TIET_NGHIEP_VU = db.CN_CHI_TIET_NGHIEP_VU.Include(c => c.CN_NGHIEP_VU);
+            var cN_CHI_TIET_NGHIEP_VU = db.CN_CHI_TIET_NGHIEP_VU.Where(x=>x.ID_NGHIEP_VU==id);
             return View(cN_CHI_TIET_NGHIEP_VU.ToList());
         }
     }

@@ -4,10 +4,12 @@
 }
 <link href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/self-writing/css/GiamDocChiNhanh.css" rel="stylesheet" />
+
+<div style="width: 60%;margin: 0 auto 20px auto;text-align: center;border: 1px solid #ddd;border-radius: 10px;"><h1>Bạn đang xem mục Giám Đốc Công Ty và Các Chi Nhánh</h1></div>
 <div class="content" ng-app="myApp" ng-controller="giamdocCtrl">
 
     <div class="modal fade" id="myChiTiet" role="dialog" tabindex="-1">
-        <div class="modal-dialog modal-lg" style="width:80%">
+        <div class="modal-dialog modal-lg" style="width:50%">
             <div class="modal-content" style="border-radius: 15px">
 
                 <div class="modal-header">
@@ -34,7 +36,7 @@
                                 <p class="col-md-6"><b>Học vấn:</b> {{nv.TRINH_DO_HOC_VAN}}</p>
                             </div>
                             <div class="col-md-12 thongtin">
-                                <p class="col-md-6"><b>Ngày sinh:</b> {{nv.NGAY_SINH | date:'dd/MM/yyyy' }}</p>
+                                <p class="col-md-6"><b>Ngày sinh:</b> {{nv.NGAY_SINH |stringToDate:"shortDate" }}</p>
                             </div>
                             <div class="col-md-12 thongtin">
                                 <p class="col-md-6"><b>Số điện thoại:</b> {{nv.SDT}}</p>

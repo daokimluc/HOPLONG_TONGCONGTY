@@ -556,6 +556,7 @@
           <Property Name="TEN_MENU" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="LINK" Type="varchar" MaxLength="128" Nullable="false" />
           <Property Name="MENU_CHA" Type="varchar" MaxLength="64" />
+          <Property Name="MUC_TRUC_THUOC" Type="varchar" MaxLength="64" />
         </EntityType>
         <EntityType Name="MENU_USER">
           <Key>
@@ -1766,6 +1767,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__MENU__MUC_TRUC_T__42CCE065">
+          <End Role="CCTC_MO_HINH_CONG_TY" Type="Self.CCTC_MO_HINH_CONG_TY" Multiplicity="0..1" />
+          <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CCTC_MO_HINH_CONG_TY">
+              <PropertyRef Name="MA_MO_HINH" />
+            </Principal>
+            <Dependent Role="MENU">
+              <PropertyRef Name="MUC_TRUC_THUOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__MENU_USER__MA_ME__6462DE5A">
           <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
           <End Role="MENU_USER" Type="Self.MENU_USER" Multiplicity="*" />
@@ -2970,6 +2983,10 @@
             <End Role="MENU" EntitySet="MENU" />
             <End Role="MENU1" EntitySet="MENU" />
           </AssociationSet>
+          <AssociationSet Name="FK__MENU__MUC_TRUC_T__42CCE065" Association="Self.FK__MENU__MUC_TRUC_T__42CCE065">
+            <End Role="CCTC_MO_HINH_CONG_TY" EntitySet="CCTC_MO_HINH_CONG_TY" />
+            <End Role="MENU" EntitySet="MENU" />
+          </AssociationSet>
           <AssociationSet Name="FK__MENU_USER__MA_ME__6462DE5A" Association="Self.FK__MENU_USER__MA_ME__6462DE5A">
             <End Role="MENU" EntitySet="MENU" />
             <End Role="MENU_USER" EntitySet="MENU_USER" />
@@ -3408,6 +3425,10 @@
           <AssociationSet Name="FK_CN_NGHIEP_VU_CCTC_CONG_TY" Association="ERP_DATABASEModel.FK_CN_NGHIEP_VU_CCTC_CONG_TY">
             <End Role="CCTC_CONG_TY" EntitySet="CCTC_CONG_TY" />
             <End Role="CN_NGHIEP_VU" EntitySet="CN_NGHIEP_VU" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MENU__MUC_TRUC_T__42CCE065" Association="ERP_DATABASEModel.FK__MENU__MUC_TRUC_T__42CCE065">
+            <End Role="CCTC_MO_HINH_CONG_TY" EntitySet="CCTC_MO_HINH_CONG_TY" />
+            <End Role="MENU" EntitySet="MENUs" />
           </AssociationSet>
           <AssociationSet Name="FK__CCTC_NHAN__MA_PH__08B54D69" Association="ERP_DATABASEModel.FK__CCTC_NHAN__MA_PH__08B54D69">
             <End Role="CCTC_PHONG_BAN" EntitySet="CCTC_PHONG_BAN" />
@@ -4002,6 +4023,7 @@
           <Property Name="TEN_MO_HINH" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="GHI_CHU" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CCTC_CONG_TY" Relationship="ERP_DATABASEModel.FK__NB_CONG_T__MO_HI__1367E606" FromRole="CCTC_MO_HINH_CONG_TY" ToRole="CCTC_CONG_TY" />
+          <NavigationProperty Name="MENUs" Relationship="ERP_DATABASEModel.FK__MENU__MUC_TRUC_T__42CCE065" FromRole="CCTC_MO_HINH_CONG_TY" ToRole="MENU" />
         </EntityType>
         <EntityType Name="CCTC_NHAN_VIEN">
           <Key>
@@ -4629,6 +4651,8 @@
           <Property Name="TEN_MENU" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="LINK" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="MENU_CHA" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="MUC_TRUC_THUOC" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CCTC_MO_HINH_CONG_TY" Relationship="ERP_DATABASEModel.FK__MENU__MUC_TRUC_T__42CCE065" FromRole="MENU" ToRole="CCTC_MO_HINH_CONG_TY" />
           <NavigationProperty Name="MENU1" Relationship="ERP_DATABASEModel.FK__MENU__MENU_CHA__7A521F79" FromRole="MENU" ToRole="MENU1" />
           <NavigationProperty Name="MENU2" Relationship="ERP_DATABASEModel.FK__MENU__MENU_CHA__7A521F79" FromRole="MENU1" ToRole="MENU" />
           <NavigationProperty Name="MENU_USER" Relationship="ERP_DATABASEModel.FK__MENU_USER__MA_ME__6462DE5A" FromRole="MENU" ToRole="MENU_USER" />
@@ -5292,6 +5316,18 @@
             </Principal>
             <Dependent Role="CN_NGHIEP_VU">
               <PropertyRef Name="TRUC_THUOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MENU__MUC_TRUC_T__42CCE065">
+          <End Type="ERP_DATABASEModel.CCTC_MO_HINH_CONG_TY" Role="CCTC_MO_HINH_CONG_TY" Multiplicity="0..1" />
+          <End Type="ERP_DATABASEModel.MENU" Role="MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CCTC_MO_HINH_CONG_TY">
+              <PropertyRef Name="MA_MO_HINH" />
+            </Principal>
+            <Dependent Role="MENU">
+              <PropertyRef Name="MUC_TRUC_THUOC" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7293,6 +7329,7 @@
           <EntitySetMapping Name="MENUs">
             <EntityTypeMapping TypeName="ERP_DATABASEModel.MENU">
               <MappingFragment StoreEntitySet="MENU">
+                <ScalarProperty Name="MUC_TRUC_THUOC" ColumnName="MUC_TRUC_THUOC" />
                 <ScalarProperty Name="MENU_CHA" ColumnName="MENU_CHA" />
                 <ScalarProperty Name="LINK" ColumnName="LINK" />
                 <ScalarProperty Name="TEN_MENU" ColumnName="TEN_MENU" />

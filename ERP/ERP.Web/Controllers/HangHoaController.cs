@@ -12,7 +12,7 @@ using ERP.Web.Models.BusinessModel;
 namespace ERP.Web.Areas.HopLong.Controllers
 {
 
-    public class HangHoaHLController : Controller
+    public class HangHoaController : Controller
     {
         private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 

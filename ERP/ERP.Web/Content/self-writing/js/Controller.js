@@ -589,6 +589,12 @@ app.controller('userdetailCtrl', function (userdetailService,$scope) {
             $scope.list_details = a;
         });
     };
+    $scope.load_nguoidungdetails = function (id) {
+        
+        userdetailService.get_details(id).then(function (a) {
+            $scope.list_details = a;
+        });
+    };
 
     $scope.loadUser = function () {
         userdetailService.get_user().then(function (a) {
@@ -667,7 +673,7 @@ app.controller('addmenuCtrl', function (addmenuService,menuService ,$scope) {
         menuService.get_menucha(username, menucha).then(function (a) {
             $scope.danhsachmenucha = a;
         });
-        $('#editbtn').toggle();
+        $('#editbtn').show();
     };
 
     $scope.push = function (zzz) {
@@ -703,10 +709,37 @@ app.controller('addmenuCtrl', function (addmenuService,menuService ,$scope) {
     };
 });
 
+app.controller('tonghopnvCtrl', function (tonghopnvService,$scope) {
+    $scope.load_tonghop = function () {
+        tonghopnvService.get_tonghop().then(function (a) {
+            $scope.listtonghop = a;
+        });
+    };
+    $scope.load_tonghop();
+});
 
 
+app.controller('dsnghiepvuCtrl', function (dsnghiepvuService, $scope) {
+    $scope.load_dsnghiepvu = function (id_menu) {
 
-
+            //this gets the full url
+            var url = document.location.href;
+            //this removes the anchor at the end, if there is one
+            url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
+            //this removes the query after the file name, if there is one
+            url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
+            //this removes everything before the last slash in the path
+            url = url.substring(url.lastIndexOf("/") + 1, url.length);
+            //return
+            console.log(url);
+        
+        var pathArray = window.location.pathname.split('/');
+        dsnghiepvuService.get_dsnghiepvu(url).then(function (a) {
+            $scope.dsnghiepvu = a;
+        });
+    };
+    $scope.load_dsnghiepvu();
+});
 
 
 
@@ -756,6 +789,12 @@ app.directive('checkList', function () {
 
 app.filter('unsafe', function ($sce) { return $sce.trustAsHtml; });
 
+app.filter('stringToDate', function ($filter) {
+    return function (ele, dateFormat) {
+        return $filter('date')(new Date(ele), dateFormat);
+    }
+})
+
 function help(){
     $('.help').show();
     $('.nohelp').hide();
@@ -764,3 +803,5 @@ function nohelp() {
     $('.help').hide();
     $('.nohelp').show();
 }
+
+

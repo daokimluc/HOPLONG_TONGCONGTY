@@ -252,3 +252,19 @@ app.service('addmenuService', function ($http) {
         return $http.delete('/api/Api_Menu/' + mamenu, data_delete);
     };
 });
+
+app.service('tonghopnvService', function ($http) {
+    this.get_tonghop = function () {
+        return $http.get('/api/Api_TongHopNhanVien').then(function (response) {
+            return response.data;
+        });
+    };
+});
+
+app.service('dsnghiepvuService', function ($http) {
+    this.get_dsnghiepvu = function (id_menu) {
+        return $http.get('/api/Api_Chitietnghiepvu/' + id_menu  ).then(function (response) {
+            return response.data;
+        });
+    };
+});

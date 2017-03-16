@@ -51,6 +51,7 @@ namespace ERP.Web.Api.HeThong
                              select (new Post()
                              {
                                  MA_BAI_VIET = t1.MA_BAI_VIET,
+                                 USERNAME = t2.USERNAME,
                                  TIEU_DE_BAI_VIET = t1.TIEU_DE_BAI_VIET,
                                  NGAY_DANG_BAI = t1.NGAY_DANG_BAI,
                                  ANH_BAI_VIET = t1.ANH_BAI_VIET,
@@ -62,6 +63,7 @@ namespace ERP.Web.Api.HeThong
                var r =  kq.FirstOrDefault();
                 Post k = new Post();
                 k.MA_BAI_VIET = r.MA_BAI_VIET;
+                k.USERNAME = r.USERNAME;
                 k.TIEU_DE_BAI_VIET = r.TIEU_DE_BAI_VIET;
                 k.NGAY_DANG_BAI = r.NGAY_DANG_BAI;
                 k.ANH_BAI_VIET = r.ANH_BAI_VIET;

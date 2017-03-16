@@ -21,5 +21,7 @@ namespace ERP.Web.Models.NewModels
 
         public string CHUC_VU { set; get; }
         public string TEN_PHONG_BAN { set; get; }
+
+        public string MA_PHONG_BAN { set; get; }
     }
 }

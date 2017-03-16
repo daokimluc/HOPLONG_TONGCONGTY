@@ -21,12 +21,13 @@ namespace ERP.Web.Api.HeThong
                          join t3 in db.CCTC_PHONG_BAN on t1.MA_PHONG_BAN equals t3.MA_PHONG_BAN
                          where t1.USERNAME == id
 
-                         select new { t1.GIOI_TINH,t1.USERNAME, t1.NGAY_SINH, t1.CHUC_VU, t1.QUE_QUAN, t1.THANH_TICH_CONG_TAC, t1.TRINH_DO_HOC_VAN, t2.HO_VA_TEN, t2.EMAIL, t2.SDT, t2.AVATAR,t3.TEN_PHONG_BAN });
+                         select new { t1.GIOI_TINH,t1.USERNAME, t1.NGAY_SINH,t1.MA_PHONG_BAN, t1.CHUC_VU, t1.QUE_QUAN, t1.THANH_TICH_CONG_TAC, t1.TRINH_DO_HOC_VAN, t2.HO_VA_TEN, t2.EMAIL, t2.SDT, t2.AVATAR,t3.TEN_PHONG_BAN });
 
 
             var result = vData.ToList().Select(x => new nhanvien()
             {
                 HO_VA_TEN = x.HO_VA_TEN,
+                MA_PHONG_BAN = x.MA_PHONG_BAN,
                 EMAIL = x.EMAIL,
                 USERNAME = x.USERNAME,
                 CHUC_VU = x.CHUC_VU,

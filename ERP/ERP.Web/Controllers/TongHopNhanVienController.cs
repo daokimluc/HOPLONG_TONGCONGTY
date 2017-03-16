@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ERP.Web.Areas.HopLong.Controllers
+namespace ERP.Web.Controllers
 {
-    public class GiamDocChiNhanhTAHLController : Controller
+    public class TongHopNhanVienController : Controller
     {
-        // GET: HopLong/GiamDocChiNhanhTAHL
+        // GET: TongHopNhanVien
         public ActionResult Index()
         {
             return View();

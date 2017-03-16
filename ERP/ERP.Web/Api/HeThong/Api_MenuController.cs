@@ -19,7 +19,7 @@ namespace ERP.Web.Api.HeThong
         // GET: api/Api_Menu
         public List<MENU> GetMenu()
         {
-            var vData = db.MENUs.Where(x => x.MENU_CHA == null);
+            var vData = db.MENUs.Where(x => x.MENU_CHA == null && x.MUC_TRUC_THUOC == "TONG_CONG_TY");
             var result = vData.ToList().Select(x => new MENU()
             {
                 TEN_MENU = x.TEN_MENU,

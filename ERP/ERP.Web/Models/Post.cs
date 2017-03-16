@@ -15,6 +15,6 @@ namespace ERP.Web.Models
         public string NGUOI_DANG_BAI { set; get; }
         public string HO_VA_TEN { set; get; }
 
-
+        public string USERNAME { set; get; }
     }
 }
