@@ -4,25 +4,27 @@
 }
 
 <div ng-app="myApp" ng-controller="danhmucCtrl">
-    <div class="panel panel-default col-md-9" style="height: 550px;overflow: auto;">
+    <div class="panel content panel-default col-md-9" style="overflow: auto;">
         <div class="panel-heading title">Thông báo</div>
         <div class="panel-body">
-            <div ng-repeat="item in listpost" class="col-md-12" style="margin-bottom: 20px;">
+            <div ng-repeat="item in listpost" class="col-md-12" style="margin-bottom: 20px;padding: 20px;border: 1px solid #ddd;box-shadow: 3px 3px 3px #ddd;">
                 <div class=col-md-3>
-                    <img ng-src="~/Content/Upload/{{item.ANH_BAI_VIET}}" style="width: 100%;height: 150px;" />
+                    <a href="/Home/Details/{{item.MA_BAI_VIET}}"><img ng-src="~/Content/BaiViet/{{item.ANH_BAI_VIET}}" style="width: 100%;height: 150px;" /></a>
                 </div>
                 <div class=col-md-9>
-                    <p>Tiêu đề bài viết:{{item.TIEU_DE_BAI_VIET}}</p>
-                    <p>Ngày viết:{{item.NGAY_DANG_BAI | date:'dd/MM/yyyy'}}</p>
+                    <a href="/Home/Details/{{item.MA_BAI_VIET}}"><h2 style="color: #097be0;font-weight: bold">{{item.TIEU_DE_BAI_VIET}}</h2></a>
+                    <p style="height: 60px; overflow: hidden;word-wrap: break-word" class="col-md-12" ng-bind-html="item.NOI_DUNG_BAI_VIET | unsafe"></p>
+                    <p class="col-md-4" style="color: #097be0"><i class="fa fa-clock-o" aria-hidden="true" style="margin-right: 5px;"></i>{{item.NGAY_DANG_BAI | date : 'dd/MM/yyyy'}}</p>
+                    <a class="col-md-4" style="color: #097be0" href="/UserDetails/Details/{{item.NGUOI_DANG_BAI}}"><i class="fa fa-user" aria-hidden="true" style="margin-right: 5px;"></i>{{item.HO_VA_TEN}}</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="panel panel-default col-md-3">
+    <div class="panel content panel-default col-md-3">
         <div class="panel-heading title">Danh mục</div>
         <div class="panel-body">
             <ul>
-                <li ng-repeat="list in danhsachdanhmuc" ng-click="transfer(list.MA_DANH_MUC)" style="cursor: pointer">{{list.TEN_DANH_MUC}}</li>
+                <li ng-repeat="list in danhsachdanhmuc" ng-click="transfer(list.MA_DANH_MUC)" style="cursor: pointer;list-style-type: none;color: #097be0"><h2>{{list.TEN_DANH_MUC}}</h2></li>
             </ul>
         </div>
     </div>

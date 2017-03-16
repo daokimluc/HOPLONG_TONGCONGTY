@@ -18,6 +18,7 @@ namespace ERP.Web.Models.Database
         public CCTC_MO_HINH_CONG_TY()
         {
             this.CCTC_CONG_TY = new HashSet<CCTC_CONG_TY>();
+            this.MENUs = new HashSet<MENU>();
         }
     
         public string MA_MO_HINH { get; set; }
@@ -26,5 +27,7 @@ namespace ERP.Web.Models.Database
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CCTC_CONG_TY> CCTC_CONG_TY { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MENU> MENUs { get; set; }
     }
 }

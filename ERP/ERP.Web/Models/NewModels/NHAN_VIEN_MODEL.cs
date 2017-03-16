@@ -13,5 +13,7 @@ namespace ERP.Web.Models.NewModels
         public string QUE_QUAN { set; get; }
         public string TRINH_DO_HOC_VAN { set; get; }
         public string MA_PHONG_BAN { set; get; }
+
+        public string THANH_TICH_CONG_TAC { set; get; }
     }
 }

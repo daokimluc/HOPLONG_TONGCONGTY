@@ -11,17 +11,15 @@ using ERP.Web.Models.BusinessModel;
 
 namespace ERP.Web.Areas.HopLong.Controllers
 {
-
-    public class HangHoaHLController : Controller
+    [AuthorizeBussiness]
+    public class ChiTietNghiepVuController : Controller
     {
         private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
-
-        // GET: HopLong/HangHoaHL
-        public ActionResult Index()
+        // GET: HopLong/ChiTietNghiepVu
+        public ActionResult Index(string id)
         {
-            var dM_HANG_HOA = db.HHs.Include(d => d.HH_NHOM_VTHH).Include(d => d.DM_TAI_KHOAN_HACH_TOAN).Include(d => d.DM_TAI_KHOAN_HACH_TOAN1).Include(d => d.DM_TAI_KHOAN_HACH_TOAN2);
-            return View(dM_HANG_HOA.ToList());
+            var cN_CHI_TIET_NGHIEP_VU = db.CN_CHI_TIET_NGHIEP_VU.Where(x=>x.ID_NGHIEP_VU==id);
+            return View(cN_CHI_TIET_NGHIEP_VU.ToList());
         }
-
     }
 }

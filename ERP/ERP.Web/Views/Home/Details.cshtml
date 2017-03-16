@@ -1,0 +1,47 @@
+﻿@model ERP.Web.Models.Database.POST
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div class="col-md-8 col-md-offset-2" style="margin-top: 20px;border: 1px solid #ddd;">
+    <div class="col-md-12" sstyle="margin: 20px;">
+        <div class="col-md-6"><img src="/Content/BaiViet/@Html.DisplayFor(model => model.ANH_BAI_VIET)" style="width: 100%;height: 250px;"/></div>
+        <div class="col-md-6">
+            <h1 style="color: #097be0"><b>@Html.DisplayFor(model => model.TIEU_DE_BAI_VIET)</b></h1>
+            <br />
+            <br />
+            <p class="col-md-6" style="color: #097be0"><i class="fa fa-clock-o" aria-hidden="true" style="margin-right: 5px;"></i>@Html.ValueFor(model => model.NGAY_DANG_BAI, "{0:dd/MM/yyyy}")</p>
+            <p class="col-md-6" style="color: #097be0"><i class="fa fa-user" aria-hidden="true" style="margin-right: 5px;"></i>@Html.DisplayFor(model => model.NGUOI_DANG_BAI)</p>
+        </div>
+    </div>
+</div>
+<div class="col-md-8 col-md-offset-2" style="margin-top: 20px;border: 1px solid #ddd;overflow: auto;max-height: 600px;">
+    @Html.Raw(Model.NOI_DUNG_BAI_VIET)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using ERP.Web.Models.Database;
 using ERP.Web.Models.BusinessModel;
+using ERP.Web.Models;
 
 namespace ERP.Web.Api.HeThong
 {
@@ -32,10 +33,10 @@ namespace ERP.Web.Api.HeThong
 
         // GET: api/Api_POST_CATEGORIES/5
         [ResponseType(typeof(POST_CATEGORIES))]
-        public List<POST> GetPOST_CATEGORIES(string id)
+        public List<Post> GetPOST_CATEGORIES(string id)
         {
 
-            List<POST> result  = new List<POST>();
+            List<Post> result  = new List<Post>();
            // POST post = db.POSTS.Where(x => x.TIEU_DE_BAI_VIET == id).FirstOrDefault();
 
            // int ma_bai_viet = post.MA_BAI_VIET;
@@ -44,18 +45,45 @@ namespace ERP.Web.Api.HeThong
             var data = db.POST_CATEGORIES.Where(x => x.MA_DANH_MUC == id).ToList();
             foreach (var item in data)
             {
-                var kq = db.POSTS.Where(x => x.MA_BAI_VIET == item.MA_BAI_VIET).FirstOrDefault();
-                result.Add(kq);
+                var kq = (from t1 in db.POSTS
+                             join t2 in db.HT_NGUOI_DUNG on t1.NGUOI_DANG_BAI equals t2.USERNAME
+                             where t1.MA_BAI_VIET == item.MA_BAI_VIET
+                             select (new Post()
+                             {
+                                 MA_BAI_VIET = t1.MA_BAI_VIET,
+                                 USERNAME = t2.USERNAME,
+                                 TIEU_DE_BAI_VIET = t1.TIEU_DE_BAI_VIET,
+                                 NGAY_DANG_BAI = t1.NGAY_DANG_BAI,
+                                 ANH_BAI_VIET = t1.ANH_BAI_VIET,
+                                 NOI_DUNG_BAI_VIET = t1.NOI_DUNG_BAI_VIET,
+                                 NGUOI_DANG_BAI = t1.NGUOI_DANG_BAI,
+                                 HO_VA_TEN = t2.HO_VA_TEN
+                             })
+                             );
+               var r =  kq.FirstOrDefault();
+                Post k = new Post();
+                k.MA_BAI_VIET = r.MA_BAI_VIET;
+                k.USERNAME = r.USERNAME;
+                k.TIEU_DE_BAI_VIET = r.TIEU_DE_BAI_VIET;
+                k.NGAY_DANG_BAI = r.NGAY_DANG_BAI;
+                k.ANH_BAI_VIET = r.ANH_BAI_VIET;
+                k.NOI_DUNG_BAI_VIET = r.NOI_DUNG_BAI_VIET;
+                k.NGUOI_DANG_BAI = r.NGUOI_DANG_BAI;
+                k.HO_VA_TEN = r.HO_VA_TEN;
+
+
+                result.Add(k);
                     
             }
-            var ds = result.ToList().Select(x=> new POST
-              {
+            var ds = result.ToList().Select(x=> new Post
+            {
                 MA_BAI_VIET = x.MA_BAI_VIET,
                   TIEU_DE_BAI_VIET = x.TIEU_DE_BAI_VIET,
                   NGAY_DANG_BAI = x.NGAY_DANG_BAI,
                   ANH_BAI_VIET = x.ANH_BAI_VIET,
                   NOI_DUNG_BAI_VIET = x.NOI_DUNG_BAI_VIET,
                   NGUOI_DANG_BAI = x.NGUOI_DANG_BAI,  
+                  HO_VA_TEN = x.HO_VA_TEN
               }).ToList();
 
             return ds;

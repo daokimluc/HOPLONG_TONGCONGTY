@@ -230,6 +230,8 @@ app.controller('userCtrl', function (userService, $scope) {
 
 
     $scope.add = function () {
+        $("textarea[name=thanhtich]").val(CKEDITOR.instances.thanhtich.getData());
+        var thanhtich = $("[name=thanhtich]").val();
         var data_add = {
             USERNAME: $scope.username,
             PASSWORD: $scope.password,
@@ -247,6 +249,7 @@ app.controller('userCtrl', function (userService, $scope) {
                 GIOI_TINH: $scope.gioitinh,
                 NGAY_SINH: $scope.ngaysinh,
                 QUE_QUAN: $scope.quequan,
+                THANH_TICH_CONG_TAC : thanhtich,
                 TRINH_DO_HOC_VAN: $scope.trinhdohocvan,
                 MA_PHONG_BAN: $scope.maphongban
             }
@@ -260,11 +263,15 @@ app.controller('userCtrl', function (userService, $scope) {
         $scope.item = item;
     }
 
-    $scope.update_nv = function (nhanvien) {
-        $scope.nhanvien = nhanvien;
+    $scope.update_nv = function (nv) {
+        $scope.nv = nv;
+        var thanhtichvalue = $('.' + nv.USERNAME + '-1').html();
+        CKEDITOR.instances.editthanhtich.setData(thanhtichvalue);
     }
 
     $scope.save = function (username) {
+        $("textarea[name=editthanhtich]").val(CKEDITOR.instances.editthanhtich.getData());
+        var editthanhtich = $("[name=editthanhtich]").val();
         var data_update = {
             ID: username,
             USERNAME: $scope.item.USERNAME,
@@ -280,11 +287,12 @@ app.controller('userCtrl', function (userService, $scope) {
             $scope.loadUser();
             var nhanvien_update = {
                 USERNAME: $scope.item.USERNAME,
-                GIOI_TINH: $scope.nhanvien.GIOI_TINH,
-                NGAY_SINH: $scope.nhanvien.NGAY_SINH,
-                QUE_QUAN: $scope.nhanvien.QUE_QUAN,
-                TRINH_DO_HOC_VAN: $scope.nhanvien.TRINH_DO_HOC_VAN,
-                MA_PHONG_BAN: $scope.nhanvien.MA_PHONG_BAN
+                GIOI_TINH: $scope.nv.GIOI_TINH,
+                NGAY_SINH: $scope.nv.NGAY_SINH,
+                QUE_QUAN: $scope.nv.QUE_QUAN,
+                THANH_TICH_CONG_TAC: editthanhtich,
+                TRINH_DO_HOC_VAN: $scope.nv.TRINH_DO_HOC_VAN,
+                MA_PHONG_BAN: $scope.nv.MA_PHONG_BAN
             }
             userService.save_nhanvien(username, nhanvien_update).then(function (response) {
                 $scope.loadUser();
@@ -434,7 +442,7 @@ app.controller('danhmucCtrl', function (danhmucService, $scope) {
             filedata.append("filename", files[0]);
             $.ajax(
                 {
-                    url: '/Content/Upload',
+                    url: '/Content/BaiViet',
                     type: 'POST',
                     contentType: false,
                     processData: false,
@@ -581,6 +589,12 @@ app.controller('userdetailCtrl', function (userdetailService,$scope) {
             $scope.list_details = a;
         });
     };
+    $scope.load_nguoidungdetails = function (id) {
+        
+        userdetailService.get_details(id).then(function (a) {
+            $scope.list_details = a;
+        });
+    };
 
     $scope.loadUser = function () {
         userdetailService.get_user().then(function (a) {
@@ -634,6 +648,103 @@ app.controller('bangluongCtrl', function (bangluongService, $scope) {
     $scope.load_bangluong();
 });
 
+app.controller('addmenuCtrl', function (addmenuService,menuService ,$scope) {
+    $scope.load_menu = function () {
+        addmenuService.get_menu().then(function (a) {
+            $scope.dsmenu = a;
+        });
+    };
+    $scope.load_menu();
+
+    $scope.add = function () {
+        var data_add = {
+            MA_MENU: $scope.ma_menu,
+            TEN_MENU: $scope.ten_menu,
+            LINK: $scope.link_menu,
+            MENU_CHA : $scope.menu_cha
+        }
+        addmenuService.add_menu(data_add).then(function (response) {
+            $scope.load_menu();
+        });
+    }
+
+    $scope.edit = function (menucha) {
+        var username = $('#username').val();
+        menuService.get_menucha(username, menucha).then(function (a) {
+            $scope.danhsachmenucha = a;
+        });
+        $('#editbtn').show();
+    };
+
+    $scope.push = function (zzz) {
+        var username = $('#username').val();
+        menuService.get_listmenucha(username, zzz).then(function (z) {
+            $scope.listmenu = z;
+        });
+    };
+
+    $scope.send = function (abc) {
+        $scope.newmodel = abc;
+    };
+
+    $scope.save = function (mamenu) {
+        var data_save = {
+            MA_MENU: mamenu,
+            TEN_MENU: $scope.newmodel.TEN_MENU,
+            LINK: $scope.newmodel.LINK,
+            MENU_CHA : $scope.newmodel.MENU_CHA
+        }
+        addmenuService.save_menu(mamenu,data_save).then(function (response) {
+            $scope.load_menu();
+        });
+    };
+
+    $scope.delete = function (mamenu) {
+        var data_delete = {
+            MA_MENU : mamenu
+        }
+        addmenuService.delete_menu(mamenu,data_delete).then(function (response) {
+            $scope.load_menu();
+        });
+    };
+});
+
+app.controller('tonghopnvCtrl', function (tonghopnvService,$scope) {
+    $scope.load_tonghop = function () {
+        tonghopnvService.get_tonghop().then(function (a) {
+            $scope.listtonghop = a;
+        });
+    };
+    $scope.load_tonghop();
+});
+
+
+app.controller('dsnghiepvuCtrl', function (dsnghiepvuService, $scope) {
+    $scope.load_dsnghiepvu = function (id_menu) {
+
+            //this gets the full url
+            var url = document.location.href;
+            //this removes the anchor at the end, if there is one
+            url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
+            //this removes the query after the file name, if there is one
+            url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
+            //this removes everything before the last slash in the path
+            url = url.substring(url.lastIndexOf("/") + 1, url.length);
+            //return
+            console.log(url);
+        
+        var pathArray = window.location.pathname.split('/');
+        dsnghiepvuService.get_dsnghiepvu(url).then(function (a) {
+            $scope.dsnghiepvu = a;
+        });
+    };
+    $scope.load_dsnghiepvu();
+});
+
+
+
+
+
 function reload() {
     location.reload();
 }
@@ -678,6 +789,12 @@ app.directive('checkList', function () {
 
 app.filter('unsafe', function ($sce) { return $sce.trustAsHtml; });
 
+app.filter('stringToDate', function ($filter) {
+    return function (ele, dateFormat) {
+        return $filter('date')(new Date(ele), dateFormat);
+    }
+})
+
 function help(){
     $('.help').show();
     $('.nohelp').hide();
@@ -686,3 +803,5 @@ function nohelp() {
     $('.help').hide();
     $('.nohelp').show();
 }
+
+

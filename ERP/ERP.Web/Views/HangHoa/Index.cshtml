@@ -161,8 +161,8 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="anmelden"></label>
                             <div class="col-md-8 addnew">
-                                <button id="addnew" name="addnew" class="btn btn-success addnewmodal" ng-click="add()" data-dismiss="modal">Add New</button>
-                                <button id="exit" name="exit" class="btn btn-danger addnewmodal" data-dismiss="modal">Exit</button>
+                                <button id="addnew" name="addnew" class="btn addnewmodal" ng-click="add()" data-dismiss="modal">Add New</button>
+                                <button id="exit" name="exit" class="btn addnewmodal" data-dismiss="modal">Exit</button>
                             </div>
                         </div>
                     </div>
@@ -305,8 +305,8 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="anmelden"></label>
                             <div class="col-md-8 edit">
-                                <button class="btn btn-success" ng-click="save(item.MA_HANG)" data-dismiss="modal">Save</button>
-                                <button class="btn btn-danger" data-dismiss="modal">Exit</button>
+                                <button class="btn" ng-click="save(item.MA_HANG)" data-dismiss="modal">Save</button>
+                                <button class="btn" data-dismiss="modal">Exit</button>
                             </div>
                         </div>
                     </div>
@@ -331,8 +331,8 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="delete"></label>
                                     <div class="col-md-8">
-                                        <button id="delete" name="delete" class="btn btn-danger" ng-click="delete(item.MA_HANG)" data-dismiss="modal">Delete</button>
-                                        <button id="exit" name="exit" class="btn btn-success" data-dismiss="modal">Exit</button>
+                                        <button id="delete" name="delete" class="btn" ng-click="delete(item.MA_HANG)" data-dismiss="modal">Delete</button>
+                                        <button id="exit" name="exit" class="btn" data-dismiss="modal">Exit</button>
                                     </div>
                                 </div>
                             </fieldset>
@@ -349,7 +349,7 @@
 
                     <div class="modal-body">
                         <div class="col-md-3">
-                            <img ng-src="~/Content/self-writing/Images/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 250px;" />
+                            <img ng-src="~/Content/HangHoa/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 250px;" />
                         </div>
                         <div class="col-md-9">
                             <div style="margin-bottom: 5%;" class="col-md-12">
@@ -439,35 +439,35 @@
         <input type="hidden" ng-model="userquantam" id="userquantam" value="@Session["USERNAME"]" />
         <div class="col-md-9" style="margin-top: -2.4%">
             <ul class="nav nav-tabs list_tab">
-                <li class="active"><a data-toggle="tab" href="#AUTONICS"><img src="~/Content/self-writing/Images/AUTONICS.png" height="20" /></a></li>
+                <li class="active"><a data-toggle="tab" href="#AUTONICS"><img src="~/Content/HangHoa/AUTONICS.png" height="20" /></a></li>
                 <li>
                     <a data-toggle="tab" href="#SCHNEIDER">
-                        <img src="~/Content/self-writing/Images/SCHNEIDER.png" height="20" />
+                        <img src="~/Content/HangHoa/SCHNEIDER.png" height="20" />
                     </a>
                 </li>
                 <li>
                     <a data-toggle="tab" href="#OMRON">
-                        <img src="~/Content/self-writing/Images/OMRON.png" height="20" />
+                        <img src="~/Content/HangHoa/OMRON.png" height="20" />
                     </a>
                 </li>
                 <li>
                     <a data-toggle="tab" href="#IDEC">
-                        <img src="~/Content/self-writing/Images/IDEC.png" height="20" />
+                        <img src="~/Content/HangHoa/IDEC.png" height="20" />
                     </a>
                 </li>
                 <li>
                     <a data-toggle="tab" href="#MITSUBISHI">
-                        <img src="~/Content/self-writing/Images/MITSUBISHI.png" height="20" />
+                        <img src="~/Content/HangHoa/MITSUBISHI.png" height="20" />
                     </a>
                 </li>
                 <li>
                     <a data-toggle="tab" href="#LS">
-                        <img src="~/Content/self-writing/Images/LS.png" height="20" />
+                        <img src="~/Content/HangHoa/LS.png" height="20" />
                     </a>
                 </li>
                 <li>
                     <a data-toggle="tab" href="#FUJI">
-                        <img src="~/Content/self-writing/Images/FUJI.png" height="20" />
+                        <img src="~/Content/HangHoa/FUJI.png" height="20" />
                     </a>
                 </li>
             </ul>
@@ -490,18 +490,18 @@
                             <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG: 'AUTONICS'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="autonics">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/self-writing/Images/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/HangHoa/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa"></td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe"  class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
                                 <td><input type="checkbox" ng-checked="item.MODEL_DAC_BIET==true" ng-model="item.MODEL_DAC_BIET"><br></td>
 
                                 <td>
-                                    <button class="btn btn-success btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-warning btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
-                                    <button class="btn btn-warning btn-circle" ng-click="delete(item.MA_KHO)"></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
+                                    
                                 </td>
                             </tr>
                             <!--Detail row-->
@@ -539,18 +539,18 @@
                             <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'LS'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="ls">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/self-writing/Images/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/HangHoa/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
                                 <td><input type="checkbox" ng-checked="item.MODEL_DAC_BIET==true" ng-model="item.MODEL_DAC_BIET"><br></td>
 
                                 <td>
-                                    <button class="btn btn-success btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-warning btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
-                                    <button class="btn btn-warning btn-circle" ng-click="delete(item.MA_KHO)"></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
+                                    
                                 </td>
                             </tr>
                             <tr dir-paginate-end="">
@@ -584,21 +584,21 @@
 
                         </thead>
                         <tbody>
-                            <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'OMRON'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="ls">
+                            <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'OMRON'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="omron">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/self-writing/Images/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/HangHoa/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
                                 <td><input type="checkbox" ng-checked="item.MODEL_DAC_BIET==true" ng-model="item.MODEL_DAC_BIET"><br></td>
 
                                 <td>
-                                    <button class="btn btn-success btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-warning btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
-                                    <button class="btn btn-warning btn-circle" ng-click="delete(item.MA_KHO)"></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
+                                    
                                 </td>
                             </tr>
                             <tr dir-paginate-end="">
@@ -608,7 +608,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="9" style="border: none !important">
-                                    <dir-pagination-controls pagination-id="ls" max-size="1" style="float:left;"
+                                    <dir-pagination-controls pagination-id="omron" max-size="1" style="float:left;"
                                                              direction-links="true"
                                                              boundary-links="true">
                                     </dir-pagination-controls>
@@ -632,21 +632,21 @@
 
                         </thead>
                         <tbody>
-                            <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'IDEC'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="ls">
+                            <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'IDEC'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="idec">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/self-writing/Images/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/HangHoa/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
                                 <td><input type="checkbox" ng-checked="item.MODEL_DAC_BIET==true" ng-model="item.MODEL_DAC_BIET"><br></td>
 
                                 <td>
-                                    <button class="btn btn-success btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-warning btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
-                                    <button class="btn btn-warning btn-circle" ng-click="delete(item.MA_KHO)"></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
+                                    
                                 </td>
                             </tr>
                             <tr dir-paginate-end="">
@@ -656,7 +656,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="9" style="border: none !important">
-                                    <dir-pagination-controls pagination-id="ls" max-size="1" style="float:left;"
+                                    <dir-pagination-controls pagination-id="idec" max-size="1" style="float:left;"
                                                              direction-links="true"
                                                              boundary-links="true">
                                     </dir-pagination-controls>
@@ -680,21 +680,21 @@
 
                         </thead>
                         <tbody>
-                            <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'FUJI'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="ls">
+                            <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'FUJI'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="fuji">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/self-writing/Images/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/HangHoa/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
                                 <td><input type="checkbox" ng-checked="item.MODEL_DAC_BIET==true" ng-model="item.MODEL_DAC_BIET"><br></td>
 
                                 <td>
-                                    <button class="btn btn-success btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-warning btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
-                                    <button class="btn btn-warning btn-circle" ng-click="delete(item.MA_KHO)"></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
+                                    
                                 </td>
                             </tr>
                             <tr dir-paginate-end="">
@@ -704,7 +704,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="9" style="border: none !important">
-                                    <dir-pagination-controls pagination-id="ls" max-size="1" style="float:left;"
+                                    <dir-pagination-controls pagination-id="fuji" max-size="1" style="float:left;"
                                                              direction-links="true"
                                                              boundary-links="true">
                                     </dir-pagination-controls>
@@ -728,21 +728,20 @@
 
                         </thead>
                         <tbody>
-                            <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'SCHNEIDER'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="ls">
+                            <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'SCHNEIDER'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="schneider">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/self-writing/Images/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/HangHoa/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
                                 <td><input type="checkbox" ng-checked="item.MODEL_DAC_BIET==true" ng-model="item.MODEL_DAC_BIET"><br></td>
 
                                 <td>
-                                    <button class="btn btn-success btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-warning btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
-                                    <button class="btn btn-warning btn-circle" ng-click="delete(item.MA_KHO)"><i class="glyphicon glyphicon-remove"></i></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
                                 </td>
                             </tr>
                             <tr dir-paginate-end="">
@@ -752,7 +751,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="9" style="border: none !important">
-                                    <dir-pagination-controls pagination-id="ls" max-size="1" style="float:left;"
+                                    <dir-pagination-controls pagination-id="schneider" max-size="1" style="float:left;"
                                                              direction-links="true"
                                                              boundary-links="true">
                                     </dir-pagination-controls>
@@ -776,21 +775,20 @@
 
                         </thead>
                         <tbody>
-                            <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'MITSUBISHI'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="ls">
+                            <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'MITSUBISHI'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="mitsubishi">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/self-writing/Images/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/HangHoa/{{item.MA_NHOM_HANG}}.png" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
                                 <td><input type="checkbox" ng-checked="item.MODEL_DAC_BIET==true" ng-model="item.MODEL_DAC_BIET"><br></td>
 
                                 <td>
-                                    <button class="btn btn-success btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i></button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-warning btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
-                                    <button class="btn btn-warning btn-circle" ng-click="delete(item.MA_KHO)"><i class="glyphicon glyphicon-remove"></i></button>
+                                    <button class="btn  btn-circle" ng-click="edit(item)" type="button" data-dismiss="modal" data-toggle="modal" data-target="#delete_item"><i class="glyphicon glyphicon-remove"></i></button>
                                 </td>
                             </tr>
                             <tr dir-paginate-end="">
@@ -800,7 +798,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="9" style="border: none !important">
-                                    <dir-pagination-controls pagination-id="ls" max-size="1" style="float:left;"
+                                    <dir-pagination-controls pagination-id="mitsubishi" max-size="1" style="float:left;"
                                                              direction-links="true"
                                                              boundary-links="true">
                                     </dir-pagination-controls>
@@ -817,7 +815,7 @@
                 <div class="panel-body">
                     <div>
                         <div class=col-md-3>
-                            <img src="~/Content/self-writing/Images/AUTONICS.png" style="width: 100%;height: 100%;" />
+                            <img src="~/Content/HangHoa/AUTONICS.png" style="width: 100%;height: 100%;" />
                         </div>
                         <div class=col-md-9>
                             <p>Tên hàng:</p>
@@ -826,7 +824,7 @@
                     </div>
                     <div>
                         <div class=col-md-3>
-                            <img src="~/Content/self-writing/Images/LS.png" style="width: 100%;height: 100%;" />
+                            <img src="~/Content/HangHoa/LS.png" style="width: 100%;height: 100%;" />
                         </div>
                         <div class=col-md-9>
                             <p>Tên hàng:</p>
@@ -835,7 +833,7 @@
                     </div>
                     <div>
                         <div class=col-md-3>
-                            <img src="~/Content/self-writing/Images/SCHNEIDER.png" style="width: 100%;height: 100%;" />
+                            <img src="~/Content/HangHoa/SCHNEIDER.png" style="width: 100%;height: 100%;" />
                         </div>
                         <div class=col-md-9>
                             <p>Tên hàng:</p>
@@ -844,7 +842,7 @@
                     </div>
                     <div>
                         <div class=col-md-3>
-                            <img src="~/Content/self-writing/Images/MAX.png" style="width: 100%;height: 100%;" />
+                            <img src="~/Content/HangHoa/MAX.png" style="width: 100%;height: 100%;" />
                         </div>
                         <div class=col-md-9>
                             <p>Tên hàng:</p>
@@ -858,7 +856,7 @@
                 <div class="panel-body">
                     <div>
                         <div class=col-md-3>
-                            <img src="~/Content/self-writing/Images/AUTONICS.png" style="width: 100%;height: 100%;" />
+                            <img src="~/Content/HangHoa/AUTONICS.png" style="width: 100%;height: 100%;" />
                         </div>
                         <div class=col-md-9>
                             <p>Tên hàng:</p>
@@ -867,7 +865,7 @@
                     </div>
                     <div>
                         <div class=col-md-3>
-                            <img src="~/Content/self-writing/Images/FUJI.png" style="width: 100%;height: 100%;" />
+                            <img src="~/Content/HangHoa/FUJI.png" style="width: 100%;height: 100%;" />
                         </div>
                         <div class=col-md-9>
                             <p>Tên hàng:</p>
@@ -876,7 +874,7 @@
                     </div>
                     <div>
                         <div class=col-md-3>
-                            <img src="~/Content/self-writing/Images/OMRON.png" style="width: 100%;height: 100%;" />
+                            <img src="~/Content/HangHoa/OMRON.png" style="width: 100%;height: 100%;" />
                         </div>
                         <div class=col-md-9>
                             <p>Tên hàng:</p>
@@ -885,7 +883,7 @@
                     </div>
                     <div>
                         <div class=col-md-3>
-                            <img src="~/Content/self-writing/Images/LS.png" style="width: 100%;height: 100%;" />
+                            <img src="~/Content/HangHoa/LS.png" style="width: 100%;height: 100%;" />
                         </div>
                         <div class=col-md-9>
                             <p>Tên hàng:</p>
@@ -899,7 +897,7 @@
                 <div class="panel-body">
                     <div ng-repeat="item in danhsachquantam" ng-click="edit(item);get_tonkho(item.MA_HANG)" data-toggle="modal" data-target="#chitiethanghoa">
                         <div class=col-md-3 >
-                            <img ng-src="~/Content/self-writing/Images/{{item.MA_HANG}}.png" style="width: 100%;height: 100%;" />
+                            <img ng-src="~/Content/HangHoa/{{item.MA_HANG}}.png" style="width: 100%;height: 100%;" />
                         </div>
                         <div class=col-md-9 >
                             <p>Mã hàng:{{item.MA_HANG}}</p>

@@ -27,9 +27,9 @@
                 
 
                 <tr>
-                    <th>Mã nghiệp vụ</th>
-                    <th>Tên nghiệp vụ</th>
-                    <th>Xem chi tiết</th>
+                    <th class="text-center">Mã nghiệp vụ</th>
+                    <th class="text-center">Tên nghiệp vụ</th>
+                    <th class="text-center">Xem chi tiết</th>
                 </tr>
             </thead>
             @foreach (var item in Model)
@@ -42,7 +42,7 @@
                         @Html.DisplayFor(modelItem => item.TEN_NGHIEP_VU)
                     </td>
                     <td>
-                        <a href="/HopLong/ChiTietNghiepVu/Index" class="btn btn-success btn-default" style="color: white;"><span class="fa icon fa-list" style="margin-right: 5px;"></span>Chi tiết nghiệp vụ</a>
+                        <a href="/ChiTietNghiepVu/Index/@item.ID" class="btn btn-default" style="color: white;background: #00BFFF !important;"><span class="fa icon fa-list" style="margin-right: 5px;"></span>Chi tiết nghiệp vụ</a>
                     </td>
                 </tr>
             }

@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace ERP.Web.Controllers
 {
-    public class UserDetailsController : Controller
+    public class AddMenuController : Controller
     {
-        // GET: UserDetails
+        // GET: AddMenu
         public ActionResult Index()
         {
             return View();
