@@ -17,6 +17,7 @@
     }
     .edit_name{
         height: 50px;
+        padding-bottom: 80px;
     }
   .tree_menu{
         background: #D3F8F7;
@@ -46,16 +47,21 @@
 <div ng-app="myApp" ng-controller="addmenuCtrl" class="content">
     <div class="col-md-4 panel panel-default">
         <div class="panel-heading title">Thêm menu</div>
-        <div class="panel-body" style="margin: 20px 0;">
-            <div class="col-md-12 edit_name"><p class="col-md-3"><i>Mã menu: </i></p><input type="text" placeholder="Mã menu" ng-model="ma_menu" class="col-md-9" /></div>
-            <div class="col-md-12 edit_name"><p class="col-md-3"><i>Tên menu:</i> </p><input type="text" placeholder="Tên menu" ng-model="ten_menu" class="col-md-9" /></div>
-            <div class="col-md-12 edit_name"><p class="col-md-3"><i>Link liên kết:</i> </p><input type="text" placeholder="Link liên kết" ng-model="link_menu" class="col-md-9" /></div>
-            <div class="col-md-12 edit_name"><p class="col-md-3"><i>Menu cha:</i> </p><input type="text" placeholder="Menu cha" ng-model="menu_cha" class="col-md-9" /></div>
-            <button type="button" ng-click="add()" class="btn" style="float: right;margin-top: 20px;">Thêm</button>
-        </div>
+        <center>
+            <div class="panel-body" style="margin: 20px 0;">
+                <div class="col-md-12 edit_name"><p class="col-md-3"></p><input type="text" style="height:inherit; width: inherit;" placeholder="Mã menu" ng-model="ma_menu" class="col-md-9" /></div>
+                <br />
+                <div class="col-md-12 edit_name"><p class="col-md-3"></p><input type="text" style="height:inherit; width: inherit;" placeholder="Tên menu" ng-model="ten_menu" class="col-md-9" /></div>
+                <br />
+                <div class="col-md-12 edit_name"><p class="col-md-3"></p><input type="text" style="height:inherit; width: inherit;" placeholder="Link liên kết" ng-model="link_menu" class="col-md-9" /></div>
+                <br />
+                <div class="col-md-12 edit_name"><p class="col-md-3"></p><input type="text" style="height:inherit; width: inherit;" placeholder="Menu cha" ng-model="menu_cha" class="col-md-9" /></div>
+                <button type="button" ng-click="add()" class="btn" style="float: right;margin-top: 20px;">Lưu</button>
+            </div>
+        </center>
     </div>
     <div class="col-md-1"></div>
-    <div class="col-md-4 panel panel-default">
+    <div class="col-md-6 panel panel-default">
         <div class="panel-heading title">Danh sách menu</div>
         <aside>
             <!-- sidebar: style can be found in sidebar.less -->
