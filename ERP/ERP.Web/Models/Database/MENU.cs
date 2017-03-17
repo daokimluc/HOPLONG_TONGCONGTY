@@ -25,7 +25,9 @@ namespace ERP.Web.Models.Database
         public string TEN_MENU { get; set; }
         public string LINK { get; set; }
         public string MENU_CHA { get; set; }
+        public string MUC_TRUC_THUOC { get; set; }
     
+        public virtual CCTC_MO_HINH_CONG_TY CCTC_MO_HINH_CONG_TY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MENU> MENU1 { get; set; }
         public virtual MENU MENU2 { get; set; }

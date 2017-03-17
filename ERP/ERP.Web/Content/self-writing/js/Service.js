@@ -1,6 +1,6 @@
 ﻿app.service('giamdocService', function ($http) {
     this.get_giamdoc = function (username) {
-        return $http.get("/api/Api_GiamDocChiNhanh/" + username).then(function (response) {
+        return $http.get("/api/Api_ChiTietNhanVien/" + username).then(function (response) {
             return response.data;
         });
     }
@@ -106,7 +106,7 @@ app.service('userService', function ($http) {
 
 app.service('nhanvienService', function ($http) {
     this.get_nhanvien = function (username) {
-        return $http.get("/api/Api_NhanvienHL/" + username).then(function (response) {
+        return $http.get("/api/Api_ChiTietNhanVien/" + username).then(function (response) {
             return response.data;
         });
     };
@@ -201,7 +201,7 @@ app.service('menuService', function ($http) {
 
 app.service('userdetailService', function ($http) {
     this.get_details = function (username) {
-        return $http.get('/api/Api_UserDetails/' + username).then(function (response) {
+        return $http.get('/api/Api_ChiTietNhanVien/' + username).then(function (response) {
             return response.data;
         });
     };
@@ -230,5 +230,67 @@ app.service('bangluongService', function ($http) {
         return $http.get('/api/Api_BangLuong/' + username).then(function (response) {
             return response.data;
         });
+    };
+});
+
+app.service('addmenuService', function ($http) {
+    this.add_menu = function (data_add) {
+        return $http.post('/api/Api_Menu', data_add);
+    }
+
+    this.get_menu = function () {
+        return $http.get('/api/Api_Menu').then(function (response) {
+            return response.data;
+        });
+    };
+
+    this.save_menu = function (mamenu,datasave) {
+        return $http.put('/api/Api_Menu/' + mamenu, datasave);
+    };
+
+    this.delete_menu = function (mamenu, data_delete) {
+        return $http.delete('/api/Api_Menu/' + mamenu, data_delete);
+    };
+});
+
+app.service('tonghopnvService', function ($http) {
+    this.get_tonghop = function () {
+        return $http.get('/api/Api_TongHopNhanVien').then(function (response) {
+            return response.data;
+        });
+    };
+});
+
+app.service('dsnghiepvuService', function ($http) {
+    this.get_dsnghiepvu = function (id_menu) {
+        return $http.get('/api/Api_Chitietnghiepvu/' + id_menu  ).then(function (response) {
+            return response.data;
+        });
+    }
+    this.save_nv = function (id, data_update) {
+        return $http.put("/api/Api_Chitietnghiepvu/" + id, data_update);
+    };
+});
+
+app.service('danhsachnghiepvuService', function ($http) {
+    this.get_nv = function () {
+        return $http.get('/api/Api_Nghiepvu').then(function (response) {
+            return response.data;
+        });
+    }
+    this.save_nv = function (id, data_update) {
+        return $http.put("/api/Api_Nghiepvu/" + id, data_update);
+    };
+});
+
+app.service('chitietbaivietService', function ($http) {
+    this.get_chitietbaiviet = function (mabaiviet) {
+        return $http.get('/api/Api_ThongTinBaiViet/' + mabaiviet).then(function (response) {
+            return response.data;
+        });
+    };
+
+    this.save = function (mabaiviet, data_update) {
+        return $http.put('/api/Api_ChiTietBaiViet/' + mabaiviet, data_update);
     };
 });

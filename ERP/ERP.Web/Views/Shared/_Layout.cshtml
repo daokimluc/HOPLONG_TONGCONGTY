@@ -38,17 +38,18 @@
     <script src="~/Content/self-writing/js/Service.js"></script>
     <script src="~/Content/self-writing/js/Controller.js"></script>
     <script src="~/Content/download/angularjs/dirPagination.js"></script>
-
 </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="myApp"  ng-controller="menuCtrl">
-    <div class="wrapper">
+    <div class="wrapper" style="padding-bottom: 50px;">
         <header class="main-header">
             <!-- Logo -->
-            <a href="/HopLong/HopLongHome/Index" class="logo">
+            <a href="/Home/Index" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini" style="color: white"><img src="~/Content/self-writing/Images/hoplong.PNG" height="30" width="40"/></span>
+                <span class="logo-mini" style="color: white">
+                    <img src="~/Content/Images/Logos/logo_hoplong.png" height="30" width="40"/>
+               </span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg" style="color: white;"><img src="~/Content/self-writing/Images/hoplong.PNG" height="30" width="40"/></span>
+                <span class="logo-lg"><img src="~/Content/Images/Logos/logo_hoplong.png" height="60" width="100" /></span>
                 
             </a>
             <!-- Header Navbar: style can be found in header.less -->
@@ -57,13 +58,13 @@
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" style="color: white;">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
-                <!-- Menu bar-->
+                <!-- DANH SÁCH MENU TRÊN-->
                 <div class="navbar-custom-menu pull-left">
                         <input type="hidden" value="@Session["MA_PHONG_BAN"]" id="maphongban" />
                         <input type="hidden" value="@Session["USERNAME"]" id="username" />
-                    <ul class="nav navbar-nav" ng-class="get(menu.USERNAME)">                       
-                        <li ng-repeat="menu in danhsachmenu">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-class="check(menu.TRANG_THAI)" ng-click="edit(menu.MA_MENU)">{{menu.TEN_MENU}}</a>
+                    <ul class="nav navbar-nav" ng-repeat="menu in danhsachmenu" ng-class="get(menu.USERNAME)">                       
+                        <li  ng-class="check(menu.TRANG_THAI)">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-mouseup="edit(menu.MA_MENU)">{{menu.TEN_MENU}}</a>                          
                         </li>
                     </ul>
                 </div><!-- /end menu bar -->
@@ -98,7 +99,7 @@
                         </li>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
-                                <a href="/UserDetails/Index"><img src="~/HopLong/Content/img/@Session["AVATAR"]" class="user-image" alt="User Image"></a>
+                                <a href="/UserDetails/Index"><img src="~/Content/Images/Avatar/@Session["AVATAR"]" class="user-image" alt="User Image"></a>
                                 <a href="/UserDetails/Index"><span class="hidden-xs">@Session["HO_VA_TEN"]</span></a>
                         </li>
                         <!-- Control Sidebar Toggle Button -->
@@ -116,99 +117,30 @@
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group" style="width: 100%">
                         <input id="searchtextbox" type="text" name="q" class="form-control" placeholder="Search...">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat" style="display:inline-block;float:left;">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat" style="display:inline-block;background:none !important;float:left;">
                             <i class="fa fa-search" id="searchtext"></i>
                         </button>
                     </div>
                 </form>
                 <!-- /.search form -->
-                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <!-- DANH SÁCH MENU TRÁI -->
                 <ul class="sidebar-menu">
+
                     <li class="header">NGHIỆP VỤ</li>
-                    <li ng-class="treeview()" ng-repeat="item in danhsachmenucha">
+                    <li ng-class="treeview()" ng-repeat="item in danhsachmenucha" ng-mouseup="push(item.MA_MENU)">
+
                         <a href="#">
                             <i ng-class="fa()"></i>
-                            <span ng-click="push(item.MA_MENU)">{{item.TEN_MENU}}</span>
+                            <span>{{item.TEN_MENU}}</span>
                             <span ng-class="pullright()">
-                                <i ng-class="fapullright()" ng-click="push(item.MA_MENU)"></i>
+                                <i ng-class="fapullright()"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu" ng-repeat="abc in listmenu">
                             <li><a href="#"><i class="fa fa-circle-o"></i>{{abc.TEN_MENU}}</a></li> 
                         </ul>
                     </li>
-                    <li class="treeview" >
-                        <a href="#">
-                            <i class="fa mini-icon fa-pie-chart"></i>
-                            <span>Ngân hàng</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Thu tiền</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Thu tiền khách hàng</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Thu tiền khách hàng hàng loạt</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Chi tiền</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Trả tiền nhà cung cấp</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa mini-icon fa-users"></i>
-                            <span>Mua hàng</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Đơn mua hàng</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Chứng từ mua hàng</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Chứng từ mua hàng nhiều HĐ</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Chứng từ mua dịch vụ</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Trả tiền nhà cung cấp</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa mini-icon fa-edit"></i> <span>Bán hàng</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Đơn hàng</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Báo giá</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Đặt hàng</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Chứng từ bán hàng</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Thu tiền khách hàng</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Thu tiền khách hàng loạt</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa mini-icon fa-edit"></i> <span>Kho</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Nhập kho</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Xuất kho</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Chuyển kho</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Tính giá xuất kho</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/ChamCong/Index"><i class="fa mini-icon fa-circle-o"></i> <span>Chấm công</span></a></li>
-
-                    <li class="header">Báo cáo</li>
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+                    
                 </ul>
             </section>
             <!-- /.sidebar -->
@@ -218,20 +150,16 @@
             @RenderBody()
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer" style="position: absolute;
-    bottom: 0px;
-    left: 0px;">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 1.0
-            </div>
-            <strong>Copyright &copy; 2017 <a href="https://hoplongtech.com">hoplongtech.com</a>.</strong> All rights
-            reserved.
-        </footer>
-
         <!-- Add the sidebar's background. This div must be placed
              immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
     </div>
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.0
+        </div>
+        <strong>Bản quyền &copy; thuộc về <a href="https://hoplongtech.com">hoplongtech.com</a>.</strong>
+    </footer>
     <!-- jQuery 2.2.3 -->
     <script src="~/Content/download/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -243,5 +171,39 @@
     <script src="~/Content/self-writing/js/nav_hoplong_multilevel.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngMask/3.1.1/ngMask.min.js"></script>
+    <style>
+        body input {
+            border: 1px solid #00BFFF !important;
+            border-radius: 5px !important;
+        }
+
+        body select {
+            border: 1px solid #00BFFF !important;
+            border-radius: 5px !important;
+        }
+
+        body textarea {
+            border: 1px solid #00BFFF !important;
+            border-radius: 5px !important;
+        }
+
+        body button {
+            background: #00BFFF !important;
+            color: white !important;
+            border: none !important;
+        }
+
+        body {
+            font-family: 'Times New Roman';
+        }
+        .hienthi{
+        display: block !important;
+    }
+
+    .bienmat{
+        display: none !important;
+    }
+    </style>
+
 </body>
 </html>
