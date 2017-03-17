@@ -23,6 +23,7 @@ namespace ERP.Web.Api.HeThong
             var result = vData.ToList().Select(x => new Post()
             {
                 MA_BAI_VIET = x.MA_BAI_VIET,
+                NGUOI_DANG_BAI = x.NGUOI_DANG_BAI,
                 TIEU_DE_BAI_VIET = x.TIEU_DE_BAI_VIET,
                 NGAY_DANG_BAI = x.NGAY_DANG_BAI,
                 NOI_DUNG_BAI_VIET = x.NOI_DUNG_BAI_VIET,

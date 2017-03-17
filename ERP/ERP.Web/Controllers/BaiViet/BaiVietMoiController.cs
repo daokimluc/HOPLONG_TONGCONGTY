@@ -53,7 +53,7 @@ namespace ERP.Web.Controllers
                         // extract only the fielname
                         var fileName = Path.GetFileName(file.FileName);
                         // TODO: need to define destination
-                        var path = Path.Combine(Server.MapPath("~/Content/BaiViet"), fileName);
+                        var path = Path.Combine(Server.MapPath("~/Content/Images/BaiViet"), fileName);
                         file.SaveAs(path);
                     }
                 }
