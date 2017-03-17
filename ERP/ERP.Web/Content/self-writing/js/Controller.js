@@ -263,6 +263,10 @@ app.controller('userCtrl', function (userService, $scope) {
         $scope.item = item;
     }
 
+    $scope.transfer = function (nv) {
+        $scope.nv = nv;
+    }
+
     $scope.update_nv = function (nv) {
         $scope.nv = nv;
         var thanhtichvalue = $('.' + nv.USERNAME + '-1').html();
@@ -274,19 +278,19 @@ app.controller('userCtrl', function (userService, $scope) {
         var editthanhtich = $("[name=editthanhtich]").val();
         var data_update = {
             ID: username,
-            USERNAME: $scope.item.USERNAME,
-            PASSWORD: $scope.item.PASSWORD,
-            HO_VA_TEN: $scope.item.HO_VA_TEN,
-            SDT: $scope.item.SDT,
-            EMAIL: $scope.item.EMAIL,
-            IS_ADMIN: $scope.item.IS_ADMIN,
-            ALLOWED: $scope.item.ALLOWED,
+            USERNAME: $scope.nv.USERNAME,
+            PASSWORD: $scope.nv.PASSWORD,
+            HO_VA_TEN: $scope.nv.HO_VA_TEN,
+            SDT: $scope.nv.SDT,
+            EMAIL: $scope.nv.EMAIL,
+            IS_ADMIN: $scope.nv.IS_ADMIN,
+            ALLOWED: $scope.nv.ALLOWED,
             MA_CONG_TY: "HOPLONG",
         }
         userService.save(username, data_update).then(function (response) {
             $scope.loadUser();
             var nhanvien_update = {
-                USERNAME: $scope.item.USERNAME,
+                USERNAME: $scope.nv.USERNAME,
                 GIOI_TINH: $scope.nv.GIOI_TINH,
                 NGAY_SINH: $scope.nv.NGAY_SINH,
                 QUE_QUAN: $scope.nv.QUE_QUAN,
@@ -525,18 +529,19 @@ app.controller('menuCtrl', function (menuService,$scope) {
     var username = $('#username').val();
 
     $scope.get = function (tendangnhap) {
+        var username = $('#username').val();
         if (tendangnhap == username) {
-            return ('action');
+            return ('hienthi');
         } else {
-            return ('noaction');
+            return ('bienmat');
         }
     };
 
     $scope.check = function (trangthai) {
         if (trangthai == true) {
-            return ('action');
+            return ('hienthi');
         } else {
-            return ('noaction');
+            return ('bienmat');
         }
     };
 
@@ -716,6 +721,59 @@ app.controller('dsnghiepvuCtrl', function (dsnghiepvuService, $scope) {
     $scope.load_dsnghiepvu();
 });
 
+app.controller('chitietbaivietCtrl', function (chitietbaivietService,$scope) {
+     $scope.checkid = function(){
+        var username = $('#username').val();
+        if (username == 'INTE002') {
+            return "show";
+        } else {
+            return "notshow";
+        }
+     }
+     $scope.checkid();
+
+     $scope.load_chitietbaiviet = function () {
+
+         //this gets the full url
+         var url = document.location.href;
+         //this removes the anchor at the end, if there is one
+         url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
+         //this removes the query after the file name, if there is one
+         url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
+         //this removes everything before the last slash in the path
+         url = url.substring(url.lastIndexOf("/") + 1, url.length);
+         //return
+         var pathArray = window.location.pathname.split('/');
+         chitietbaivietService.get_chitietbaiviet(url).then(function (a) {
+             $scope.listchitiet = a;
+         });
+     };
+     $scope.load_chitietbaiviet();
+
+     $scope.edit = function (item) {
+         $scope.item = item;
+         var noidungvalue = $('.' + item.MA_BAI_VIET + '-1').html();
+         CKEDITOR.instances.editnoidung.setData(noidungvalue);
+     }
+
+     $scope.save = function (mabaiviet) {
+         $("textarea[name=editnoidung]").val(CKEDITOR.instances.editnoidung.getData());
+         var editnoidung = $("[name=editnoidung]").val();
+         var data_save = {
+             MA_BAI_VIET: mabaiviet,
+             NOI_DUNG_BAI_VIET: editnoidung,
+             TIEU_DE_BAI_VIET: $scope.item.TIEU_DE_BAI_VIET,
+         }
+         chitietbaivietService.save(mabaiviet, data_save).then(function (response) {
+             $scope.load_chitietbaiviet();
+         });
+     }
+});
+
+
+
+
+
 
 
 
@@ -730,6 +788,7 @@ function change() {
 
 function accept() {
     $('.listmenu').css('display', 'none');
+    reload();
 }
 app.directive('checkList', function () {
     return {

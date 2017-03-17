@@ -268,3 +268,15 @@ app.service('dsnghiepvuService', function ($http) {
         });
     };
 });
+
+app.service('chitietbaivietService', function ($http) {
+    this.get_chitietbaiviet = function (mabaiviet) {
+        return $http.get('/api/Api_ThongTinBaiViet/' + mabaiviet).then(function (response) {
+            return response.data;
+        });
+    };
+
+    this.save = function (mabaiviet, data_update) {
+        return $http.put('/api/Api_ChiTietBaiViet/' + mabaiviet, data_update);
+    };
+});
