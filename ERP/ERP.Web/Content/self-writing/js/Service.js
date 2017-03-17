@@ -266,6 +266,20 @@ app.service('dsnghiepvuService', function ($http) {
         return $http.get('/api/Api_Chitietnghiepvu/' + id_menu  ).then(function (response) {
             return response.data;
         });
+    }
+    this.save_nv = function (id, data_update) {
+        return $http.put("/api/Api_Chitietnghiepvu/" + id, data_update);
+    };
+});
+
+app.service('danhsachnghiepvuService', function ($http) {
+    this.get_nv = function () {
+        return $http.get('/api/Api_Nghiepvu').then(function (response) {
+            return response.data;
+        });
+    }
+    this.save_nv = function (id, data_update) {
+        return $http.put("/api/Api_Nghiepvu/" + id, data_update);
     };
 });
 

@@ -719,6 +719,48 @@ app.controller('dsnghiepvuCtrl', function (dsnghiepvuService, $scope) {
         });
     };
     $scope.load_dsnghiepvu();
+
+    $scope.edit = function (item) {
+        $scope.item = item;
+
+    }
+
+    $scope.save = function (id) {
+        
+        var data_update = {
+            MO_TA: $scope.item.MO_TA
+
+        }
+        dsnghiepvuService.save_nv(id, data_update).then(function (response) {
+            $scope.load_dsnghiepvu();
+        });
+    }
+});
+
+app.controller('danhsachnghiepvuCtrl', function (danhsachnghiepvuService, $scope) {
+
+    $scope.loaddanhsachnghiepvu = function () {
+        danhsachnghiepvuService.get_nv().then(function (d) {
+            $scope.danhsachnghiepvu = d;
+        });
+
+    };
+    $scope.loaddanhsachnghiepvu();
+    $scope.edit = function (item) {
+        $scope.item = item;
+
+    }
+
+    $scope.save = function (id) {
+
+        var data_update = {
+            TEN_NGHIEP_VU: $scope.item.TEN_NGHIEP_VU
+
+        }
+        danhsachnghiepvuService.save_nv(id, data_update).then(function (response) {
+            $scope.loaddanhsachnghiepvu();
+        });
+    }
 });
 
 app.controller('chitietbaivietCtrl', function (chitietbaivietService,$scope) {
