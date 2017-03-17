@@ -815,7 +815,71 @@ app.controller('chitietbaivietCtrl', function (chitietbaivietService,$scope) {
 });
 
 
+app.controller('phanquyenmenuCtrl', function (phanquyenService, $scope) {
+    $scope.load_menu = function () {
+        phanquyenService.get_dsphanquyen().then(function (a) {
+            $scope.dsmenu = a;
+        });
+    };
+    $scope.load_menu();
 
+    $scope.transfer = function (mamenu) {
+        //this gets the full url
+        var url = document.location.href;
+        //this removes the anchor at the end, if there is one
+        url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
+        //this removes the query after the file name, if there is one
+        url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
+        //this removes everything before the last slash in the path
+        url = url.substring(url.lastIndexOf("/") + 1, url.length);
+        //return
+        $scope.item = mamenu;
+        var tenmenu = $scope.item.MA_MENU;
+        var pathArray = window.location.pathname.split('/');
+        phanquyenService.check_trangthai(url, tenmenu).then(function (a) {
+            $scope.listtrangthai = a;
+            if ($scope.listtrangthai == true) {
+                $scope.return = function () {
+                    return ("hienthi");
+                }
+                $scope.class = function () {
+                    return ("nothienthi");
+                }
+                phanquyenService.get_trangthai(url, tenmenu).then(function (b) {
+                    $scope.danhsachtrangthai = b;
+                });
+            } else {
+                $scope.return = function () {
+                    return ("nothienthi");
+                }
+                $scope.class = function () {
+                    return ("hienthi");
+                }
+            }
+        });
+    };
+
+    $scope.click = function (trangthai,mamenu) {
+        var url = document.location.href;
+        //this removes the anchor at the end, if there is one
+        url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
+        //this removes the query after the file name, if there is one
+        url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
+        //this removes everything before the last slash in the path
+        url = url.substring(url.lastIndexOf("/") + 1, url.length);
+        
+        var pathArray = window.location.pathname.split('/');
+        var data_save = {
+            USERNAME: url,
+            TRANG_THAI: trangthai,
+            MA_MENU: mamenu
+        }
+        phanquyenService.save_trangthai(url, mamenu, data_save).then(function (response) {
+            $scope.load_menu();
+        });
+    }
+
+});
 
 
 

@@ -25,6 +25,7 @@ namespace ERP.Web.Models.Database
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BH_DON_HANG_DU_KIEN> BH_DON_HANG_DU_KIEN { get; set; }
         public virtual DbSet<CATEGORy> CATEGORIES { get; set; }
         public virtual DbSet<CCTC_BANG_CHAM_CONG> CCTC_BANG_CHAM_CONG { get; set; }
         public virtual DbSet<CCTC_BANG_LUONG> CCTC_BANG_LUONG { get; set; }
@@ -61,9 +62,11 @@ namespace ERP.Web.Models.Database
         public virtual DbSet<KH_TK_NGAN_HANG> KH_TK_NGAN_HANG { get; set; }
         public virtual DbSet<KHO_CHUYEN_KHO> KHO_CHUYEN_KHO { get; set; }
         public virtual DbSet<KHO_CT_CHUYEN_KHO> KHO_CT_CHUYEN_KHO { get; set; }
+        public virtual DbSet<KHO_CT_DNXH> KHO_CT_DNXH { get; set; }
         public virtual DbSet<KHO_CT_NHAP_KHO> KHO_CT_NHAP_KHO { get; set; }
         public virtual DbSet<KHO_CT_PHIEU_GIU_HANG> KHO_CT_PHIEU_GIU_HANG { get; set; }
         public virtual DbSet<KHO_CT_XUAT_KHO> KHO_CT_XUAT_KHO { get; set; }
+        public virtual DbSet<KHO_DNXH> KHO_DNXH { get; set; }
         public virtual DbSet<KHO_NHAP_KHO> KHO_NHAP_KHO { get; set; }
         public virtual DbSet<KHO_PHIEU_GIU_HANG> KHO_PHIEU_GIU_HANG { get; set; }
         public virtual DbSet<KHO_XUAT_KHO> KHO_XUAT_KHO { get; set; }

@@ -80,6 +80,42 @@ namespace ERP.Web.Api.HeThong
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Route("api/Api_MENU_USER/{username}/{mamenu}")]
+        public IHttpActionResult PutMENU_USER(string username, string mamenu, MENU_USER mENU_USER)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if ( username != mENU_USER.USERNAME)
+            {
+                return BadRequest();
+            }
+            var data = db.MENU_USER.Where(x => x.USERNAME == username && x.MA_MENU == mamenu).FirstOrDefault();
+            data.TRANG_THAI = mENU_USER.TRANG_THAI;
+
+            db.Entry(data).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MENU_USERExists(username))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
         // POST: api/Api_MENU_USER
         [ResponseType(typeof(MENU_USER))]
         public IHttpActionResult PostMENU_USER(MENU_USER mENU_USER)

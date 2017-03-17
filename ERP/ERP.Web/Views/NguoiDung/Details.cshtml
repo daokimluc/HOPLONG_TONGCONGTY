@@ -1,0 +1,24 @@
+﻿@model ERP.Web.Models.Database.HT_NGUOI_DUNG
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    .hienthi{
+        display: block !important;
+    }
+    .nothienthi{
+        display: none !important;
+    }
+</style>
+
+<div ng-controller="phanquyenmenuCtrl" ng-app="myApp">
+    <select size="10" name="decision2" style="height: 500px;width: 400px;" class="col-md-4">
+        <option ng-repeat="item in dsmenu" style="margin: 15px;" ng-click="transfer(item)">{{item.TEN_MENU}}</option>
+    </select>
+
+    <div class="col-md-2">
+        <span><input type="checkbox" ng-checked="listtrangthai==true" ng-model="listtrangthai" ng-click="click(listtrangthai,item.MA_MENU)" style="display:none" ng-class="return()">{{item.TEN_MENU}}</span>
+        <button type="button" ng-class="class()" style="display:none">Tạo mới</button>
+    </div>
+</div>
