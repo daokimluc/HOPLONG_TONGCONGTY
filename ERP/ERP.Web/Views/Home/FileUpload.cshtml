@@ -1,30 +1,33 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "FileUpload";
 }
+
+<link href="~/Content/style.css" rel="stylesheet" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
-@*<h2>Upload File</h2>
-@using (Html.BeginForm("Index", "UploadFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <label for="file">Upload Image:</label>
-    <input type="file" name="file" id="file" /><br><br>
-    <input type="submit" value="Upload File/Image" />
-    <br><br>
-    @ViewBag.Message
-}*@
 
+<h2>FileUpload</h2>
 
-
-@using (Html.BeginForm("Index", "UploadFile"))
+@using (Html.BeginForm("FileUpload", "Home"))
 {
     @Html.AntiForgeryToken()
     <input type="file" name="files"><br>
     <input type="submit" value="Upload File to Server">
 }
+
+
+Tu Viet
+<form action="/Home/FileUpload" method="post">
+    @Html.AntiForgeryToken()
+    <input type="file" name="files"><br>
+    <input type="submit" value="Upload File to Server">
+</form>
+
 <div class="progress progress-striped">
     <div class="progress-bar progress-bar-success">0%</div>
 </div>
+
 <script>
     (function () {
 
@@ -56,3 +59,4 @@
 
     })();
 </script>
+

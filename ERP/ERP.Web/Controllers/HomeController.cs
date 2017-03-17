@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ERP.Web.Models;
 using ERP.Web.Models.Database;
 using System.Net;
+using System.IO;
 
 namespace ERP.Web.Controllers
 {
@@ -82,6 +83,33 @@ namespace ERP.Web.Controllers
             return RedirectToAction("Login");
         }
         public ActionResult NotificationAuthorize()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public void FileUpload(IEnumerable<HttpPostedFileBase> files)
+        {
+            if (files != null)
+            {
+                foreach (var file in files)
+                {
+                    // Verify that the user selected a file
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        // extract only the fielname
+                        var fileName = Path.GetFileName(file.FileName);
+                        // TODO: need to define destination
+                        var path = Path.Combine(Server.MapPath("~/Content/BaiViet"), fileName);
+                        file.SaveAs(path);
+                    }
+                }
+            }
+        }
+
+        public ActionResult FileUpload()
         {
             return View();
         }
