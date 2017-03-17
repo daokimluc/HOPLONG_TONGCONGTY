@@ -764,9 +764,11 @@ app.controller('danhsachnghiepvuCtrl', function (danhsachnghiepvuService, $scope
 });
 
 app.controller('chitietbaivietCtrl', function (chitietbaivietService,$scope) {
-     $scope.checkid = function(){
+    $scope.checkid = function (item) {
+        var nguoidangbai = item;
+        console.log(nguoidangbai);
         var username = $('#username').val();
-        if (username == 'INTE002') {
+        if (username == nguoidangbai || username == "admin") {
             return "show";
         } else {
             return "notshow";
