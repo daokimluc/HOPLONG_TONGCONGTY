@@ -2,6 +2,14 @@
     margin: 0px;
     padding: 0px;
 }
+.panel-heading {
+        margin: auto;
+        width: 40%;
+        text-align: center;
+        color: #333;
+        background-color: #f5f5f5;
+        border-color: #ddd;
+    }
 .message{
     color: #FF5E00;
     font-size: 16px;

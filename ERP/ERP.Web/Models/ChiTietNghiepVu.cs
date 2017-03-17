@@ -11,5 +11,6 @@ namespace ERP.Web.Models
         public string ID_NGHIEP_VU { set; get; }
         public string MO_TA { set; get; }
         public string TEN_NGHIEP_VU { set; get; }
+        public int ID { get; set; }
     }
 }

@@ -18,8 +18,9 @@ namespace ERP.Web.Areas.HopLong.Controllers
 
         public ActionResult Index()
         {
-            var dsnghiepvu = db.CN_NGHIEP_VU.Include(c => c.CCTC_CONG_TY);
-            return View(dsnghiepvu.ToList());
+            //var dsnghiepvu = db.CN_NGHIEP_VU.Include(c => c.CCTC_CONG_TY);
+            //return View(dsnghiepvu.ToList());
+            return View();
         }
 
         public ActionResult Capnhat_Nghiepvu()
