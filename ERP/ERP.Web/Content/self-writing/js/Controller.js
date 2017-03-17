@@ -433,33 +433,7 @@ app.controller('danhmucCtrl', function (danhmucService, $scope) {
 
     $scope.loadDanhMuc();
     $scope.checked_fruits = [];
-    function uploadfile() {
-        if (window.FormData !== undefined) {
-            var fileUpload = $("#imgInp").get(0);
-            var files = fileUpload.files;
-            //Tạo một đối tượng form data
-            var filedata = new FormData();
-            filedata.append("filename", files[0]);
-            $.ajax(
-                {
-                    url: '/Content/BaiViet',
-                    type: 'POST',
-                    contentType: false,
-                    processData: false,
-                    data: filedata,
-                    success: function (result) {
-
-                    }, error: function (err) {
-                        alert(err.statusText);
-                    }
-                }
-                );
-
-        }
-        else {
-            alert("FormData không hỗ trợ");
-        }
-    }
+    
     $scope.save = function () {
         var a = $('#imgInp').val();
         var name_without_ext = (a.split('\\').pop().split('/').pop().split())[0];
@@ -484,7 +458,6 @@ app.controller('danhmucCtrl', function (danhmucService, $scope) {
             });
         });
     };
-
 });
 
 
@@ -501,11 +474,13 @@ app.controller('imgCtrl', function ($scope) {
         }
     }
 
+    
+
     $("#imgInp").change(function () {
         readURL(this);
     });
+    
 });
-
 
 app.controller('menuCtrl', function (menuService,$scope) {
     $scope.load_menu = function () {
