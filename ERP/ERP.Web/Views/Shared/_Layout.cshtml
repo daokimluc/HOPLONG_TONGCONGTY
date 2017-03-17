@@ -62,9 +62,9 @@
                 <div class="navbar-custom-menu pull-left">
                         <input type="hidden" value="@Session["MA_PHONG_BAN"]" id="maphongban" />
                         <input type="hidden" value="@Session["USERNAME"]" id="username" />
-                    <ul class="nav navbar-nav" ng-class="get(menu.USERNAME)">                       
-                        <li ng-repeat="menu in danhsachmenu">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-class="check(menu.TRANG_THAI)" ng-mouseup="edit(menu.MA_MENU)">{{menu.TEN_MENU}}</a>
+                    <ul class="nav navbar-nav" ng-repeat="menu in danhsachmenu" ng-class="get(menu.USERNAME)">                       
+                        <li  ng-class="check(menu.TRANG_THAI)">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-mouseup="edit(menu.MA_MENU)">{{menu.TEN_MENU}}</a>                          
                         </li>
                     </ul>
                 </div><!-- /end menu bar -->
@@ -125,11 +125,14 @@
                 <!-- /.search form -->
                 <!-- DANH SÁCH MENU TRÁI -->
                 <ul class="sidebar-menu">
-                    <li ng-class="treeview()" ng-repeat="item in danhsachmenucha">
+
+                    <li class="header">NGHIỆP VỤ</li>
+                    <li ng-class="treeview()" ng-repeat="item in danhsachmenucha" ng-mouseup="push(item.MA_MENU)">
+
                         <a href="#">
                             <i ng-class="fa()"></i>
-                            <span ng-mouseover="push(item.MA_MENU)">{{item.TEN_MENU}}</span>
-                            <span ng-class="pullright()" ng-mouseover="push(item.MA_MENU)">
+                            <span>{{item.TEN_MENU}}</span>
+                            <span ng-class="pullright()">
                                 <i ng-class="fapullright()"></i>
                             </span>
                         </a>
@@ -173,22 +176,34 @@
             border: 1px solid #00BFFF !important;
             border-radius: 5px !important;
         }
-        body select{
+
+        body select {
             border: 1px solid #00BFFF !important;
             border-radius: 5px !important;
         }
-        body textarea{
+
+        body textarea {
             border: 1px solid #00BFFF !important;
             border-radius: 5px !important;
         }
+
         body button {
             background: #00BFFF !important;
             color: white !important;
             border: none !important;
         }
-        body{
-           font-family: 'Times New Roman';
+
+        body {
+            font-family: 'Times New Roman';
         }
+        .hienthi{
+        display: block !important;
+    }
+
+    .bienmat{
+        display: none !important;
+    }
     </style>
+
 </body>
 </html>

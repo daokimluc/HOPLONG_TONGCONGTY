@@ -9,6 +9,8 @@ namespace ERP.Web.Models.NewModels
     {
         public string USERNAME { set; get; }
         public string HO_VA_TEN { set; get; }
+
+        public string PASSWORD { set; get;}
         public string EMAIL { set; get; }
         public string SDT { set; get; }
         public string GIOI_TINH { set; get; }
@@ -23,5 +25,7 @@ namespace ERP.Web.Models.NewModels
         public string TEN_PHONG_BAN { set; get; }
 
         public string MA_PHONG_BAN { set; get; }
+
+        public string MA_CONG_TY { set; get; }
     }
 }

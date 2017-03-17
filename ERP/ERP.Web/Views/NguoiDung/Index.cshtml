@@ -155,35 +155,35 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="name">Username </label>
                                         <div class="col-md-8">
-                                            <input type="text" placeholder="Username" class="form-control input-md" ng-model="item.USERNAME" ng-disabled="true">
+                                            <input type="text" placeholder="Username" class="form-control input-md" ng-model="nv.USERNAME" ng-disabled="true">
                                         </div>
                                     </div>
                                     <!-- Text input-->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="name">Password: </label>
                                         <div class="col-md-8">
-                                            <input type="text" placeholder="Password" class="form-control input-md" ng-model="item.PASSWORD">
+                                            <input type="text" placeholder="Password" class="form-control input-md" ng-model="nv.PASSWORD">
                                         </div>
                                     </div>
                                     <!-- Text input-->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="name">Fullname: </label>
                                         <div class="col-md-8">
-                                            <input type="text" placeholder="Fullname" class="form-control input-md" ng-model="item.HO_VA_TEN">
+                                            <input type="text" placeholder="Fullname" class="form-control input-md" ng-model="nv.HO_VA_TEN">
                                         </div>
                                     </div>
                                     <!-- Text input-->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="name">Phone Number: </label>
                                         <div class="col-md-8">
-                                            <input type="text" placeholder="Phone Number" class="form-control input-md" ng-model="item.SDT">
+                                            <input type="text" placeholder="Phone Number" class="form-control input-md" ng-model="nv.SDT">
                                         </div>
                                     </div>
                                     <!-- Text input-->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="name">Email </label>
                                         <div class="col-md-8">
-                                            <input type="text" placeholder="Email" class="form-control input-md" ng-model="item.EMAIL">
+                                            <input type="text" placeholder="Email" class="form-control input-md" ng-model="nv.EMAIL">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -236,17 +236,17 @@
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="name">Company ID </label>
                                         <div class="col-md-8">
-                                            <input type="text" placeholder="Company ID" class="form-control input-md" ng-model="item.MA_CONG_TY" ng-disabled="true">
+                                            <input type="text" placeholder="Company ID" class="form-control input-md" ng-model="nv.MA_CONG_TY" ng-disabled="true">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" style="padding-top: 0px !important" for="name">Admin </label>
                                         <div class="col-md-3">
-                                            <input type="checkbox" ng-model="item.IS_ADMIN">
+                                            <input type="checkbox" ng-model="nv.IS_ADMIN">
                                         </div>
                                         <label class="col-md-3 control-label" style="padding-top: 0px !important" for="name">Allowed </label>
                                         <div class="col-md-3">
-                                            <input type="checkbox" ng-model="item.ALLOWED">
+                                            <input type="checkbox" ng-model="nv.ALLOWED">
                                         </div>
                                     </div>
                                 </div>
@@ -333,11 +333,12 @@
                         </div>
                         <div class="col-md-12">
                             <h1 style="color: #097be0">Thành tích công tác</h1>
-                            <p class="col-md-12" ng-bind-html="nv.THANH_TICH_CONG_TAC | unsafe" style="word-break: break-word"></p>
+                            <p class="{{nv.USERNAME}}-1 col-md-12" ng-bind-html="nv.THANH_TICH_CONG_TAC | unsafe" style="word-wrap:break-word"></p>
                         </div>
+                        <button style="float:right" class="btn  btn-circle" ng-click="update_nv(nv)" data-dismiss="modal" type="button" data-toggle="modal" data-target="#myEdit"><i class="glyphicon glyphicon-edit"></i>Sửa</button>
                     </div>
                     <div class="modal-footer" style="margin-top: 80px;">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left">I've seen enough about {{item.HO_VA_TEN}}</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left">I've seen enough about {{item.HO_VA_TEN}}</button>                     
                     </div>
                 </div>
             </div>

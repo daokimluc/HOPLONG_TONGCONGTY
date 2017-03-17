@@ -1,4 +1,5 @@
 ﻿using ERP.Web.Areas.HopLong.Models;
+using ERP.Web.Models.BusinessModel;
 using ERP.Web.Models.Database;
 using ERP.Web.Models.NewModels;
 using System;
@@ -13,6 +14,7 @@ namespace ERP.Web.Api.HeThong
     public class Api_ChiTietNhanVienController : ApiController
     {
         private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
+        XuLyNgayThang xlnt = new XuLyNgayThang();
         // GET: api/Api_ChiTietNhanVien
         public List<nhanvien> Get(string id)
         {
@@ -21,24 +23,26 @@ namespace ERP.Web.Api.HeThong
                          join t3 in db.CCTC_PHONG_BAN on t1.MA_PHONG_BAN equals t3.MA_PHONG_BAN
                          where t1.USERNAME == id
 
-                         select new { t1.GIOI_TINH,t1.USERNAME, t1.NGAY_SINH,t1.MA_PHONG_BAN, t1.CHUC_VU, t1.QUE_QUAN, t1.THANH_TICH_CONG_TAC, t1.TRINH_DO_HOC_VAN, t2.HO_VA_TEN, t2.EMAIL, t2.SDT, t2.AVATAR,t3.TEN_PHONG_BAN });
+                         select new { t1.GIOI_TINH,t1.USERNAME,t2.PASSWORD,t2.MA_CONG_TY, t1.NGAY_SINH,t1.MA_PHONG_BAN, t1.CHUC_VU, t1.QUE_QUAN, t1.THANH_TICH_CONG_TAC, t1.TRINH_DO_HOC_VAN, t2.HO_VA_TEN, t2.EMAIL, t2.SDT, t2.AVATAR,t3.TEN_PHONG_BAN });
 
 
             var result = vData.ToList().Select(x => new nhanvien()
             {
                 HO_VA_TEN = x.HO_VA_TEN,
+                PASSWORD = x.PASSWORD,
                 MA_PHONG_BAN = x.MA_PHONG_BAN,
                 EMAIL = x.EMAIL,
                 USERNAME = x.USERNAME,
                 CHUC_VU = x.CHUC_VU,
                 SDT = x.SDT,
                 GIOI_TINH = x.GIOI_TINH,
-                NGAY_SINH = x.NGAY_SINH.ToString(),
+                NGAY_SINH = Convert.ToDateTime(x.NGAY_SINH).ToString("dd/MM/yyyy"),
                 QUE_QUAN = x.QUE_QUAN,
                 TEN_PHONG_BAN = x.TEN_PHONG_BAN,
                 THANH_TICH_CONG_TAC = x.THANH_TICH_CONG_TAC,
                 TRINH_DO_HOC_VAN = x.TRINH_DO_HOC_VAN,
-                AVATAR = x.AVATAR
+                AVATAR = x.AVATAR,
+                MA_CONG_TY = x.MA_CONG_TY
             }).ToList();
             return result;
         }
