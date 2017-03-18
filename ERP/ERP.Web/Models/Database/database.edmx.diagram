@@ -225,6 +225,8 @@
         <AssociationConnector Association="ERP_DATABASEModel.FK__QUY_CT_PH__SO_CH__74AE54BC" />
         <AssociationConnector Association="ERP_DATABASEModel.CN_CHI_TIET_NHOM_NGHIEP_VU" />
         <AssociationConnector Association="ERP_DATABASEModel.CN_NHOM_NGUOI_DUNG_NGHIEP_VU" />
+        <EntityTypeShape EntityType="ERP_DATABASEModel.HT_LICH_SU_DANG_NHAP" Width="1.5" PointX="7.5" PointY="8.375" />
+        <AssociationConnector Association="ERP_DATABASEModel.FK__HT_LICH_S__USERN__1A89E4E1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
