@@ -370,47 +370,49 @@
                                 <div class="tab-content">
                                     <!--Tab chi tiết hàng hóa-->
                                     <div id="chitiet" class="tab-pane fade in active">
-
-                                        <div class="col-md-6">
-                                            <table class="table noborder">
-                                                <tr>
-                                                    <td>Unit</td>
-                                                    <td>{{item.DON_VI_TINH}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Khối lượng:</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Giá bán:</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Properties</td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
+                                        <div class="col-md-12" style="box-shadow: 3px 3px 3px #ddd">
+                                            <div class="col-md-6">
+                                                <table class="table noborder">
+                                                    <tr>
+                                                        <td>Unit</td>
+                                                        <td>{{item.DON_VI_TINH}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Khối lượng:</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Giá bán:</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Properties</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <table class="table noborder">
+                                                    <tr>
+                                                        <td>Quy cách đóng gói</td>
+                                                        <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Sale Account</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>COGS Account</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Note</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <table class="table noborder">
-                                                <tr>
-                                                    <td>Quy cách đóng gói</td>
-                                                    <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sale Account</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>COGS Account</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Note</td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
-                                        </div>
+                                        
                                     </div>
                                     <div id="slton" class="tab-pane fade">
                                         <div class="col-md-12">
@@ -424,11 +426,8 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div id="thongsokythuat" class="tab-pane fade">
-                                        <p>- Mô tả chi tiết :</p>
-                                        <p>- Điện áp :</p>
-                                        <p>- Công suất :</p>
-                                        <p>- Kích thước :</p>
+                                    <div id="thongsokythuat" class="tab-pane fade" style="box-shadow: 3px 3px 3px #ddd">
+                                        <div ng-bind-html="item.THONG_SO_KY_THUAT | unsafe"></div>
                                     </div>
                                 </div>
                             </div>
