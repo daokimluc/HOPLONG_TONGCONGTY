@@ -34,14 +34,14 @@ app.controller('hanghoaCtrl', function (hanghoaService, $scope) {
             MA_HANG: $scope.mahang,
             TEN_HANG: $scope.tenhang,
             MA_NHOM_HANG: $scope.manhomhang,
-            KHOI_LUONG: $sopce.khoiluong,
+            KHOI_LUONG: $scope.khoiluong,
             XUAT_XU: $scope.xuatxu,
             THONG_SO_KY_THUAT: thongso,
             QUY_CACH_DONG_GOI: donggoi,
             BAO_HANH : $scope.baohanh,
             DON_VI_TINH: $scope.donvitinh,
             HINH_ANH: $scope.hinhanh,
-            GHI_CHU: NoiDungTextArea,
+            GHI_CHU: $scope.ghichu,
             TK_HACH_TOAN_KHO: $scope.tkhachtoankho,
             TK_DOANH_THU: $scope.tkdoanhthu,
             TK_CHI_PHI: $scope.tkchiphi
@@ -846,6 +846,9 @@ app.controller('phanquyenmenuCtrl', function (phanquyenService, $scope) {
                 $scope.class = function () {
                     return ("nothienthi");
                 }
+                $scope.kiemtra = function () {
+                    return ("hienthi");
+                };
                 phanquyenService.get_trangthai(url, tenmenu).then(function (b) {
                     $scope.danhsachtrangthai = b;
                 });
@@ -856,6 +859,9 @@ app.controller('phanquyenmenuCtrl', function (phanquyenService, $scope) {
                 $scope.class = function () {
                     return ("hienthi");
                 }
+                $scope.kiemtra = function () {
+                    return ("nothienthi");
+                };
                 $scope.create = function () {
                     var data_addnew = {
                         TRANG_THAI: 1,
@@ -864,6 +870,10 @@ app.controller('phanquyenmenuCtrl', function (phanquyenService, $scope) {
                     }
                     phanquyenService.add_trangthai(data_addnew).then(function (response) {
                         $scope.load_menu();
+                        $scope.ketqua = "Successful!"
+                        $scope.kiemtra = function () {
+                            return ("hienthi");
+                        };
                     });
                 };
             }
@@ -893,6 +903,29 @@ app.controller('phanquyenmenuCtrl', function (phanquyenService, $scope) {
 });
 
 
+
+app.controller('lichsuCtrl', function (lichsuService, $scope) {
+    $scope.load_lichsu = function () {
+        var url = document.location.href;
+        //this removes the anchor at the end, if there is one
+        url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
+        //this removes the query after the file name, if there is one
+        url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
+        //this removes everything before the last slash in the path
+        url = url.substring(url.lastIndexOf("/") + 1, url.length);
+        lichsuService.get_lichsu(url).then(function (a) {
+            $scope.list_lichsu = a;
+        });
+    };
+    $scope.load_lichsu();
+    $scope.show = function (lichsu) {
+        if (lichsu != "") {
+            return ("nothienthi");
+        } else {
+            return ("hienthi");
+        }
+    }
+});
 
 
 

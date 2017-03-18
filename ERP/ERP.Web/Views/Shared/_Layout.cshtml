@@ -135,8 +135,10 @@
                                 <i ng-class="fapullright()"></i>
                             </span>
                         </a>
-                        <ul class="treeview-menu" ng-repeat="abc in listmenu" style="padding-left: 15px;">
-                            <li><a href="#"><i class="fa fa-circle-o"></i>{{abc.TEN_MENU}}</a></li> 
+
+                        <ul class="treeview-menu" ng-repeat="abc in listmenu">
+                            <li><a href="{{abc.LINK}}"><i class="fa fa-circle-o"></i>{{abc.TEN_MENU}}</a></li> 
+
                         </ul>
                     </li>
                     

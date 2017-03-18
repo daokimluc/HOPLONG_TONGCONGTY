@@ -322,3 +322,11 @@ app.service('phanquyenService', function ($http) {
         return $http.post('/api/Api_MENU_USER', data_addnew);
     }
 });
+
+app.service('lichsuService', function ($http) {
+    this.get_lichsu = function (username) {
+        return $http.get('/api/Api_LichSuDangNhap/' + username).then(function (response) {
+            return response.data;
+        });
+    };
+});
