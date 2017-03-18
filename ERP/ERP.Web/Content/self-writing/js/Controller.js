@@ -436,6 +436,7 @@ app.controller('danhmucCtrl', function (danhmucService, $scope) {
     };
 
     $scope.loadDanhMuc();
+    $scope.transfer('01');
     $scope.checked_fruits = [];
     
     $scope.save = function () {
@@ -501,7 +502,7 @@ app.controller('menuCtrl', function (menuService,$scope) {
             $scope.danhsachmenucha = a;
         });
     };
-    
+    $scope.edit("TRANG_CA_NHAN");
     $scope.push = function (zzz) {
         var username = $('#username').val();
         menuService.get_listmenucha(username, zzz).then(function (z) {

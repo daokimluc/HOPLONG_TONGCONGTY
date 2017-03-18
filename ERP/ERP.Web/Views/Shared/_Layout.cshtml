@@ -124,20 +124,21 @@
                 </form>
                 <!-- /.search form -->
                 <!-- DANH SÁCH MENU TRÁI -->
-                <ul class="sidebar-menu">
+                <ul class="sidebar-menu" >
 
-                    <li class="header">NGHIỆP VỤ</li>
-                    <li ng-class="treeview()" ng-repeat="item in danhsachmenucha" ng-mouseup="push(item.MA_MENU)">
+                    <li ng-class="treeview()" ng-repeat="item in danhsachmenucha" ng-mouseup="push(item.MA_MENU)" style="border-bottom: 1px solid white;" >
 
-                        <a href="#">
+                        <a href="#" style="font-size:15px; font-weight:bold">
                             <i ng-class="fa()"></i>
                             <span>{{item.TEN_MENU}}</span>
                             <span ng-class="pullright()">
                                 <i ng-class="fapullright()"></i>
                             </span>
                         </a>
+
                         <ul class="treeview-menu" ng-repeat="abc in listmenu">
                             <li><a href="{{abc.LINK}}"><i class="fa fa-circle-o"></i>{{abc.TEN_MENU}}</a></li> 
+
                         </ul>
                     </li>
                     
