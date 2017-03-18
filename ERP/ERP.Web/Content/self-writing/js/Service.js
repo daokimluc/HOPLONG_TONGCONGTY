@@ -322,3 +322,4 @@ app.service('phanquyenService', function ($http) {
         return $http.post('/api/Api_MENU_USER', data_addnew);
     }
 });
+
