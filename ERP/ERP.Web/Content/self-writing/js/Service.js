@@ -323,3 +323,10 @@ app.service('phanquyenService', function ($http) {
     }
 });
 
+app.service('lichsuService', function ($http) {
+    this.get_lichsu = function (username) {
+        return $http.get('/api/Api_LichSuDangNhap/' + username).then(function (response) {
+            return response.data;
+        });
+    };
+});

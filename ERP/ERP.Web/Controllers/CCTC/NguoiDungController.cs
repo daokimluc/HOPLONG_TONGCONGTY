@@ -33,5 +33,19 @@ namespace ERP.Web.Areas.HopLong.Controllers
             }
             return View(hT_NGUOI_DUNG);
         }
+
+        public ActionResult Lichsu(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            HT_NGUOI_DUNG hT_NGUOI_DUNG = db.HT_NGUOI_DUNG.Find(id);
+            if (hT_NGUOI_DUNG == null)
+            {
+                return HttpNotFound();
+            }
+            return View(hT_NGUOI_DUNG);
+        }
     }
 }

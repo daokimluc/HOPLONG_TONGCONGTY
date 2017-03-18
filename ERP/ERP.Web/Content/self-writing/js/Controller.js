@@ -903,11 +903,28 @@ app.controller('phanquyenmenuCtrl', function (phanquyenService, $scope) {
 
 
 
-
-
-
-
-
+app.controller('lichsuCtrl', function (lichsuService, $scope) {
+    $scope.load_lichsu = function () {
+        var url = document.location.href;
+        //this removes the anchor at the end, if there is one
+        url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
+        //this removes the query after the file name, if there is one
+        url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
+        //this removes everything before the last slash in the path
+        url = url.substring(url.lastIndexOf("/") + 1, url.length);
+        lichsuService.get_lichsu(url).then(function (a) {
+            $scope.list_lichsu = a;
+        });
+    };
+    $scope.load_lichsu();
+    $scope.show = function (lichsu) {
+        if (lichsu != "") {
+            return ("nothienthi");
+        } else {
+            return ("hienthi");
+        }
+    }
+});
 
 
 

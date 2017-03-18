@@ -254,9 +254,7 @@
                         <div class="content expandrow">
 
                             <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#chitiet">Details</a></li>
-                                <li><a data-toggle="tab" href="#tab2">Tab2</a></li>
-                                <li><a data-toggle="tab" href="#tab3">Tab3</a></li>
+                                <li class="active"><a data-toggle="tab" href="#chitiet">Danh sách nhân viên</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -266,18 +264,13 @@
                                             <thead>
 
                                                 <tr ng-repeat="nhanvien in listnhanvien" class="col-md-3" style="margin-bottom: 20px;">
-                                                    <td data-toggle="modal" data-target="#myChiTiet" ng-click="pass(nhanvien);edit(item)"><img ng-src="~/Content/Images/Avatar/{{nhanvien.AVATAR}}" style="width: 50%;height: 50%" /></td>
+                                                    <td>
+                                                        <div data-toggle="modal" data-target="#myChiTiet" ng-click="pass(nhanvien);edit(item)"><img ng-src="~/Content/Images/Avatar/{{nhanvien.AVATAR}}" style="width: 50%;height: 50%" /></div>
+                                                        <div style="margin-top: 5px;" data-toggle="modal" data-target="#myChiTiet" ng-click="pass(nhanvien);edit(item)">{{nhanvien.HO_VA_TEN}}</div>
+                                                    </td>
                                                 </tr>
                                         </table>
                                     </div>
-                                </div>
-                                <div id="tab2" class="tab-pane fade">
-                                    <h3>Menu 2</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                                </div>
-                                <div id="tab3" class="tab-pane fade">
-                                    <h3>Menu 3</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                                 </div>
                             </div>
                         </div>

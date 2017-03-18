@@ -17,16 +17,23 @@ namespace ERP.Web.Api.HeThong
         private ERP_DATABASEEntities db = new ERP_DATABASEEntities();
 
         // GET: api/Api_LichSuDangNhap
-        public IQueryable<HT_LICH_SU_DANG_NHAP> GetHT_LICH_SU_DANG_NHAP()
+        public List<HT_LICH_SU_DANG_NHAP> GetHT_LICH_SU_DANG_NHAP(string id)
         {
-            return db.HT_LICH_SU_DANG_NHAP;
+            var vData = db.HT_LICH_SU_DANG_NHAP.Where(x => x.USERNAME == id);
+            var result = vData.ToList().Select(x => new HT_LICH_SU_DANG_NHAP()
+            {
+                USERNAME = x.USERNAME,
+                THOI_GIAN_DANG_NHAP = x.THOI_GIAN_DANG_NHAP,
+                THOI_GIAN_DANG_XUAT = x.THOI_GIAN_DANG_XUAT ,
+            }).ToList();
+            return result;
         }
 
         // GET: api/Api_LichSuDangNhap/5
         [ResponseType(typeof(HT_LICH_SU_DANG_NHAP))]
-        public IHttpActionResult GetHT_LICH_SU_DANG_NHAP(int id)
+        public IHttpActionResult GetHT_LICH_SU_DANG_NHAP()
         {
-            HT_LICH_SU_DANG_NHAP hT_LICH_SU_DANG_NHAP = db.HT_LICH_SU_DANG_NHAP.Find(id);
+            HT_LICH_SU_DANG_NHAP hT_LICH_SU_DANG_NHAP = db.HT_LICH_SU_DANG_NHAP.Find();
             if (hT_LICH_SU_DANG_NHAP == null)
             {
                 return NotFound();
