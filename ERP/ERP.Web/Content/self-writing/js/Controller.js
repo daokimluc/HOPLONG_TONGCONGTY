@@ -855,6 +855,16 @@ app.controller('phanquyenmenuCtrl', function (phanquyenService, $scope) {
                 $scope.class = function () {
                     return ("hienthi");
                 }
+                $scope.create = function () {
+                    var data_addnew = {
+                        TRANG_THAI: 1,
+                        MA_MENU: tenmenu,
+                        USERNAME : url,
+                    }
+                    phanquyenService.add_trangthai(data_addnew).then(function (response) {
+                        $scope.load_menu();
+                    });
+                };
             }
         });
     };

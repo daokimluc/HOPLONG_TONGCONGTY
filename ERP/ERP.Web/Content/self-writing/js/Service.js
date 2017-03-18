@@ -317,4 +317,8 @@ app.service('phanquyenService', function ($http) {
     this.save_trangthai = function (username, mamenu,data_save) {
         return $http.put('/api/Api_MENU_USER/' + username + '/' + mamenu,data_save);
     }
+
+    this.add_trangthai = function (data_addnew) {
+        return $http.post('/api/Api_MENU_USER', data_addnew);
+    }
 });
