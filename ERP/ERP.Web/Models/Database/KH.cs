@@ -17,9 +17,11 @@ namespace ERP.Web.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KH()
         {
+            this.BH_DON_HANG_DU_KIEN = new HashSet<BH_DON_HANG_DU_KIEN>();
             this.KH_LIEN_HE = new HashSet<KH_LIEN_HE>();
             this.KH_TK_NGAN_HANG = new HashSet<KH_TK_NGAN_HANG>();
             this.KH_DC_XUAT_HANG = new HashSet<KH_DC_XUAT_HANG>();
+            this.KHO_DNXH = new HashSet<KHO_DNXH>();
             this.KHO_PHIEU_GIU_HANG = new HashSet<KHO_PHIEU_GIU_HANG>();
             this.KH_PHAN_LOAI_KHACH = new HashSet<KH_PHAN_LOAI_KHACH>();
         }
@@ -42,6 +44,8 @@ namespace ERP.Web.Models.Database
         public string GHI_CHU { get; set; }
         public string TRUC_THUOC { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BH_DON_HANG_DU_KIEN> BH_DON_HANG_DU_KIEN { get; set; }
         public virtual CCTC_CONG_TY CCTC_CONG_TY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KH_LIEN_HE> KH_LIEN_HE { get; set; }
@@ -49,6 +53,8 @@ namespace ERP.Web.Models.Database
         public virtual ICollection<KH_TK_NGAN_HANG> KH_TK_NGAN_HANG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KH_DC_XUAT_HANG> KH_DC_XUAT_HANG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KHO_DNXH> KHO_DNXH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KHO_PHIEU_GIU_HANG> KHO_PHIEU_GIU_HANG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

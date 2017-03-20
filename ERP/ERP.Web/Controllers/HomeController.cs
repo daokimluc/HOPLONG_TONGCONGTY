@@ -60,20 +60,32 @@ namespace ERP.Web.Controllers
                 Session["AVATAR"] = user.AVATAR;
                 Session["MA_CONG_TY"] = user.MA_CONG_TY;
                 Session["LOAI_USER"] = user.CCTC_CONG_TY.CAP_TO_CHUC;
-                
-                    return RedirectToAction("Index","Home");
+                HT_LICH_SU_DANG_NHAP lsdn = new HT_LICH_SU_DANG_NHAP();
+                lsdn.USERNAME = user.USERNAME;
+                lsdn.THOI_GIAN_DANG_NHAP = DateTime.Now.ToString("dd/MM/yyyy:hh:mm:ss");
+                lsdn.THOI_GIAN_DANG_XUAT = "";
+                db.HT_LICH_SU_DANG_NHAP.Add(lsdn);
+                db.SaveChanges();
+                return RedirectToAction("Index","Home");
+
                
-                
 
 
             }
             ViewBag.error = "Wrong username or password";
             return View();
         }
-
+        
         public ActionResult Logout()
         {
-            
+            string a = Session["USERNAME"].ToString();
+
+
+            var lichsudangnhap = db.HT_LICH_SU_DANG_NHAP.Where(x => x.USERNAME == a && x.THOI_GIAN_DANG_XUAT == "").ToList();
+            HT_LICH_SU_DANG_NHAP KETQUA = lichsudangnhap.LastOrDefault();
+            KETQUA.THOI_GIAN_DANG_XUAT = DateTime.Now.ToString("dd/MM/yyyy:hh:mm:ss");
+            db.SaveChanges();
+
             Session["USERNAME"] = null;
             Session["HO_VA_TEN"] = null;
             Session["IS_AMIN"] = null;

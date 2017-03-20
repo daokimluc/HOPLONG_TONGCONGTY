@@ -294,3 +294,39 @@ app.service('chitietbaivietService', function ($http) {
         return $http.put('/api/Api_ChiTietBaiViet/' + mabaiviet, data_update);
     };
 });
+
+app.service('phanquyenService', function ($http) { 
+    this.get_dsphanquyen = function () {
+        return $http.get('/api/Api_PhanQuyenMenu').then(function (response) {
+            return response.data;
+        });
+    };
+
+    this.get_trangthai = function (username, mamenu) {
+        return $http.get('/api/Api_TrangThaiMenu/' + username + '/' + mamenu).then(function (response) {
+            return response.data;
+        });
+    };
+
+    this.check_trangthai = function (username, mamenu) {
+        return $http.get('/api/Api_CheckMenu/' + username + '/' + mamenu).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.save_trangthai = function (username, mamenu,data_save) {
+        return $http.put('/api/Api_MENU_USER/' + username + '/' + mamenu,data_save);
+    }
+
+    this.add_trangthai = function (data_addnew) {
+        return $http.post('/api/Api_MENU_USER', data_addnew);
+    }
+});
+
+app.service('lichsuService', function ($http) {
+    this.get_lichsu = function (username) {
+        return $http.get('/api/Api_LichSuDangNhap/' + username).then(function (response) {
+            return response.data;
+        });
+    };
+});

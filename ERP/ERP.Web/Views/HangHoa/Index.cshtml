@@ -352,7 +352,7 @@
 
                     <div class="modal-body">
                         <div class="col-md-3">
-                            <img ng-src="~/Content/Images/HangHoa/{{item.MA_NHOM_HANG}}" style="width: 100%;height: 250px;" />
+                            <img ng-src="~/Content/Images/HangHoa/{{item.HINH_ANH}}" style="width: 100%;height: 250px;" />
                         </div>
                         <div class="col-md-9">
                             <div style="margin-bottom: 5%;" class="col-md-12">
@@ -370,47 +370,49 @@
                                 <div class="tab-content">
                                     <!--Tab chi tiết hàng hóa-->
                                     <div id="chitiet" class="tab-pane fade in active">
-
-                                        <div class="col-md-6">
-                                            <table class="table noborder">
-                                                <tr>
-                                                    <td>Unit</td>
-                                                    <td>{{item.DON_VI_TINH}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Khối lượng:</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Giá bán:</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Properties</td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
+                                        <div class="col-md-12" style="box-shadow: 3px 3px 3px #ddd">
+                                            <div class="col-md-6">
+                                                <table class="table noborder">
+                                                    <tr>
+                                                        <td>Unit</td>
+                                                        <td>{{item.DON_VI_TINH}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Khối lượng:</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Giá bán:</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Properties</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <table class="table noborder">
+                                                    <tr>
+                                                        <td>Quy cách đóng gói</td>
+                                                        <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Sale Account</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>COGS Account</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Note</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <table class="table noborder">
-                                                <tr>
-                                                    <td>Quy cách đóng gói</td>
-                                                    <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sale Account</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>COGS Account</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Note</td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
-                                        </div>
+                                        
                                     </div>
                                     <div id="slton" class="tab-pane fade">
                                         <div class="col-md-12">
@@ -424,11 +426,8 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div id="thongsokythuat" class="tab-pane fade">
-                                        <p>- Mô tả chi tiết :</p>
-                                        <p>- Điện áp :</p>
-                                        <p>- Công suất :</p>
-                                        <p>- Kích thước :</p>
+                                    <div id="thongsokythuat" class="tab-pane fade" style="box-shadow: 3px 3px 3px #ddd">
+                                        <div ng-bind-html="item.THONG_SO_KY_THUAT | unsafe"></div>
                                     </div>
                                 </div>
                             </div>
@@ -442,10 +441,10 @@
         <input type="hidden" ng-model="userquantam" id="userquantam" value="@Session["USERNAME"]" />
         <div class="col-md-9" style="margin-top: -2.4%">
             <ul class="nav nav-tabs list_tab">
-                <li class="active"><a data-toggle="tab" href="#AUTONICS"><img src="~/Content/HangHoa/AUTONICS.png" height="20" /></a></li>
+                <li class="active"><a data-toggle="tab" href="#AUTONICS"><img src="~/Content/Images/HangHoa/AUTONICS.png" height="20" /></a></li>
                 <li>
                     <a data-toggle="tab" href="#SCHNEIDER">
-                        <img src="~/Content/HangHoa/SCHNEIDER.png" height="20" />
+                        <img src="~/Content/Images/HangHoa/SCHNEIDER.png" height="20" />
                     </a>
                 </li>
                 <li>
@@ -455,22 +454,22 @@
                 </li>
                 <li>
                     <a data-toggle="tab" href="#IDEC">
-                        <img src="~/Content/HangHoa/IDEC.png" height="20" />
+                        <img src="~/Content/Images/HangHoa/IDEC.png" height="20" />
                     </a>
                 </li>
                 <li>
                     <a data-toggle="tab" href="#MITSUBISHI">
-                        <img src="~/Content/HangHoa/MITSUBISHI.png" height="20" />
+                        <img src="~/Content/Images/HangHoa/MITSUBISHI.png" height="20" />
                     </a>
                 </li>
                 <li>
                     <a data-toggle="tab" href="#LS">
-                        <img src="~/Content/HangHoa/LS.png" height="20" />
+                        <img src="~/Content/Images/HangHoa/LS.png" height="20" />
                     </a>
                 </li>
                 <li>
                     <a data-toggle="tab" href="#FUJI">
-                        <img src="~/Content/HangHoa/FUJI.png" height="20" />
+                        <img src="~/Content/Images/HangHoa/FUJI.png" height="20" />
                     </a>
                 </li>
             </ul>
@@ -493,7 +492,7 @@
                             <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG: 'AUTONICS'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="autonics">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.MA_NHOM_HANG}}" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.HINH_ANH}}" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa"></td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe"  class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
@@ -542,7 +541,7 @@
                             <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'LS'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="ls">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.MA_NHOM_HANG}}" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.HINH_ANH}}" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
@@ -590,7 +589,7 @@
                             <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'OMRON'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="omron">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.MA_NHOM_HANG}}" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.HINH_ANH}}" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
@@ -638,7 +637,7 @@
                             <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'IDEC'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="idec">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.MA_NHOM_HANG}}" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.HINH_ANH}}" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
@@ -686,7 +685,7 @@
                             <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'FUJI'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="fuji">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.MA_NHOM_HANG}}" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.HINH_ANH}}" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
@@ -734,7 +733,7 @@
                             <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'SCHNEIDER'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="schneider">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.MA_NHOM_HANG}}" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.HINH_ANH}}" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
@@ -781,7 +780,7 @@
                             <tr dir-paginate-start="item in filtered = (danhsachhanghoa | filter: {MA_NHOM_HANG : 'MITSUBISHI'}) | filter: {MA_HANG:search_text} | itemsPerPage: 15 " class="hover" ng-click="edit(item);get_tonkho(item.MA_HANG)" ng-class-odd="'odd'" ng-class-even="'even'" pagination-id="mitsubishi">
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.MA_HANG}}</td>
                                 <td class="text-left" data-toggle="modal" data-target="#chitiethanghoa">{{item.TEN_HANG}}</td>
-                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.MA_NHOM_HANG}}" style="width: 100%;height: 20%;" /></td>
+                                <td class="text-left" style="width: 8%" data-toggle="modal" data-target="#chitiethanghoa"><img ng-src="~/Content/Images/HangHoa/{{item.HINH_ANH}}" style="width: 100%;height: 20%;" /></td>
                                 <td data-toggle="modal" data-target="#chitiethanghoa">{{item.DON_VI_TINH | uppercase}}</td>
                                 <td ng-bind-html="item.QUY_CACH_DONG_GOI | unsafe" class="{{item.MA_HANG}}-1 hidden"></td>
                                 <td ng-bind-html="item.THONG_SO_KY_THUAT | unsafe" class="{{item.MA_HANG}}-2 hidden"></td>
@@ -900,7 +899,7 @@
                 <div class="panel-body">
                     <div ng-repeat="item in danhsachquantam" ng-click="edit(item);get_tonkho(item.MA_HANG)" data-toggle="modal" data-target="#chitiethanghoa">
                         <div class=col-md-3 >
-                            <img ng-src="~/Content/Images/HangHoa/{{item.MA_HANG}}" style="width: 100%;height: 100%;" />
+                            <img ng-src="~/Content/Images/HangHoa/{{item.HINH_ANH}}" style="width: 100%;height: 100%;" />
                         </div>
                         <div class=col-md-9 >
                             <p>Mã hàng:{{item.MA_HANG}}</p>

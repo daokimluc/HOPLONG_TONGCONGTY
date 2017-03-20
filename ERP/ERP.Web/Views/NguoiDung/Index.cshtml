@@ -362,7 +362,11 @@
                     <td class="text-left" data-toggle="modal" data-target="#myChiTiet">{{item.SDT}}</td>
                     <td class="text-left" data-toggle="modal" data-target="#myChiTiet">{{item.EMAIL}}</td>
                     <td data-toggle="modal" data-target="#myChiTiet">{{item.MA_CONG_TY}}</td>
-                    <td><a href="/NghiepVuNguoiDung/phanquyen/{{item.USERNAME}}" class="btn btn_icon_permission btn-default"><i class="fa fa-cog" style="margin-right: 5px;" aria-hidden="true"></i>Permission</a> &nbsp;&nbsp;</td>
+                    <td>
+                        <a href="/NghiepVuNguoiDung/phanquyen/{{item.USERNAME}}" class="btn btn_icon_permission btn-default"><i class="fa fa-cog" style="margin-right: 5px;" aria-hidden="true"></i>Permission</a> &nbsp;&nbsp;
+                        <a href="/NguoiDung/Details/{{item.USERNAME}}" class="btn btn_icon_permission btn-default"><i class="fa fa-cog" style="margin-right: 5px;" aria-hidden="true"></i>Permission Menu</a> &nbsp;&nbsp;
+                        <a href="/NguoiDung/Lichsu/{{item.USERNAME}}" class="btn btn_icon_permission btn-default"><i class="fa fa-cog" style="margin-right: 5px;" aria-hidden="true"></i>History</a> &nbsp;&nbsp;
+                    </td>
                 </tr>
                 <!--Detail row-->
                 <tr ng-if="item.expanded" dir-paginate-end="">
